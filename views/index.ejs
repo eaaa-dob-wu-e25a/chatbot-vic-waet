@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Server - EJS</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="body-temp">
+    <section class="chatbox-container">
+      <div class="flx-cont-row">
+        <h1>ChatBot</h1>
+        <button>Clear</button>
+      </div>
+
+      <div class="chat-msgs-container">
+        <article class="chat-messages">
+          <% messages.forEach(msg => { %>
+          <div class="message <%= msg.sender.toLowerCase() %>">
+            <strong><%= msg.sender %>: </strong> <%= msg.text%>
+          </div>
+          <%})%>
+        </article>
+      </div>
+      <form method="POST" action="/chat">
+        <input
+          type="text"
+          name="message"
+          placeholder="enter message to chat"
+          required
+        />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </body>
+</html>
