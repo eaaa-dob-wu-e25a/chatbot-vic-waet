@@ -4,24 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Client Server - EJS</title>
-    <link rel="stylesheet" href="/style.css" />
+    <!-- <link rel="stylesheet" href="/style.css" /> -->
+    <link rel="stylesheet" href="/theme.css" />
+    <link rel="stylesheet" href="/globals.css" />
+    <link rel="stylesheet" href="/chat.css" />
   </head>
-  <body class="body-temp">
-    <section class="chatbox-container">
-      <div class="flx-cont-row">
-        <h1>ChatBot</h1>
+  <body>
+    <aside>
+        
+    </aside>
+    <section>
+      <div>
+        <h1>KamiBot</h1>
         <button>Clear</button>
       </div>
 
-      <div class="chat-msgs-container">
-        <article class="chat-messages">
-          <% messages.forEach(msg => { %>
-          <div class="message <%= msg.sender.toLowerCase() %>">
-            <strong><%= msg.sender %>: </strong> <%= msg.text%>
-          </div>
-          <%})%>
-        </article>
-      </div>
+      <article>
+        <% messages.forEach(msg => { %>
+        <div class="message <%= msg.sender.toLowerCase() %>">
+          <strong><%= msg.sender %>: </strong><br />
+          <%= msg.text%>
+        </div>
+        <%})%>
+      </article>
+
       <form method="POST" action="/chat">
         <input
           type="text"
@@ -33,4 +39,31 @@
       </form>
     </section>
   </body>
+  <!-- <body class="body-temp">
+    <section class="chatbox-container">
+      <div class="flx-cont-row">
+        <h1>ChatBot</h1>
+        <button>Clear</button>
+      </div>
+
+      <article class="chat-messages">
+        <% messages.forEach(msg => { %>
+        <div class="message <%= msg.sender.toLowerCase() %>">
+          <strong><%= msg.sender %>: </strong><br />
+          <%= msg.text%>
+        </div>
+        <%})%>
+      </article>
+
+      <form method="POST" action="/chat">
+        <input
+          type="text"
+          name="message"
+          placeholder="enter message to chat"
+          required
+        />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </body> -->
 </html>

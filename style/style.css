@@ -14,12 +14,13 @@
   --default-display: "Courier New", Courier, monospace;
   --default-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
+  --full-w: calc(100% / 12 * 12);
 }
 
-.flx-cont-row{
-    display:flex;
-    justify-content: space-between;
-    width: 100%;
+.flx-cont-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 h1,
@@ -38,12 +39,11 @@ body {
   gap: 8%;
   margin: 16px 32px;
   font-family: var(--default-body);
-
-  width: calc(100% / 12 * 8);
-  height:auto;
+  width: var(--full-w);
+  height: auto;
 }
 
-.people {
+/* .people {
   padding: 12px;
   background-color: rgb(225, 247, 255);
   border: 1px solid var(--secondary);
@@ -51,11 +51,11 @@ body {
   height: auto;
   width: 100%;
   list-style-position: inside;
-}
+} */
 
 .chatbox-container {
-  width: 30%;
-  max-height: 100vh;
+  width: calc(100% / 12 * 4);
+  max-height: calc(100% - 200px);
   overflow: hidden;
   background-color: rgb(225, 247, 255);
   border: 1px solid var(--secondary);
@@ -85,6 +85,7 @@ body {
 
 .chatbox-container form {
   display: flex;
+  align-items: center;
   gap: 2%;
 }
 
@@ -93,8 +94,12 @@ body {
   font-size: 10pt !important;
 }
 
-.chat-msgs-container {
-  height: 300px;
+.chat-messages {
+  padding: 10px;
+  border-radius: var(--default-border-r);
+  overflow-wrap: break-word;
+  height: auto;
+  max-height: 500px;
   background-color: white;
   border: 1px solid lightgray;
   margin: 6px 0;
@@ -104,16 +109,11 @@ body {
   overflow-x: hidden;
 }
 
-.chat-messages {
-  padding: 10px;
-  border-radius: var(--default-border-r);
-  overflow-wrap: break-word;
-}
-
 .message {
   max-height: fit-content;
   margin-bottom: 10px;
   padding: 5px 10px;
+  border-radius: var(--default-border-r);
 }
 
 .message.user {

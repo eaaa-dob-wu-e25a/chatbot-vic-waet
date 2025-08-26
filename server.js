@@ -15,15 +15,13 @@ server.get("/", (req, res) => { // GET - render the index page
 
 });
 
-
-
 //SECTION - ChatBot msg
 
 server.post("/chat", (req, res) => {
   const userMessage = req.body.message; // Fetches messages from forminput
   let botReply = "";
 
-  // Check if msg is empty
+  // Check if msg is empty else respond
   if (!userMessage || userMessage.trim() === "") {
     botReply = "How can I help you?";
   } else {
@@ -32,7 +30,7 @@ server.post("/chat", (req, res) => {
 
   // Saving user and bot msg
   messages.push({ sender: "User", text: userMessage });
-  messages.push({ sender: "Bot", text: botReply });
+  messages.push({ sender: "Kami", text: botReply });
 
   // Send data to ESJ template
   res.render("index", { messages, botReply });
