@@ -7,63 +7,47 @@
     <!-- <link rel="stylesheet" href="/style.css" /> -->
     <link rel="stylesheet" href="/theme.css" />
     <link rel="stylesheet" href="/globals.css" />
-    <link rel="stylesheet" href="/chat.css" />
+
+    <link rel="stylesheet" href="/landing_view.css" />
   </head>
   <body>
-    <aside>
-        
-    </aside>
     <section>
-      <div>
-        <h1>KamiBot</h1>
-        <button>Clear</button>
-      </div>
 
-      <article>
-        <% messages.forEach(msg => { %>
+        <span class="flx-center-row">
+          <img src="/logo_md.svg" alt="Logo" />
+        </span>
+
+    </section>
+    <section class="chat-container">
+      <!-- <% messages.forEach(msg => { %>
         <div class="message <%= msg.sender.toLowerCase() %>">
           <strong><%= msg.sender %>: </strong><br />
           <%= msg.text%>
         </div>
-        <%})%>
-      </article>
-
-      <form method="POST" action="/chat">
+        <%})%> -->
+      <span class="chat-greeting flx-center-col">
+        <h6>Welcome, User</h6>
+        <h1>How can I help you today?</h1>
+      </span>
+      <form method="POST" action="/chat" class="flx-center-row">
         <input
+          class="glassmorph"
           type="text"
           name="message"
-          placeholder="enter message to chat"
+          placeholder="Ask me anything!"
           required
         />
-        <button type="submit">Send</button>
+
+        <button class="submit-btn flx-center-row" type="submit">
+          <span
+            class="iconify masked-cont"
+            data-icon="_custom-icons/sparkle.svg"
+          ></span>
+        </button>
       </form>
+    </section>
+    <section>
+        
     </section>
   </body>
-  <!-- <body class="body-temp">
-    <section class="chatbox-container">
-      <div class="flx-cont-row">
-        <h1>ChatBot</h1>
-        <button>Clear</button>
-      </div>
-
-      <article class="chat-messages">
-        <% messages.forEach(msg => { %>
-        <div class="message <%= msg.sender.toLowerCase() %>">
-          <strong><%= msg.sender %>: </strong><br />
-          <%= msg.text%>
-        </div>
-        <%})%>
-      </article>
-
-      <form method="POST" action="/chat">
-        <input
-          type="text"
-          name="message"
-          placeholder="enter message to chat"
-          required
-        />
-        <button type="submit">Send</button>
-      </form>
-    </section>
-  </body> -->
 </html>

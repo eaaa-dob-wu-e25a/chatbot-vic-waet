@@ -1,0 +1,4 @@
+html {
+  background-position: top;
+      background-size: cover; /*NOTE - route to next -> size = contain*/
+}

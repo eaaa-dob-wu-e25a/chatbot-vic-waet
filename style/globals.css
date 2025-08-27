@@ -1,13 +1,33 @@
-@import url("https://fonts.googleapis.com/css?family=Teachers:400|Poppins:700");
+@import url("https://fonts.googleapis.com/css?family=Teachers:600|Poppins:400");
 
 :root {
+  --full-w: calc(100% / 12 * 12);
+  --full-h: calc(100% / 12 * 12);
+  --error: red;
+  --border-radius-sm: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-full: 1000px;
+
+  /*SECTION - COLOR*/
+  --text-rgb: 11, 1, 25;
+  --background-rgb: 249, 244, 255;
+  --primary-rgb: 126, 24, 243;
+  --secondary-rgb: 182, 154, 208;
+  --accent-rgb: 165, 193, 123;
+
+  --text: #0b0119;
+  --background: #f9f4ff;
+  --primary: #7e18f3;
+  --secondary: #b69ad0;
+  --accent: #a5c17b;
+
   /*SECTION - FONT*/
-  --font-family-heading: "Poppins";
-  --font-family-body: "Teachers";
+  --font-family-heading: "Teachers";
+  --font-family-body: "Poppins";
 
   /* Fluid size variables */
-  --font-size-base: clamp(1rem, 1vw + 0.75rem, 1.25rem);
-  --scale-ratio: clamp(1.2, 0.5vw + 1.1, 1.33);
+  --font-size-base: clamp(1rem, 1vw + 0.75rem, 5rem);
+  --scale-ratio: clamp(1.2, 0.5vw + 1.1, 1.6);
 
   /* Fluid type scale */
   --font-size-xs: calc(var(--font-size-base) / var(--scale-ratio));
@@ -26,6 +46,12 @@
       var(--scale-ratio) * var(--scale-ratio)
   );
 
+  --font-size-display: calc(
+    var(--font-size-base) * var(--scale-ratio) * var(--scale-ratio) *
+      var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio) *
+      var(--scale-ratio) * var(--scale-ratio)
+  );
+
   /* Fluid spacing */
   --space-xs: clamp(0.5rem, 0.5vw + 0.4rem, 0.75rem);
   --space-sm: clamp(0.75rem, 0.75vw + 0.6rem, 1rem);
@@ -41,7 +67,7 @@
 
 /*SECTION - COLOR*/
 
-@media (prefers-color-scheme: light) {
+/*@media (prefers-color-scheme: light) {
   :root {
     --text: #0b0119;
     --background: #f9f4ff;
@@ -50,7 +76,7 @@
     --accent: #a5c17b;
   }
 }
-@media (prefers-color-scheme: dark) {
+ @media (prefers-color-scheme: dark) {
   :root {
     --text: #f0e7fe;
     --background: #05000a;
@@ -58,4 +84,28 @@
     --secondary: #4b2f65;
     --accent: #68843e;
   }
+} */
+
+/*SECTION - Custom Classes*/
+.glassmorph {
+  /* From https://css.glass */
+  background: rgba(var(--background-rgb), 0.455);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.4px);
+  -webkit-backdrop-filter: blur(8.4px);
+  border: 1px solid rgba(var(--primary-rgb), 0.4);
+}
+
+.flx-center-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flx-center-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

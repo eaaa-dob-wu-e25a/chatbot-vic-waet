@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Server - EJS</title>
+    <!-- <link rel="stylesheet" href="/style.css" /> -->
+    <link rel="stylesheet" href="/theme.css" />
+    <link rel="stylesheet" href="/globals.css" />
+    <link rel="stylesheet" href="/chat_view.css" />
+  </head>
+  <body>
+    <section class="">
+      <div class="glassmorph">
+        <span class="flx-row">
+          <h1>KamiBot</h1>
+          <img src="/logo_sm.svg" alt="Logo" />
+          <button>Clear</button>
+        </span>
+      </div>
+    </section>
+      <article class="chat-container">
+        <% messages.forEach(msg => { %>
+        <div class="message <%= msg.sender.toLowerCase() %>">
+          <strong><%= msg.sender %>: </strong><br />
+          <%= msg.text%>
+        </div>
+        <%})%>
+      </article>
+    <section>
+      <div class="glassmorph">
+        <form method="POST" action="/chat">
+          <input
+            type="text"
+            name="message"
+            placeholder="enter message to chat"
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </body>
+
+</html>

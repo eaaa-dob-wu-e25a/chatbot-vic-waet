@@ -1,0 +1,65 @@
+html {
+  background-position: left;
+}
+
+.chat-container .chat-greeting {
+  transform: scale(2);
+  min-height: clamp(6em, 2.5vw + 7em, 12em);
+}
+
+.chat-container .chat-greeting h6 {
+  font-weight: 400 !important;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.chat-container {
+  width: var(--full-w);
+  height: var(--full-h);
+}
+
+.chat-container .chat-greeting {
+  width: var(--full-w);
+  height: min(30vh, 500px);
+}
+
+.chat-container input {
+  width: calc(100% / 12 * 6);
+  height: clamp(48px, 2.5vh, 60px);
+  font-size: var(--font-size-xs);
+  padding: var(--space-sm);
+}
+
+.chat-container input:active, .chat-container input:focus {
+    outline: rgba(var(--primary-rgb), 1) solid 2px;
+}
+
+.chat-container .submit-btn {
+  position: relative;
+  border-radius: var(--border-radius-full);
+  border: none;
+  background-color: rgba(var(--primary-rgb), 1);
+  color: rgba(var(--text-rgb), 1);
+  cursor: pointer;
+  mask-image: url("_custom-icons/sparkle.svg");
+  mask-repeat: no-repeat;
+
+  width: 50px;
+  height: 50px;
+
+  transition: ease 1s all;
+}
+
+.chat-container .submit-btn:hover {
+  background-color: rgba(var(--primary-rgb), .6);
+}
+
+.masked-cont {
+position:absolute;
+  width: 50px;
+  height: 50px;
+}
