@@ -9,8 +9,10 @@ const messages = []; //NOTE - saves messages
 server.set("view engine", "ejs"); // Set EJS as the templating engine
 
 server.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-server.use(express.static("style"));
+server.use(express.static("app/script"));
+server.use(express.static("app/style"));
 server.use(express.static("public"));
+
 
 server.get("/", (req, res) => {
   // GET - render the index page

@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="/globals.css" />
 
     <link rel="stylesheet" href="/landing_view.css" />
+    <script src="/mouse-events.js" defer></script>
   </head>
   <body>
     <section>
-
-        <span class="flx-center-row">
-          <img src="/logo_md.svg" alt="Logo" />
-        </span>
-
+      <span class="flx-center-row chat-logo">
+        <img src="/logo_md.svg" alt="Logo" />
+      </span>
     </section>
     <section class="chat-container">
       <!-- <% messages.forEach(msg => { %>
@@ -27,27 +26,39 @@
         <%})%> -->
       <span class="chat-greeting flx-center-col">
         <h6>Welcome, User</h6>
-        <h1>How can I help you today?</h1>
+        <h4>How can I help you today?</h4>
       </span>
       <form method="POST" action="/chat" class="flx-center-row">
         <input
           class="glassmorph"
           type="text"
           name="message"
-          placeholder="Ask me anything!"
+          placeholder="Ask me anything"
           required
-        />
-
-        <button class="submit-btn flx-center-row" type="submit">
+        >      
+          <button class="submit-btn flx-center-row" type="submit">
           <span
             class="iconify masked-cont"
             data-icon="_custom-icons/sparkle.svg"
           ></span>
         </button>
+      </input>
+
+
       </form>
     </section>
-    <section>
-        
+    <section class="flx-center-col chat-tc">
+      <a href="#" class="link-underline">Terms & Conditions</a>
+      <!-- <p>
+        By using this chatbot, you agree that your inputs may be processed and
+        stored to improve its functionality. The chatbot only provides general
+        information and should not be considered professional advice. The
+        developer is not liable for any errors, omissions, or misunderstandings
+        in the chatbot’s responses.
+      </p> -->
     </section>
+
+<div class="dot" id="dot" aria-hidden="true"></div>
+
   </body>
 </html>

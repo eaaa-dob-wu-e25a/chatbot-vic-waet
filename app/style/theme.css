@@ -24,13 +24,17 @@ body {
 
 h1,
 h2,
-h3
-{
+h3 {
   font-family: var(--font-family-heading);
+  color:rgba(var(--text-rgb), 0.8)
+
 }
 
-h4,h5,h6{
+h4,
+h5,
+h6 {
   font-family: var(--font-family-body);
+  color:rgba(var(--text-rgb), 0.6)
 }
 
 /* Typography scale */
@@ -86,4 +90,28 @@ section {
 
 .content-block {
   margin-bottom: var(--space-xl);
+}
+
+input{
+  font-family: var(--font-family-body);
+  font-weight: 300;
+}
+
+.chat-container input {
+  width: calc(100% / 12 * 7);
+  height: clamp(60px, 2.5vh, 72px);
+  font-size: var(--font-size-xs);
+  padding: var(--space-md);
+  transition: ease-in-out 0.25s outline;
+}
+
+.chat-container input:hover {
+  outline: rgba(var(--primary-rgb), 0.5) solid 2px;
+
+}
+
+.chat-container input:active,
+.chat-container input:focus {
+  outline: rgba(var(--primary-rgb), 1) solid 3px;
+  outline-offset: 1px;
 }
