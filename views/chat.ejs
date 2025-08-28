@@ -4,42 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Client Server - EJS</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     <!-- <link rel="stylesheet" href="/style.css" /> -->
     <link rel="stylesheet" href="/theme.css" />
     <link rel="stylesheet" href="/globals.css" />
     <link rel="stylesheet" href="/chat_view.css" />
+    <script src="/mouse-events.js" defer></script>
+
+
   </head>
   <body>
-    <section class="">
-      <div class="glassmorph">
-        <span class="flx-row">
-          <h1>KamiBot</h1>
-          <img src="/logo_sm.svg" alt="Logo" />
-          <button>Clear</button>
-        </span>
+    <section class="nav">
+            <button type="button" class="cta-menu">menu/profile</button>
+      <div class="chat-logo flx-center-row">
+        <img src="/logo_sm.svg" alt="Logo" />
       </div>
     </section>
-      <article class="chat-container">
-        <% messages.forEach(msg => { %>
-        <div class="message <%= msg.sender.toLowerCase() %>">
-          <strong><%= msg.sender %>: </strong><br />
-          <%= msg.text%>
-        </div>
-        <%})%>
-      </article>
-    <section>
-      <div class="glassmorph">
-        <form method="POST" action="/chat">
-          <input
-            type="text"
-            name="message"
-            placeholder="enter message to chat"
-            required
-          />
-          <button type="submit">Send</button>
-        </form>
-      </div>
+    <section class="chat-container">
+<div class="msg-bubble">
+  <% messages.forEach(msg => { %>
+  <div class="message <%= msg.sender.toLowerCase() %>">
+<p> <%= msg.text %> </p>
+  </div>
+  <% }) %>
+  </div>
+      <form method="POST" action="/chat" class="flx-center-row">
+        <input
+          class="glassmorph"
+          type="text"
+          name="message"
+          placeholder="Ask me anything"
+          
+        >      
+          <button class="submit-btn flx-center-row" type="submit" onclick={navigateTo()}>
+          <span
+            class="iconify masked-cont"
+            data-icon="_custom-icons/sparkle.svg"
+          >
+        </button>
+      </input>
+      </form>
     </section>
-  </body>
 
+
+
+<div class="dot" id="dot" aria-hidden="true"></div>
+
+  </body>
 </html>

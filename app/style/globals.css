@@ -6,20 +6,20 @@
   --error: red;
   --border-radius-sm: 4px;
   --border-radius-lg: 8px;
-  --border-radius-full: 1000px;
+  --border-radius-full: 100px;
 
   /*SECTION - COLOR*/
   --text-rgb: 11, 1, 25;
   --background-rgb: 249, 244, 255;
   --primary-rgb: 126, 24, 243;
-  --secondary-rgb: 182, 154, 208;
+  --secondary-rgb: 209, 169, 247;
   --accent-rgb: 165, 193, 123;
 
-  --text: #0b0119;
-  --background: #f9f4ff;
-  --primary: #7e18f3;
-  --secondary: #b69ad0;
-  --accent: #a5c17b;
+  --text: rgb(11, 1, 25);
+  --background: rgb(249, 244, 255);
+  --primary: rgb(126, 24, 243);
+  --secondary: rgb(220, 185, 254);
+  --accent: rgb(165, 193, 123);
 
   /*SECTION - FONT*/
   --font-family-heading: "Teachers";
@@ -27,7 +27,7 @@
 
   /* Fluid size variables */
   --font-size-base: clamp(1rem, 1vw + 0.75rem, 4rem);
-  --scale-ratio: clamp(1.2, 0.5vw + 1.1, 1.6);
+  --scale-ratio: clamp(1.2rem, 0.5vw + 1.1rem, 1.6rem);
 
   /* Fluid type scale */
   --font-size-xs: calc(var(--font-size-base) / var(--scale-ratio));
@@ -86,72 +86,7 @@
   }
 } */
 
-/*SECTION - Custom Classes*/
-.glassmorph {
-  /* From https://css.glass */
-  background: rgba(var(--background-rgb), 0.455);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8.4px);
-  -webkit-backdrop-filter: blur(8.4px);
-  border: 1px solid rgba(var(--primary-rgb), 0.4);
-}
 
-.flx-center-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  
 
-.flx-center-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-a.link-underline {
-  color: rgba(var(--text-rgb), 0.455);
-  text-decoration: none;
-  font-size: var(--font-size-xs);
-  display: inline-block;
-  position: relative;
-  cursor: pointer !important;
-}
-
-a.link-underline:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  color: rgba(var(--text-rgb), 0.455);
-  background-color: rgba(var(--text-rgb), 0.455);
-  transform: scaleX(0);
-  height: 2px;
-  transform-origin: bottom right;
-  border-radius: var(--border-radius-full);
-  transition: 0.4s ease-out transform;
-}
-
-a.link-underline:hover:after {
-  color: rgba(var(--text-rgb), 1);
-  background-color: rgba(var(--text-rgb), .5);
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-  .dot {
-    position: fixed;
-    left: 0; 
-    top: 0;
-    width: 12px; 
-    height: 12px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: currentColor;
-    color: rgba(var(--primary-rgb), 0.8);
-    transform: translate(-50%, -50%);
-    will-change: transform;
-  }
+  

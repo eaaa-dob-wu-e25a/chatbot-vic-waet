@@ -1,5 +1,6 @@
 html {
   background-position: left;
+  cursor: none !important;
 }
 
 .chat-container .chat-greeting {
@@ -21,21 +22,13 @@ color: rgba(var(--text-rgb), 0.775);
 
 .chat-logo {
   width: 100%;
+    margin-top: max(10vh, 50px);
 }
 
 body {
   width: 100%;
   height: auto;
-  overflow: hidden;
-}
-
-.chat-container {
-  width: var(--full-w);
-  height: var(--full-h);
-}
-
-.chat-container form {
-  gap: 0.7rem;
+  overflow: hidden; 
 }
 
 .chat-container .chat-greeting {
@@ -43,21 +36,6 @@ body {
   height: min(30vh, 500px);
 }
 
-.chat-container .submit-btn {
-  position: relative;
-  border-radius: var(--border-radius-full);
-  border: none;
-  background-color: rgba(var(--primary-rgb), 1);
-  color: rgba(var(--text-rgb), 1);
-  cursor: pointer;
-  mask-image: url("_custom-icons/sparkle.svg");
-  mask-repeat: no-repeat;
-
-  width: 50px;
-  height: 50px;
-
-  transition: ease 1s all;
-}
 
 .chat-container .submit-btn:hover {
   background-color: rgba(var(--primary-rgb), 0.6);

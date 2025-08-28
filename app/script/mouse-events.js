@@ -1,3 +1,4 @@
+/* SECTION - Cursor dot */
 const dot = document.getElementById("dot");
 const pos = { x: 0, y: 0 };
 const view = { x: 0, y: 0 }; // for easing
@@ -16,3 +17,8 @@ function tick() {
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+
+/* SECTION - Actions */
+function navigateTo() {
+  console.log("Button got a click!")
+}
