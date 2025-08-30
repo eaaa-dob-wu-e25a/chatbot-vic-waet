@@ -1,5 +1,5 @@
 import express from "express"; // Import express framework
-import responses from "./app/script/data.js";
+import { RESPONSES } from "./app/script/data.js";
 
 // Sanitizing input to protect application from malicious code
 function sanitizeInputAdv(input) {
@@ -8,15 +8,15 @@ function sanitizeInputAdv(input) {
   return input
     .replace(/[<>'""]/g, "") // Removes potential dangerous characters
     .replace(/script/gi, "") // Removes the word "script"
+    .replace(/\s+/g, " ") // collapse whitespace
     .slice(0, 500) // Limit length to 500 characters
-    .trim(); // Removes whitespace in beginning and end
+    .trim();
 }
 
 const server = express(); // Create an instance of express
 
 //NOTE - Saving names in array upon submitting
 const names = [];
-// const ages = [];
 const messages = []; //NOTE - saves messages
 
 server.set("view engine", "ejs"); // Set EJS as the templating engine
@@ -57,38 +57,61 @@ server.post("/chat", (req, res) => {
   } else if (userMessage.length > 500) {
     error = "Message is too long (max 500 characters)";
     botReply = "Oof.. your message is too long. Try again.";
+  } else if (
+    (userMessage.includes("tak") && userMessage.includes("hjælp")) ||
+    (userMessage.includes("thank you") && userMessage.includes("help"))
+  ) {
+    botReply = "No problem - I am happy to be of help.";
+  } else if (
+    userMessage.includes("sorry") ||
+    userMessage.includes("beklager")
+  ) {
+    botReply = "That's okay. No harm done.";
   } else {
     //Responses
-    const lowerMessage = userMessage.toLowerCase();
+    let lowerMessage = userMessage.toLowerCase().trim();
     let foundResponse = false;
 
     //Loop igennem
-    for (let response of responses) {
+    for (const response of RESPONSES) {
+      if (response.label === "fallback") continue;
       //Check if any keywords match
-      for (let keyword of response.keywords) {
-        if (lowerMessage.includes(keyword)) {
-          //Generate response from array
-          const randomIndex = Math.floor(
-            Math.random() * response.answers.length
-          );
-          botReply = response.answers[randomIndex];
-          foundResponse = true;
-          break;
-        }
+      if (response.keywords.some((keyword) => lowerMessage.includes(keyword))) {
+        const randomIndex = Math.floor(Math.random() * response.answers.length);
+        botReply = response.answers[randomIndex];
+        console.log(
+          `Chosen answer ${randomIndex + 1} of ${
+            response.answers.length
+          } possible`
+        );
+        foundResponse = true;
+        break;
       }
       if (foundResponse) break;
     }
 
     //if no keywords matches
     if (!foundResponse) {
-      botReply = `Unfortunately, I don't have an answer for your request: "${userMessage}". Try again or check for any misspellings :)`;
+      const fallback = RESPONSES.find((item) => item.label === "fallback");
+      botReply = fallback ? fallback.answers[Math.floor(Math.random() * fallback.answers.length)] :
+      "I don’t know what to say 🤔";
+      }
+
+    // cap message history
+    function pushMessageSafe(arr, item, max = 100) {
+      arr.push(item);
+      while (arr.length > max) arr.shift();
     }
 
-    // Only save msgs if no error
+    // Only show msgs if no error
     if (!error) {
       // Saving user and bot msg
-      messages.push({ sender: "User", text: userMessage });
-      messages.push({
+      pushMessageSafe(messages, {
+        sender: "User",
+        text: userMessage,
+      });
+
+      pushMessageSafe(messages, {
         sender: "Bot",
         text: botReply,
       });

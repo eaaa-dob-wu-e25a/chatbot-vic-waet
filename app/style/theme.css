@@ -244,8 +244,8 @@ button.primary {
 }
 
 .error-message {
-  color: red;
-  background: #ffe6e6;
+  color: whitesmoke;
+  background: #d73131;
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;

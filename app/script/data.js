@@ -1,139 +1,81 @@
-const responses = [
+// app/script/data.js
+export const RESPONSES = [
   {
+    label: "greetings",
     keywords: [
       "hi",
       "hello",
       "hey",
-      "hiya",
       "yo",
-      "sup",
+      "hej",
       "good morning",
-      "good afternoon",
       "good evening",
+      "goddag",
+      "godmorgen"
     ],
     answers: [
-      "Hi there!",
-      "Hello! Nice to see you.",
-      "Hey! How’s it going?",
-      "Hi! What’s up?",
-      "Hello! How are you today?",
-      "Yo! Glad you’re here.",
-      "Good to see you!",
-      "Hey hey!",
+      "Hello! 👋",
+      "Hey! What’s on your mind?",
+      "Hi there — ready when you are.",
+      "Yo - what's up?",
+      "Hello! What can I do for you?"
     ],
   },
   {
-    keywords: [
-      "how are you",
-      "how's it going",
-      "how do you feel",
-      "you good",
-      "what’s up",
-      "how are things",
-      "how r u",
-    ],
+    label: "goodbye",
+    keywords: ["bye", "goodbye", "see you", "later", "farvel", "vi ses"],
+    answers: ["Bye! 👋", "Catch you later.", "Take care!"],
+  },
+  {
+    label: "smalltalk_howareyou",
+    keywords: ["how are you", "hows it going", "what's up", "hvordan går det"],
     answers: [
-      "I’m doing well, thanks for asking!",
-      "I’m great! How about you?",
-      "All good here. How are you?",
-      "I’m fine! What’s new with you?",
-      "Doing well! Always ready for a chat.",
-      "Can’t complain. How are you feeling?",
-      "Pretty good, thanks! What about you?",
+      "I’m all code and coffee, but feeling great!",
+      "Running smoothly. You?",
+      "Here and ready to help.",
     ],
   },
   {
-    keywords: [
-      "bye",
-      "goodbye",
-      "see you",
-      "later",
-      "cya",
-      "take care",
-      "farewell",
-      "peace out",
-    ],
+    label: "joke",
+    keywords: ["joke", "make me laugh", "funny", "fortæl en joke"],
     answers: [
-      "Goodbye! Take care.",
-      "See you soon!",
-      "Bye! Have a great day.",
-      "Catch you later!",
-      "Thanks for chatting. Until next time!",
-      "Farewell, friend!",
-      "Talk to you later!",
-      "See ya!",
+      "I would tell you a UDP joke, but you might not get it.",
+      "Why did the dev go broke? Because he used up all his cache.",
+      "There are 10 kinds of people: those who understand binary and those who don’t.",
     ],
   },
   {
-    keywords: [
-      "help",
-      "assist",
-      "support",
-      "what can you do",
-      "commands",
-      "options",
-      "guide",
-      "instructions",
-    ],
+    label: "time",
+    keywords: ["time", "what time is it", "clock"],
     answers: [
-      "I can help you with chatting!",
-      "Ask me anything you like.",
-      "I’m here to assist you.",
-      "Need something? Just type it!",
-      "I’ll do my best to help. What do you need?",
-      "You can ask me questions or just say hi!",
-      "Try saying hello or asking how I am.",
-      "I can guide you through this. What’s on your mind?",
+      "I don’t have a watch, but your OS does 😉",
+      "Time flies when you’re chatting with bots!",
+      "It’s always now.",
     ],
   },
   {
-    keywords: ["thanks", "thank you", "thx", "ty", "cheers", "appreciate it"],
-    answers: [
-      "You’re welcome!",
-      "No problem!",
-      "Happy to help!",
-      "Anytime!",
-      "Glad I could help.",
-    ],
+    label: "thanks",
+    keywords: ["thanks", "thank you", "tak", "appreciate it"],
+    answers: ["Anytime!", "You got it.", "Happy to help."],
   },
   {
-    keywords: ["yes", "yeah", "yep", "sure", "absolutely", "of course"],
-    answers: ["Great!", "Awesome!", "Perfect!", "Cool!", "Glad to hear it!"],
-  },
-  {
-    keywords: ["no", "nope", "nah", "not really", "don’t think so"],
+    label: "fallback",
+    keywords: [],
     answers: [
-      "Alright, no worries.",
-      "Okay!",
-      "Got it!",
-      "Fair enough.",
-      "That’s fine.",
-    ],
-  },
-  {
-    keywords: ["joke", "funny", "make me laugh", "tell me something funny"],
-    answers: [
-      "Why don’t programmers like nature? Too many bugs!",
-      "I tried to catch some fog yesterday… Mist.",
-      "Why do JavaScript developers wear glasses? Because they don’t see sharp!",
-    ],
-  },
-  {
-    keywords: ["weather", "forecast", "rain", "sunny", "cold", "hot"],
-    answers: [
-      "I can’t check the weather directly, but you can look outside 😉",
-      "Weather’s always changing! Do you like it sunny or rainy?",
-      "I’m not a weather bot, but I hope it’s nice where you are!",
-    ],
-  },
-  {
-    keywords: ["who are you", "what are you", "what is this", "who made you"],
-    answers: [
-      "I’m a simple chatbot created for learning purposes.",
-      "I’m a chatbot built to have conversations with you.",
-      "I was programmed by a developer as part of a project.",
+      "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
+      "I’m not sure I follow. Could you try another way?",
+      "Hmm, that one’s new to me. Want to ask something simpler?",
     ],
   },
 ];
 
-export default responses;
+// simple tokens and routes for expansion later
+export const TOKENS = [
+  { token: "greet", words: ["hi", "hello", "hey", "hej"] },
+  { token: "bye", words: ["bye", "goodbye", "farvel", "later"] },
+];
+
+export const ROUTES = [
+  { token: "greet", responseLabel: "greetings" },
+  { token: "bye", responseLabel: "goodbye" },
+];

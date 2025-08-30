@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,7 +26,7 @@
   <section class="chat-container">
     <article class="flx-center-row">
       <div class="msg-bubble">
-        <% messages.forEach(msg=> { %>
+        <% for (const msg of messages) { %>
           <!-- TODO - DateTime + avatar -->
           <div class="message-row <%= msg.sender.toLowerCase() %>">
             <img src="<% msg.avatar %>" alt="avatar" class="avatar" />
@@ -35,7 +34,7 @@
               <%= msg.text %>
             </p>
           </div>
-          <% }) %>
+          <% } %>
       </div>
     </article>
 
@@ -44,7 +43,7 @@
       <div class="error-message"
         <strong>Error:</strong>
         <%= error %>
-      </div>
+      </div> 
       <% } %>
           <div class="input-textfield flx-center-row">
             <input class="glassmorph" type="text" name="message" placeholder="Ask me anything" />
