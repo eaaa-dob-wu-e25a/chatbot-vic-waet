@@ -18,7 +18,8 @@
 
 <body>
   <section class="nav">
-    <button type="button" class="cta-menu primary"><i class="fa-regular fa-folder"></i></button>
+    <button type="button" class="cta-menu primary"><i class="fa-solid fa-user"></i></button>
+    <button type="button" class="cta-menu primary"><i class="fa-solid fa-graduation-cap"></i></button>
     <div class="chat-logo flx-center-row">
       <img src="/logo_sm.svg" alt="Logo" />
     </div>
@@ -29,22 +30,18 @@
         <% for (const msg of messages) { %>
           <!-- TODO - DateTime + avatar -->
           <div class="message-row <%= msg.sender.toLowerCase() %>">
-            <img src="<% msg.avatar %>" alt="avatar" class="avatar" />
+            <!-- <img src="<% msg.avatar %>" alt="avatar" class="avatar" /> -->
             <p class="message <%= msg.sender.toLowerCase() %>">
               <%= msg.text %>
             </p>
           </div>
+    
           <% } %>
+
       </div>
     </article>
 
         <form method="POST" action="/chat" class="flx-center-row">
-              <% if (typeof error !=='undefined' && error) { %>
-      <div class="error-message"
-        <strong>Error:</strong>
-        <%= error %>
-      </div> 
-      <% } %>
           <div class="input-textfield flx-center-row">
             <input class="glassmorph" type="text" name="message" placeholder="Ask me anything" />
             <button class="submit-btn" type="submit" onclick={navigateTo()}>
