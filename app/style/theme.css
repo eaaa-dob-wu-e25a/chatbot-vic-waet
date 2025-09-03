@@ -230,17 +230,34 @@ a.link-underline:hover:after {
 
 .nav {
   border-radius: var(--border-radius-full);
+  display: grid;
+  grid-template: repeat(1, 6fr) 50px / 1fr 4fr;
+}
+
+.nav .nav-btns {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 button.cta-menu {
-  width: 3em;
-  height: 3em;
+  width: 4em;
+  height: 4em;
   border: none;
 }
 
 button.primary {
-  background-color: rgba(var(--primary-rgb), 0.5);
-  transition: 2s ease-in-out all;
+  background-color: rgba(var(--secondary-rgb), 0.4);
+  color: rgba(var(--primary-rgb), 0.8);
+  border: 1px solid rgba(var(--primary-rgb), 0.5);
+  border-radius: var(--border-radius-lg);
+
+  transition: 0.3s ease-in-out all;
+}
+
+button.primary:hover {
+  background-color: rgba(var(--primary-rgb), 1);
+  color: rgba(var(--secondary-rgb), 1);
+  cursor: pointer;
 }
 
 .error-message {
@@ -249,5 +266,5 @@ button.primary {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
-position: absolute;
+  position: absolute;
 }

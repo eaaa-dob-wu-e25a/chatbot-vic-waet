@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Client Server - EJS</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <title>CHAT</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <!-- <link rel="stylesheet" href="/style.css" /> -->
   <link rel="stylesheet" href="/theme.css" />
@@ -18,38 +19,58 @@
 
 <body>
   <section class="nav">
-    <button type="button" class="cta-menu primary"><i class="fa-solid fa-user"></i></button>
-    <button type="button" class="cta-menu primary"><i class="fa-solid fa-graduation-cap"></i></button>
+    <div class="nav-btns">
+      <button type="button" class="cta-menu primary">
+        <i class="fa-solid fa-user fa-xl"></i>
+      </button>
+      <button type="button" class="cta-menu primary"><i class="fa-solid fa-graduation-cap fa-xl"></i></button>
+    </div>
+
     <div class="chat-logo flx-center-row">
       <img src="/logo_sm.svg" alt="Logo" />
     </div>
+
+        <div class="nav-btns">
+
+        </div>
   </section>
+
   <section class="chat-container">
-    <article class="flx-center-row">
+    <article class="flx-center-col">
       <div class="msg-bubble">
         <% for (const msg of messages) { %>
           <!-- TODO - DateTime + avatar -->
           <div class="message-row <%= msg.sender.toLowerCase() %>">
             <!-- <img src="<% msg.avatar %>" alt="avatar" class="avatar" /> -->
+            <span class="avatar <%= msg.sender.toLowerCase() %>">
+              <% msg.avatar %>
+            </span>
             <p class="message <%= msg.sender.toLowerCase() %>">
               <%= msg.text %>
             </p>
           </div>
-    
           <% } %>
-
       </div>
+
     </article>
 
-        <form method="POST" action="/chat" class="flx-center-row">
+    <form method="POST" action="/chat" class="flx-center-row">
+      <% if (typeof error !=='undefined' && error) { %>
+        <div class="error-message" <strong>Error:</strong>
+          <%= error %>
+        </div>
+        <% } %>
           <div class="input-textfield flx-center-row">
             <input class="glassmorph" type="text" name="message" placeholder="Ask me anything" />
-            <button class="submit-btn" type="submit" onclick={navigateTo()}>
+            <button class="submit-btn" type="submit">
               <span class="iconify masked-cont" data-icon="_custom-icons/sparkle.svg">
             </button>
-        </form>
-        </div>
+
+    </form>
+    </div>
+
   </section>
+
   <div class="dot" id="dot" aria-hidden="true"></div>
 </body>
 

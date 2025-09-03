@@ -1,24 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Client Server - EJS</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-    <!-- <link rel="stylesheet" href="/style.css" /> -->
+    <title>GREETING</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="stylesheet" href="/theme.css" />
     <link rel="stylesheet" href="/globals.css" />
     <link rel="stylesheet" href="/landing_view.css" />
     <script src="/mouse-events.js" defer></script>
-
   </head>
   <body>
     <section class="flx-center-row chat-logo">
-        <img src="/logo_md.svg" alt="Logo" />
+      <img src="/logo_md.svg" alt="Logo" />
     </section>
     <section class="chat-container">
       <span class="chat-greeting flx-center-col">
@@ -31,23 +29,27 @@
       <button type="button" class="cat-cta">food inspiration</button>
       <button type="button" class="cat-cta">create</button>
       </span> -->
+      <div class="">
+        <a class="cat-cta" href="/chat">Open Chat</a>
+        <a class="cat-cta" href="/signup">Create Account</a>
+      </div>
+
       <form method="POST" action="/chat" class="flx-center-row">
         <input
           class="glassmorph"
           type="text"
           name="message"
           placeholder="Ask me anything"
-          
-        >      
-          <button class="submit-btn flx-center-row" type="submit" onclick={navigateTo()}>
+          aria-label="Chat message"
+          maxlength="500"
+          value="<%= typeof lastMessage !== 'undefined' ? lastMessage : '' %>"
+        />
+        <button class="submit-btn flx-center-row" type="submit">
           <span
             class="iconify masked-cont"
             data-icon="_custom-icons/sparkle.svg"
           ></span>
         </button>
-      </input>
-
-
       </form>
     </section>
     <section class="flx-center-col chat-tc">
@@ -61,7 +63,6 @@
       </p> -->
     </section>
 
-<div class="dot" id="dot" aria-hidden="true"></div>
-
+    <div class="dot" id="dot" aria-hidden="true"></div>
   </body>
 </html>

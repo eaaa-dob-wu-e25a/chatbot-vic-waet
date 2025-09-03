@@ -23,18 +23,36 @@ server.set("view engine", "ejs"); // Set EJS as the templating engine
 server.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 server.use(express.static("app/script"));
 server.use(express.static("app/style"));
-server.use(express.static("public"));
+server.use(express.static("public", {
+  maxAge: '1d'
+}));
 
+
+// SECTION - Routes
 server.get("/", (req, res) => {
   // GET - render the index page
-  res.render("index", {
-    name: "",
-    age: "",
-    error: "",
-    names,
+  res.render("index"); // landing page/intro
+});
+
+//Chat view
+server.get("/chat", (req, res) => {
+  // Render chat page
+  res.render("chat", {
     messages,
     botReply: "",
-  }); // NOTE - sending all required params
+    error: "",
+    avatar: "",
+  });
+});
+
+//Signup => l:142
+server.get("/signup", (req, res) => {
+  // NOTE: Show signup form + current users
+  res.render("signup", {
+    error: "",
+    name: "",
+    names,
+  });
 });
 
 //SECTION - ChatBot msg
@@ -93,14 +111,15 @@ server.post("/chat", (req, res) => {
     //if no keywords matches
     if (!foundResponse) {
       const fallback = RESPONSES.find((item) => item.label === "fallback");
-      botReply = fallback ? fallback.answers[Math.floor(Math.random() * fallback.answers.length)] :
-      "I don’t know what to say 🤔";
-      }
+      botReply = fallback
+        ? fallback.answers[Math.floor(Math.random() * fallback.answers.length)]
+        : "I don’t know what to say 🤔";
+    }
 
-    // cap message history
+    //Message buffer (named function) - caps array size so it never grows bigger than max
     function pushMessageSafe(arr, item, max = 100) {
       arr.push(item);
-      while (arr.length > max) arr.shift();
+      while (arr.length > max) arr.shift(); // While loop - remove oldest element until array length <= max
     }
 
     // Only show msgs if no error
@@ -118,9 +137,41 @@ server.post("/chat", (req, res) => {
     }
   }
 
-  // Send data to ESJ template
+  // Send data to ESJ template - Render response view (server-side render)
   res.render("chat", { messages, botReply, avatar, error });
-  console.log(error);
+  console.log(error); // TEST
+});
+
+//  SECTION - signup
+server.post("/signup", (req, res) => {
+  let name = sanitizeInputAdv(req.body.name || "");
+  name = name.replace(/\s+/g, " ").trim();
+
+  // input validaton
+  let error = "";
+  if (!name) {
+    error = "Please enter a username to continue.";
+  } else if (name.length < 2) {
+    error = "Username must be at least 2 characters.";
+  } else if (name.length > 40) {
+    error = "Username is limited to 40 characters.";
+  } else if (names.some((n) => n.toLowerCase() === name.toLowerCase())) {
+    error = "Username is already taken.";
+  }
+
+  if (error) {
+    // on error: stay on page /signup and show message
+    return res.render("signup", { error, name, names });
+  }
+
+  names.push(name);
+  // redirect to /signup for safe refresh
+  return res.redirect("/signup");
+});
+
+server.post("/signup/clear", (req, res) => {
+  names.length = 0;
+  return res.redirect("/signup");
 });
 
 // Listen on port 3300
