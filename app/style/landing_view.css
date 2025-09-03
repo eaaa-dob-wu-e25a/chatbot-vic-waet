@@ -1,11 +1,5 @@
 html {
   background-position: left;
-
-}
-
-.chat-container .chat-greeting {
-  transform: scale(1.8);
-  min-height: clamp(6em, 2.5vw + 7em, 12em);
 }
 
 .chat-container .chat-greeting h6 {
@@ -31,11 +25,19 @@ body {
   overflow: hidden; 
 }
 
+.chat-container {
+  padding-inline: var(--space-lg);
+  scrollbar-width: 0 !important;
+  scrollbar-color: transparent !important;
+  margin-top: max(5vh, 25px);
+}
+
 .chat-container .chat-greeting {
   width: var(--full-w);
   height: min(30vh, 500px);
+    transform: scale(1.8);
+  min-height: clamp(6em, 2.5vw + 7em, 12em);
 }
-
 
 .chat-container .submit-btn:hover {
   background-color: rgba(var(--primary-rgb), 0.6);

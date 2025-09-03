@@ -4,9 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GREETING</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
 
     <link rel="stylesheet" href="/theme.css" />
@@ -29,10 +43,6 @@
       <button type="button" class="cat-cta">food inspiration</button>
       <button type="button" class="cat-cta">create</button>
       </span> -->
-      <div class="">
-        <a class="cat-cta" href="/chat">Open Chat</a>
-        <a class="cat-cta" href="/signup">Create Account</a>
-      </div>
 
       <form method="POST" action="/chat" class="flx-center-row">
         <input
@@ -53,6 +63,16 @@
       </form>
     </section>
     <section class="flx-center-col chat-tc">
+      <div>
+        <button type="button" onclick="location.href='/chat'">Open Chat</button>
+        <button
+          type="button"
+          class="primary cta-menu"
+          onclick="location.href='/signup'"
+        >
+          Create Account
+        </button>
+      </div>
       <a href="#" class="link-underline">Terms & Conditions</a>
       <!-- <p>
         By using this chatbot, you agree that your inputs may be processed and
