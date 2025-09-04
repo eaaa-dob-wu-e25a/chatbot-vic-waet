@@ -68,7 +68,7 @@ export const RESPONSES = [
     ],
   },
 ];
-
+// TODO - more categories later
 // simple tokens and routes for expansion later
 export const TOKENS = [
   { token: "greet", words: ["hi", "hello", "hey", "hej"] },

@@ -25,14 +25,11 @@ html {
 
 .msg-bubble {
   width: calc(100% / 12 * 8);
-  height: 80vh;
+  height: 70vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-block: var(--space-xl);
+  padding-bottom: var(--space-xl);
   align-content: flex-end;
-  /* margin-bottom: 10em; */
-  /* display: grid;
-  align-self: center; */
   -webkit-mask-image: linear-gradient(transparent, black, transparent);
   mask-image: linear-gradient(
     transparent,

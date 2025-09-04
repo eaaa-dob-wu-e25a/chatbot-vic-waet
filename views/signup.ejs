@@ -4,9 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SIGNUP</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon_io/favicon-16x16.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
     <!-- <link rel="stylesheet" href="/style.css" /> -->
     <link rel="stylesheet" href="/theme.css" />
@@ -44,30 +58,41 @@
         <input
           type="text"
           name="name"
-          placeholder="Skriv dit navn"
+          placeholder="Create username"
           value="<%= name %>"
           required
         />
-        <button type="submit">Tilmeld</button>
+
+        <button type="submit">Sign up</button>
       </form>
 
       <% if (error) { %>
       <p style="color: crimson;"><%= error %></p>
+      <% } else if (success) { %>
+      <p style="color: green;"><%= success %></p>
       <% } %>
 
-      <h3>Tilmeldte brugere</h3>
+      <h3>Users ✨</h3>
       <ul>
-        <% if (names && names.length) { %> <% names.forEach(function(n){ %>
-        <li><%= n %></li>
-        <% }) %> <% } else { %>
-        <li>Ingen endnu — vær den første ✨</li>
+        <% if (users && users.length) { %> 
+            <% users.forEach(function(u){ %>
+        <li>
+          <img src="<%= u.avatar %>" alt="avatar" class="avatar" />
+          <%= u.name %>
+        </li>
+        <% }) %>
         <% } %>
       </ul>
     </section>
-<form action="/signup/clear" method="post" style="margin-top:.5rem;">
-  <button type="submit">Ryd alle</button> 
-<button type="button" onclick="location.href='/'">Tilbage til forsiden</button>
-</form>
+    <form action="/signup/clear" method="post" style="margin-top: 0.5rem;">
+      <button type="submit">Ryd alle</button>
+      <button type="button" onclick="location.href='/'">
+        Homepage
+      </button>
+            <button type="button" onclick="location.href='/chat'">
+        Chat
+      </button>
+    </form>
 
     <div class="dot" id="dot" aria-hidden="true"></div>
   </body>

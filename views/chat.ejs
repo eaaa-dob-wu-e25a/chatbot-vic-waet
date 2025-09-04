@@ -19,8 +19,8 @@
 
 <body>
   <section class="nav">
-    <div class="nav-btns">
-      <button type="button" class="cta-menu primary">
+    <div class="nav-btns flx-center-row">
+      <button type="button" class="cta-menu primary" onclick="location.href='/signup'">
         <i class="fa-solid fa-user fa-xl"></i>
       </button>
       <button type="button" class="cta-menu primary"><i class="fa-solid fa-graduation-cap fa-xl"></i></button>
@@ -30,34 +30,26 @@
       <img src="/logo_sm.svg" alt="Logo" />
     </div>
 
-        <div class="nav-btns">
-
-        </div>
   </section>
 
   <section class="chat-container">
     <article class="flx-center-col">
       <div class="msg-bubble">
-        <% for (const msg of messages) { %>
-          <!-- TODO - DateTime + avatar -->
-          <div class="message-row <%= msg.sender.toLowerCase() %>">
-            <!-- <img src="<% msg.avatar %>" alt="avatar" class="avatar" /> -->
-            <span class="avatar <%= msg.sender.toLowerCase() %>">
-              <% msg.avatar %>
-            </span>
-            <p class="message <%= msg.sender.toLowerCase() %>">
-              <%= msg.text %>
-            </p>
-          </div>
-          <% } %>
+  <% if (messages && messages.length) { %>
+    <% (messages || []).forEach(msg => { %>
+      <div class="message-row <%= msg.sender === 'Bot' ? 'bot' : 'user' %>">
+        <img src="<%= msg.avatar %>" alt="avatar" class="avatar" />
+        <p class="message <%= msg.sender === 'Bot' ? 'bot' : 'user' %>"><%= msg.text %></p>
       </div>
-
+    <% }) %>
+  <% } %>
+      </div>
     </article>
 
     <form method="POST" action="/chat" class="flx-center-row">
       <% if (typeof error !=='undefined' && error) { %>
-        <div class="error-message" <strong>Error:</strong>
-          <%= error %>
+        <div class="error-message">
+          <strong>Error:</strong> <%= error %>
         </div>
         <% } %>
           <div class="input-textfield flx-center-row">
@@ -65,9 +57,9 @@
             <button class="submit-btn" type="submit">
               <span class="iconify masked-cont" data-icon="_custom-icons/sparkle.svg">
             </button>
-
-    </form>
     </div>
+    </form>
+
 
   </section>
 

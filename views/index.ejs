@@ -34,8 +34,12 @@
     </section>
     <section class="chat-container">
       <span class="chat-greeting flx-center-col">
-        <h6>Welcome, User</h6>
+        <% if (typeof name !== 'undefined' && name) { %>
+        <h3>Welcome back, <%= currentUser.name %>!</h3>
+        <% } else { %>
+        <h3>Welcome to KamiBo!</h3>
         <h4>How can I help you today?</h4>
+        <% } %>
       </span>
       <!-- TODO - return to later
       <span class="flx-center-row">
@@ -54,25 +58,19 @@
           maxlength="500"
           value="<%= typeof lastMessage !== 'undefined' ? lastMessage : '' %>"
         />
-        <button class="submit-btn flx-center-row" type="submit">
+        <!-- <button class="submit-btn flx-center-row" type="submit">
           <span
             class="iconify masked-cont"
             data-icon="_custom-icons/sparkle.svg"
           ></span>
-        </button>
+        </button> -->
       </form>
     </section>
-    <section class="flx-center-col chat-tc">
-      <div>
-        <button type="button" onclick="location.href='/chat'">Open Chat</button>
-        <button
-          type="button"
-          class="primary cta-menu"
-          onclick="location.href='/signup'"
-        >
-          Create Account
-        </button>
-      </div>
+
+    <section class="flx-center-col sign-up-terms">
+      <button type="button" class="primary" onclick="location.href='/signup'">
+        Create Account
+      </button>
       <a href="#" class="link-underline">Terms & Conditions</a>
       <!-- <p>
         By using this chatbot, you agree that your inputs may be processed and
