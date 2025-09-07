@@ -44,15 +44,15 @@ router.post("/", (req, res) => {
   if (!userMessage || userMessage.trim() === "") {
     error = "Send KamiBo a message to continue.";
     botReply = "How can I help you?";
-  } else if (isGuest) {
+  } else if (isGuest && messages.length === 0) {
     botReply = "Welcome to KamiBo! How can I assist you today?";
   } else if (!isGuest && messages.length === 0) {
     botReply = `Welcome back, ${currentUser.name}! How can I assist you today?`;
   } else if (userMessage.length < 2) {
     error = "Message has to be at least 2 characters.";
     botReply = "Your message is too short. Try again.";
-  } else if (userMessage.length > 500) {
-    error = "Message is too long (max 500 characters)";
+  } else if (userMessage.length > 250) {
+    error = "Message is too long (max 250 characters)";
     botReply = "Oof.. your message is too long. Try again.";
   } else if (
     (userMessage.includes("tak") && userMessage.includes("hjælp")) ||
@@ -83,16 +83,15 @@ router.post("/", (req, res) => {
         );
         foundResponse = true;
         break;
+      } else if (!foundResponse) {
+        //if no keywords matches
+        const fallback = RESPONSES.find((item) => item.label === "fallback");
+        botReply = fallback
+          ? fallback.answers[
+              Math.floor(Math.random() * fallback.answers.length)
+            ]
+          : "I don’t know what to say 🤔";
       }
-      if (foundResponse) break;
-    }
-
-    //if no keywords matches
-    if (!foundResponse) {
-      const fallback = RESPONSES.find((item) => item.label === "fallback");
-      botReply = fallback
-        ? fallback.answers[Math.floor(Math.random() * fallback.answers.length)]
-        : "I don’t know what to say 🤔";
     }
   }
 
@@ -127,6 +126,5 @@ router.post("/", (req, res) => {
   });
   console.log(error); // TEST
 });
-
 
 export default router;
