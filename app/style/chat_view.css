@@ -12,10 +12,17 @@ html {
   width: 100%;
 }
 
+input.ask-input{
+background-color: var(--background);
+    border: 1px solid rgba(var(--primary-rgb), 0.4);
+}
+
 .chat-container {
   padding-inline: var(--space-xl);
   scrollbar-width: 0 !important;
   scrollbar-color: transparent !important;
+
+  border-radius: var(--border-radius-sm);
 }
 
 .chat-container:hover {

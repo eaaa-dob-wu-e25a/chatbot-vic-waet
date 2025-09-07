@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  cursor:none;
 }
 
 html {
@@ -71,7 +72,7 @@ small,
   font-size: var(--font-size-sm);
 }
 
-.text-tiny {
+.text-tiny, .caption {
   font-size: var(--font-size-xs);
 }
 
@@ -216,7 +217,7 @@ a.link-underline:hover:after {
   transform-origin: bottom left;
 }
 
-/* .dot {
+.dot {
     position: fixed;
     left: 0; 
     top: 0;
@@ -228,7 +229,7 @@ a.link-underline:hover:after {
     color: rgba(var(--primary-rgb), 0.8);
     transform: translate(-50%, -50%);
     will-change: transform;
-  } */
+  }
 
 .nav {
   border-radius: var(--border-radius-full);
