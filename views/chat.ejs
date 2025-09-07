@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="/globals.css" />
   <link rel="stylesheet" href="/chat_view.css" />
   <script src="https://kit.fontawesome.com/60cddcb918.js" crossorigin="anonymous"></script>
-  <script src="/mouse-events.js" defer></script>
+  <!-- <script src="/mouse-events.js" defer></script> -->
+  <script src="/helperFunctions.js" defer></script>
+  <script src="/test.js" defer></script>
+
 </head>
 
 <body>
@@ -33,7 +36,7 @@
   </section>
 
   <section class="chat-container">
-    <article class="flx-center-col">
+    <article class="flx-center-col glassmorph">
       <div class="msg-bubble">
   <% if (messages && messages.length) { %>
     <% (messages || []).forEach(msg => { %>
@@ -47,20 +50,22 @@
     </article>
 
     <form method="POST" action="/chat" class="flx-center-row">
-      <% if (typeof error !=='undefined' && error) { %>
+      
+      <% if (typeof error !== 'undefined' && error) { %>
         <div class="error-message">
           <strong>Error:</strong> <%= error %>
         </div>
         <% } %>
           <div class="input-textfield flx-center-row">
-            <input class="ask-input" type="text" name="message" placeholder="Ask me anything" aria-label="Chat message"
-              maxlength="500" value="<%= typeof lastMessage !== 'undefined' ? lastMessage : '' %>" />
-            <button class="submit-btn" type="submit">
-              <span class="iconify masked-cont" data-icon="_custom-icons/sparkle.svg">
-            </button>
+            <input class="ask-input" id="userInput" type="text" name="message" placeholder="Ask me anything" aria-label="Chat message"
+              maxlength="250" />
+            <button class="submit-btn" type="submit"><span class="iconify masked-cont" data-icon="_custom-icons/sparkle.svg"></button>
     </div>
-    </form>
+        <div class="caption">
+      <p><span id="charCount"> </span> / 250</p>
+    </div>
 
+    </form>
 
   </section>
 

@@ -1,5 +1,5 @@
 // Sanitizing input to protect application from malicious code
-export function sanitizeInputAdv(input) {
+function sanitizeInputAdv(input) {
   if (typeof input !== "string") return "";
 
   return input
@@ -10,7 +10,7 @@ export function sanitizeInputAdv(input) {
     .trim();
 };
 
-export function getInitials(name) {
+function getInitials(name) {
   if (typeof name !== "string" || name.trim() === "") return "";
   const words = name.trim().split(" ");
   if (words.length === 1) {
@@ -23,7 +23,7 @@ export function getInitials(name) {
   }
 }
 
-export function createAvatar(name) {
+function createAvatar(name) {
   const initials = getInitials(name);
   const colors = [
     "#e57373", "#f06292", "#ba68c8", "#9575cd", "#7986cb",
@@ -47,3 +47,6 @@ export function createAvatar(name) {
   `;
   return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
+
+
+export { sanitizeInputAdv, getInitials, createAvatar };

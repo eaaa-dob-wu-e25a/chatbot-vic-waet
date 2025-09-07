@@ -40,7 +40,7 @@
 
     <form method="POST" action="/chat" class="flx-center-row">
       <input class="glassmorph ask-input" type="text" name="message" placeholder="Ask me anything" aria-label="Chat message"
-        maxlength="500" value="<%= typeof lastMessage !== 'undefined' ? lastMessage : '' %>" />
+        maxlength="250" value="<%= typeof lastMessage !== 'undefined' ? lastMessage : '' %>" />
         <!-- TODO - character count with events and DOM (exercise) -->
       <!-- <button class="submit-btn flx-center-row" type="submit">
           <span

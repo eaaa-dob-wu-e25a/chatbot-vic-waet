@@ -21,13 +21,17 @@ background-color: var(--background);
   padding-inline: var(--space-xl);
   scrollbar-width: 0 !important;
   scrollbar-color: transparent !important;
-
   border-radius: var(--border-radius-sm);
 }
 
-.chat-container:hover {
-  scrollbar-width: 0 !important;
-  scrollbar-color: transparent !important;
+.chat-container > article {
+  margin-bottom: var(--space-md);
+  height: calc(100% / 12 * 9);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: var(--border-radius-sm);
 }
 
 .msg-bubble {
@@ -99,3 +103,6 @@ background-color: var(--background);
   background-color: rgba(var(--background-rgb), 0.5);
   box-shadow: none;
 }
+
+
+

@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  cursor:none;
+  /* cursor:none; */
 }
 
 html {
@@ -233,8 +233,8 @@ a.link-underline:hover:after {
 
 .nav {
   border-radius: var(--border-radius-full);
-  display: grid;
-  grid-template: repeat(1, 6fr) 50px / 1fr 4fr;
+  /* display: grid;
+  grid-template: repeat(1, 6fr) 50px / 1fr 4fr; */
 }
 
 .nav .nav-btns {
@@ -288,4 +288,10 @@ button.primary:hover {
 .sign-up-terms{
   justify-content: space-between;
   height: min(40vh, 100px);
+}
+
+.caption {
+  color: rgba(var(--text-rgb), 0.6);
+  margin-top: var(--space-xs);
+  text-align: center;
 }

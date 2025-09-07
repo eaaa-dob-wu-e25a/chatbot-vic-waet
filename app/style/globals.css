@@ -21,6 +21,10 @@
   --secondary: rgb(220, 185, 254);
   --accent: rgb(165, 193, 123);
 
+  .exceed {
+    color: red;
+  }
+
   /*SECTION - FONT*/
   --font-family-heading: "Teachers";
   --font-family-body: "Poppins";
@@ -85,8 +89,3 @@
     --accent: #68843e;
   }
 } */
-
-
-  
-
-  
