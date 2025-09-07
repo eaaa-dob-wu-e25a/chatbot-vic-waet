@@ -53,7 +53,8 @@
         </div>
         <% } %>
           <div class="input-textfield flx-center-row">
-            <input class="glassmorph" type="text" name="message" placeholder="Ask me anything" />
+            <input class="ask-input" type="text" name="message" placeholder="Ask me anything" aria-label="Chat message"
+              maxlength="500" value="<%= typeof lastMessage !== 'undefined' ? lastMessage : '' %>" />
             <button class="submit-btn" type="submit">
               <span class="iconify masked-cont" data-icon="_custom-icons/sparkle.svg">
             </button>
