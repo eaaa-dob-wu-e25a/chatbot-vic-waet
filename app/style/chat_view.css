@@ -12,9 +12,9 @@ html {
   width: 100%;
 }
 
-input.ask-input{
-background-color: var(--background);
-    border: 1px solid rgba(var(--primary-rgb), 0.4);
+input.ask-input {
+  background-color: var(--background);
+  border: 1px solid rgba(var(--primary-rgb), 0.4);
 }
 
 .chat-container {
@@ -103,6 +103,3 @@ background-color: var(--background);
   background-color: rgba(var(--background-rgb), 0.5);
   box-shadow: none;
 }
-
-
-
