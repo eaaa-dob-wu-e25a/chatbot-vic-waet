@@ -6,7 +6,7 @@ function sanitizeInputAdv(input) {
     .replace(/[<>'""]/g, "") // Removes potential dangerous characters
     .replace(/script/gi, "") // Removes the word "script"
     .replace(/\s+/g, " ") // collapse whitespace
-    .slice(0, 500) // Limit length to 500 characters
+    .slice(0, 250) // Limit length to 250 characters
     .trim();
 };
 

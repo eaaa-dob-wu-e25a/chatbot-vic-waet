@@ -49,7 +49,6 @@ router.post("/", (req, res) => {
     return res.render("signup", { error, name, users, avatar: "" });
   }
 
-
   // redirect to /signup for safe refresh
   return res.redirect("/signup");
   //return res.redirect("/chat"); TODO - enable for prod

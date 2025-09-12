@@ -74,14 +74,12 @@
 
       <h3>Users ✨</h3>
       <ul>
-        <% if (users && users.length) { %> 
-            <% users.forEach(function(u){ %>
+        <% if (users && users.length) { %> <% users.forEach(function(u){ %>
         <li>
           <img src="<%= u.avatar %>" alt="avatar" class="avatar" />
           <%= u.name %>
         </li>
-        <% }) %>
-        <% } %>
+        <% }) %> <% } %>
       </ul>
     </section>
     <form action="/signup/clear" method="post" style="margin-top: 0.5rem;">
@@ -89,7 +87,7 @@
       <button type="button" onclick="location.href='/'">
         Homepage
       </button>
-            <button type="button" onclick="location.href='/chat'">
+      <button type="button" onclick="location.href='/chat'">
         Chat
       </button>
     </form>

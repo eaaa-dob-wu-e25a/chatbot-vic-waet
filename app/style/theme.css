@@ -295,3 +295,8 @@ button.primary:hover {
   margin-top: var(--space-xs);
   text-align: center;
 }
+
+#charCount{
+  position:absolute;
+  bottom:2em;
+}

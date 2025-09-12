@@ -70,12 +70,12 @@ export const RESPONSES = [
 ];
 // TODO - more categories later
 // simple tokens and routes for expansion later
-export const TOKENS = [
+const TOKENS = [
   { token: "greet", words: ["hi", "hello", "hey", "hej"] },
   { token: "bye", words: ["bye", "goodbye", "farvel", "later"] },
 ];
 
-export const ROUTES = [
+const ROUTES = [
   { token: "greet", responseLabel: "greetings" },
   { token: "bye", responseLabel: "goodbye" },
 ];
