@@ -1,9 +1,8 @@
 import express from "express";
 import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
-import { RESPONSES } from "../data/data.js";
 
 const router = express.Router();
-const messages = []; //NOTE - Stays in memory per server
+const messages = []; 
 
 // GET /chat
 router.get("/", (req, res) => {
