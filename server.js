@@ -7,13 +7,9 @@ const server = express(); // Create an instance of express
 
 server.set("view engine", "ejs"); // Set EJS as the templating engine
 server.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-server.use(express.static("app/script"));
-server.use(express.static("app/style"));
-server.use(
-  express.static("public", {
-    maxAge: "1d",
-  })
-);
+server.use(express.static("./app/scripts"));
+server.use(express.static("./app/styles"));
+server.use(express.static("./app/public"));
 server.use(
   session({
     secret: "dev-only-secret", // NOTE - change in prod
