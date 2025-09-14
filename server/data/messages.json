@@ -1,0 +1,100 @@
+[
+  {
+    "id": "11223344-5555-6666-7777-888899990000",
+    "title": "Dagens vejrudsigt ☀️",
+    "date": "2023-10-01T12:00:00Z",
+    "messages": [
+      {
+        "id": "e1a2c3d4-1111-2222-3333-444455556666",
+        "date": "2025-09-03T09:15:00.000Z",
+        "text": "Hej! Hvordan går det?",
+        "sender": "user"
+      },
+      {
+        "id": "f7b8a9c0-7777-8888-9999-000011112222",
+        "date": "2025-09-03T09:16:00.000Z",
+        "text": "Det går fint, tak! Hvordan kan jeg hjælpe dig?",
+        "sender": "chatbot"
+      },
+      {
+        "id": "aabbccdd-1234-5678-9101-112131415161",
+        "date": "2025-09-03T09:17:00.000Z",
+        "text": "Kan du vise mig dagens vejr?",
+        "sender": "user"
+      },
+      {
+        "id": "bbccddee-2233-4455-6677-889900001111",
+        "date": "2025-09-03T09:17:05.000Z",
+        "text": "Selvfølgelig! Her er vejrudsigten for i dag...",
+        "sender": "chatbot"
+      },
+      {
+        "id": "ccddeeff-3344-5566-7788-990011112222",
+        "date": "2025-09-03T09:18:00.000Z",
+        "text": "Tak for hjælpen!",
+        "sender": "user"
+      },
+      {
+        "id": "ddeeff00-4455-6677-8899-001122334455",
+        "date": "2025-09-03T09:18:10.000Z",
+        "text": "Det var så lidt. Spørg endelig igen!",
+        "sender": "chatbot"
+      }
+    ]
+  },
+  {
+    "id": "22334455-6666-7777-8888-999900001111",
+    "title": "Teknisk support 🛠️",
+    "date": "2023-10-02T15:30:00Z",
+    "messages": [
+      {
+        "id": "11223344-5555-6666-7777-888899990000",
+        "date": "2025-09-04T10:00:00.000Z",
+        "text": "Hej, jeg har problemer med min computer.",
+        "sender": "user"
+      },
+      {
+        "id": "22334455-6666-7777-8888-999900001111",
+        "date": "2025-09-04T10:01:00.000Z",
+        "text": "Hej! Hvad slags problemer oplever du?",
+        "sender": "chatbot"
+      },
+      {
+        "id": "33445566-7777-8888-9999-000011112222",
+        "date": "2025-09-04T10:02:00.000Z",
+        "text": "Den starter ikke op ordentligt.",
+        "sender": "user"
+      },
+      {
+        "id": "44556677-8888-9999-0000-111122223333",
+        "date": "2025-09-04T10:03:00.000Z",
+        "text": "Har du prøvet at genstarte den i fejlsikret tilstand?",
+        "sender": "chatbot"
+      },
+      {
+        "id": "55667788-9999-0000-1111-222233334444",
+        "date": "2025-09-04T10:04:00.000Z",
+        "text": "Nej, hvordan gør jeg det?",
+        "sender": "user"
+      },
+      {
+        "id": "66778899-0000-1111-2222-333344445555",
+        "date": "2025-09-04T10:05:00.000Z",
+        "text": "Tryk på F8 under opstart og vælg 'Fejlsikret tilstand'.",
+        "sender": "chatbot"
+      },
+      {
+        "id": "77889900-1111-2222-3333-444455556666",
+        "date": "2025-09-04T10:06:00.000Z",
+        "text": "Tak, det vil jeg prøve!",
+        "sender": "user"
+      },
+      {
+        "id": "88990011-2222-3333-4444-555566667777",
+        "date": "2025-09-04T10:07:00.000Z",
+        "text": "Velbekomme! Lad mig vide, hvis du har brug for mere hjælp.",
+        "sender": "chatbot"
+      }
+    ]
+  }
+]

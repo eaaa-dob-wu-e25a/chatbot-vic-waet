@@ -1,6 +1,6 @@
 import express from "express"; // Import express framework
-import chatRoutes from "./server/routes/chatRoutes.js";
-import signupRoutes from "./server/routes/signupRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
+import signupRoutes from "./routes/signupRoutes.js";
 import session from "express-session";
 
 const server = express(); // Create an instance of express
