@@ -1,14 +1,13 @@
 import express from "express"; // Import express framework
-import chatRoutes from "./routes/chatRoutes.js";
-import signupRoutes from "./routes/signupRoutes.js";
+import cors from "cors"
+import chatRoutes from "./routes/chat.js";
+import signupRoutes from "./routes/signup.js";
 import session from "express-session";
 
 const server = express(); // Create an instance of express
 
-server.set("view engine", "ejs"); // Set EJS as the templating engine
-server.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-server.use(express.static("./app/scripts"));
-server.use(express.static("./app/styles"));
+server.use(express.static("./scripts"));
+server.use(express.static("./client/styles"));
 server.use(express.static("./public"));
 server.use(
   session({
@@ -20,7 +19,8 @@ server.use(
 );
 
 // SECTION - Routes
-server.get("/", (req, res) => res.render("index"));
+let api_v = "v1";
+
 server.use("/chat", chatRoutes);
 server.use("/signup", signupRoutes);
 
