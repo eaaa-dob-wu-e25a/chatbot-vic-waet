@@ -20,5 +20,5 @@ requestAnimationFrame(tick);
 
 /* SECTION - Actions */
 function navigateTo() {
-  console.log("Button got a click!")
+  console.log("Button got a click!");
 }

@@ -1,8 +1,5 @@
 import express from "express";
-import {
-  sanitizeInputAdv,
-  createAvatar,
-} from "../scripts/helperFunctions.js";
+import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
 import { RESPONSES } from "../data/data.js";
 
 const router = express.Router();

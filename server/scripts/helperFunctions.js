@@ -8,7 +8,7 @@ function sanitizeInputAdv(input) {
     .replace(/\s+/g, " ") // collapse whitespace
     .slice(0, 250) // Limit length to 250 characters
     .trim();
-};
+}
 
 function getInitials(name) {
   if (typeof name !== "string" || name.trim() === "") return "";
@@ -26,13 +26,28 @@ function getInitials(name) {
 function createAvatar(name) {
   const initials = getInitials(name);
   const colors = [
-    "#e57373", "#f06292", "#ba68c8", "#9575cd", "#7986cb",
-    "#64b5f6", "#4fc3f7", "#4dd0e1", "#4db6ac", "#81c784",
-    "#aed581", "#dce775", "#fff176", "#ffd54f", "#ffb74d",
-    "#ff8a65", "#a1887f", "#e0e0e0", "#90a4ae"
-  ];//NOTE - Deterministic color
+    "#e57373",
+    "#f06292",
+    "#ba68c8",
+    "#9575cd",
+    "#7986cb",
+    "#64b5f6",
+    "#4fc3f7",
+    "#4dd0e1",
+    "#4db6ac",
+    "#81c784",
+    "#aed581",
+    "#dce775",
+    "#fff176",
+    "#ffd54f",
+    "#ffb74d",
+    "#ff8a65",
+    "#a1887f",
+    "#e0e0e0",
+    "#90a4ae",
+  ]; //NOTE - Deterministic color
   const charCodeSum = initials.charCodeAt(0) + (initials.charCodeAt(1) || 0);
-  const color = colors[charCodeSum % colors.length]; 
+  const color = colors[charCodeSum % colors.length];
 
   // Create SVG avatar as a data URL
 
@@ -47,6 +62,5 @@ function createAvatar(name) {
   `;
   return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
-
 
 export { sanitizeInputAdv, getInitials, createAvatar };
