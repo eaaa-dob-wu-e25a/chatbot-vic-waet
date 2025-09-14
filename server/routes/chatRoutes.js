@@ -2,8 +2,8 @@ import express from "express";
 import {
   sanitizeInputAdv,
   createAvatar,
-} from "../app/script/helperFunctions.js";
-import { RESPONSES } from "../app/script/data.js";
+} from "../scripts/helperFunctions.js";
+import { RESPONSES } from "../data/data.js";
 
 const router = express.Router();
 const messages = []; //NOTE - Stays in memory per server

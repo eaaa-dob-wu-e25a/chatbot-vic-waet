@@ -2,7 +2,7 @@ import express from "express";
 import {
   sanitizeInputAdv,
   createAvatar,
-} from "../app/script/helperFunctions.js";
+} from "../scripts/helperFunctions.js";
 
 const router = express.Router();
 const users = []; // {name, avatar}
