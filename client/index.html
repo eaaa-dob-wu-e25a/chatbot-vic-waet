@@ -47,16 +47,29 @@
       >
         <input
           class="glassmorph ask-input"
+          id="user-input"
           type="text"
           name="message"
           placeholder="Ask me anything"
           maxlength="250"
-          value=""
         />
+        <button type="submit" class="primary">Send</button>
+        <button type="button" id="reset-btn" class="primary">Reset</button>
       </form>
       <div id="error" class="error-message" style="display: none;"></div>
     </section>
+<section>
+        <form style="margin-bottom: 1rem;">
+        <input
+          type="text"
+          name="name"
+          placeholder="Create username"
+          value="name"
+        />
 
+        <button type="submit" class="primary">Sign up</button>
+      </form>
+</section>
     <section class="flx-center-col sign-up-terms">
       <!-- <button type="button" class="primary" onclick="location.href='/signup'">
         Create Account
@@ -73,11 +86,11 @@
 
     <div class="dot" id="dot" aria-hidden="true"></div>
   </body>
-  <script>
+  <!-- <script>
     fetch('https://dummyjson.com/produts')
       .then((response) => response.json()) // response.text() = output: ren text string, response.json() = output: parsed JSON data (js objects)
       .then((data) => console.log(data))
       .catch((err) => console.error("Error:", err));
 
-  </script>
+  </script> -->
 </html>

@@ -5,7 +5,8 @@ import signupRoutes from "./routes/signup.js";
 import session from "express-session";
 
 const server = express(); // Create an instance of express
-
+server.use(cors())
+server.use(express.json())
 server.use(express.static("./scripts"));
 server.use(express.static("../client/styles"));
 server.use(express.static("./public"));
@@ -19,8 +20,13 @@ server.use(
 );
 
 // SECTION - Routes
-let api_v = "v1.0.0"; // api version
-const api_path = `/api/${api_v}`;
+let api_v = "v1"; // api version
+export const api_path = `/api/${api_v}`;
+
+// Root endpoint
+server.get("/", (req, res) => {
+  res.send("Node.js Express Chatbot API 🎉");
+});
 
 server.use(`${api_path}/chats`, chatRoutes);
 // server.use(`${api_path}/signup`, signupRoutes);

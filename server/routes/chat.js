@@ -1,24 +1,16 @@
 import express from "express";
 import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
+import RESPONSES from "../data/responses.js";
 
 const router = express.Router();
-let messages = []; 
+let messages = [];
+// const default_path = `${api_path}/chats`;
+// const id_path = `${default_path}/chats/:id`;
+// const responses_api = "../data/responses.json";
 
-// GET /chat
-// router.get("/", (req, res) => {
-//   const currentUser = req.session.user || {
-//     name: "GUEST",
-//     avatar: createAvatar("Guest"),
-//   };
-
-//   res.render("chat", {
-//     messages,
-//     botReply: "",
-//     error: "",
-//     avatar: currentUser.avatar,
-//     currentUser,
-//   });
-// });
+router.get("/", (req, res) => {
+  res.json({ messages }); //chats historik json
+});
 
 // POST /chat
 //SECTION - ChatBot msg
@@ -91,36 +83,35 @@ router.post("/", (req, res) => {
     }
   }
 
-  //Message buffer (named function) - caps array size so it never grows bigger than max
-  function pushMessageSafe(arr, item, max = 100) {
-    arr.push(item);
-    while (arr.length > max) arr.shift(); // While loop - remove oldest element until array length <= max
-  }
-
-  // Only show msgs if no error
   if (!error) {
-    // Saving user and bot msg
-    pushMessageSafe(messages, {
+    messages.push({
+      id: crypto.randomUUID(),
+      date: new Date().toISOString(),
+      text: userMessage,
       sender: currentUser.name || "Guest",
       avatar: currentUser.avatar || createAvatar("Guest"),
-      text: userMessage,
     });
-
-    pushMessageSafe(messages, {
+    messages.push({
+      id: crypto.randomUUID(),
+      date: new Date().toISOString(),
+      text: botReply,
       sender: "Bot",
       avatar: createAvatar("Bot"),
-      text: botReply,
     });
   }
-  // Send data to ESJ template - Render response view (server-side render)
-  res.render("chat", {
-    messages,
-    botReply,
-    avatar: currentUser.avatar,
-    error,
-    currentUser,
-  });
+  res.json(messages, botReply, error);
   console.log(error); // TEST
+});
+
+router.get("/:id", (req, res) => {
+  const chat = RESPONSES.find((c) => c.id === req.params.id);
+  if (!chat) return res.status(404).json({ error: "Chat not found" });
+  res.json(chat);
+});
+
+router.delete("/", (req, res) => {
+  messages = [];
+  res.json({ messages });
 });
 
 export default router;
