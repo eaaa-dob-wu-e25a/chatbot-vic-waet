@@ -7,7 +7,7 @@ import session from "express-session";
 const server = express(); // Create an instance of express
 
 server.use(express.static("./scripts"));
-server.use(express.static("./client/styles"));
+server.use(express.static("../client/styles"));
 server.use(express.static("./public"));
 server.use(
   session({
@@ -19,13 +19,14 @@ server.use(
 );
 
 // SECTION - Routes
-let api_v = "v1";
+let api_v = "v1.0.0"; // api version
+const api_path = `/api/${api_v}`;
 
-server.use("/chat", chatRoutes);
-server.use("/signup", signupRoutes);
+server.use(`${api_path}/chats`, chatRoutes);
+// server.use(`${api_path}/signup`, signupRoutes);
 
 // Listen on port 3300
 const port = 3300;
 server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on https://localhost:${port}`);
 });

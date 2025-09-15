@@ -2,23 +2,23 @@ import express from "express";
 import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
 
 const router = express.Router();
-const messages = []; 
+let messages = []; 
 
 // GET /chat
-router.get("/", (req, res) => {
-  const currentUser = req.session.user || {
-    name: "GUEST",
-    avatar: createAvatar("Guest"),
-  };
+// router.get("/", (req, res) => {
+//   const currentUser = req.session.user || {
+//     name: "GUEST",
+//     avatar: createAvatar("Guest"),
+//   };
 
-  res.render("chat", {
-    messages,
-    botReply: "",
-    error: "",
-    avatar: currentUser.avatar,
-    currentUser,
-  });
-});
+//   res.render("chat", {
+//     messages,
+//     botReply: "",
+//     error: "",
+//     avatar: currentUser.avatar,
+//     currentUser,
+//   });
+// });
 
 // POST /chat
 //SECTION - ChatBot msg
