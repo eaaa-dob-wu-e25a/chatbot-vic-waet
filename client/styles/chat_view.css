@@ -4,19 +4,21 @@ html {
   overflow: hidden;
 }
 
-.chat-logo img {
-  width: 15%;
-}
+/* header */
+.chat-logo img { width: 15%; }
+.chat-logo { width: 100%; }
 
-.chat-logo {
-  width: 100%;
-}
-
+/* inputs */
 input.ask-input {
   background-color: var(--background);
   border: 1px solid rgba(var(--primary-rgb), 0.4);
 }
 
+/* chat layout */
+.chat-lists-item{
+  height:500px;
+  background-color: red;
+}
 .chat-container {
   padding-inline: var(--space-xl);
   scrollbar-width: 0 !important;
@@ -34,7 +36,8 @@ input.ask-input {
   border-radius: var(--border-radius-sm);
 }
 
-.msg-bubble {
+/* scrollable bubble column */
+#msg-bubble {
   width: calc(100% / 12 * 8);
   height: 70vh;
   overflow-y: auto;
@@ -52,52 +55,59 @@ input.ask-input {
   );
 }
 
+/* rows and avatar */
 .message-row {
   display: flex;
-  align-items: flex-end; /* keeps avatar aligned with bottom of text */
-  gap: 0.8rem; /* space between avatar and text */
+  align-items: flex-end; /* keep avatar aligned with bottom */
+  gap: 0.8rem;
+  margin-bottom: 1rem;
 }
-.avatar {
+
+.avatar,
+.message-row .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
-.message {
+
+.bubble {
   max-width: 65%;
   height: fit-content;
-  white-space: wrap;
-  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: anywhere; /* modern wrapping */
   padding: var(--space-sm);
   border: 1px solid rgba(var(--primary-rgb), 0.4);
-  margin-bottom: 1rem;
-  align-self: flex-end;
 }
 
+/* meta + text inside bubble (optional) */
+.bubble .meta {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  display: flex;
+  gap: .5rem;
+  margin-bottom: .25rem;
+}
+.bubble .text { line-height: 1.4; }
+
+/* USER (right) */
 .message-row.user {
-  justify-content: flex-end; /* user messages align right */
+  justify-content: flex-end;
 }
-
-.message-row.user .avatar {
-  order: 2; /* avatar after message */
-}
-
-.message-row.user .message {
+.message-row.user .avatar { order: 2; } /* avatar after bubble */
+.message-row.user .bubble {
   text-align: right;
   border-radius: 20px 20px 2px 20px;
   background-color: rgba(var(--secondary-rgb), 0.7);
   box-shadow: none;
 }
 
-.message-row.bot {
-  justify-content: flex-start; /* bot messages align left */
+/* BOT (left) */
+.message-row.chatbot {
+  justify-content: flex-start;
 }
-
-.message-row.bot .avatar {
-  order: 0;
-}
-
-.message-row.bot .message {
+.message-row.chatbot .avatar { order: 0; }
+.message-row.chatbot .bubble {
   text-align: left;
   border-radius: 20px 20px 20px 2px;
   background-color: rgba(var(--background-rgb), 0.5);

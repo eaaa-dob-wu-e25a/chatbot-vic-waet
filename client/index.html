@@ -31,11 +31,7 @@
 
   <body>
     <section class="flx-center-row chat-logo">
-      <div id="chats-group">
-        <h2>Previous Chats</h2>
-        <div id="chats-list"></div>
-      </div>
-      <img src="../public/logo_sm.svg" alt="Logo" />
+      <img src="/public/logo_sm.svg" alt="Logo" />
     </section>
     <div>
       <form
@@ -49,7 +45,7 @@
           id="chat-title-input"
           placeholder="Enter chat title"
           maxlength="50"
-          name="title"
+          name="chat-title"
         />
         <button class="create primary" id="new-chat" type="submit">
           New Chat
@@ -57,9 +53,12 @@
       </form>
     </div>
 
+            <div id="chats-list"></div>
+
     <section class="chat-container">
+      <span class="title"></span>
       <div class="flx-center-col glassmorph">
-        <div class="msg-bubble" class=""></div>
+        <div id="msg-bubble"></div>
       </div>
 
       <form
@@ -70,7 +69,7 @@
       >
         <input
           class="glassmorph ask-input"
-          id="user-input"
+          id="chat-message-input"
           type="text"
           name="message"
           placeholder="Ask me anything"
@@ -93,7 +92,7 @@
           type="text"
           name="name"
           placeholder="Create username"
-          id="user-input"
+          id="signup-input"
           autocomplete="off"
         />
 
@@ -105,7 +104,7 @@
       <!-- <button type="button" class="primary" onclick="location.href='/signup'">
         Create Account
       </button> -->
-      <a href="#" class="link-underline">Terms & Conditions</a>
+      <a href="#" class="link-underline">Terms &amp; Conditions</a>
       <!-- <p>
         By using this chatbot, you agree that your inputs may be processed and
         stored to improve its functionality. The chatbot only provides general

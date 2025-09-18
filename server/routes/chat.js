@@ -1,11 +1,17 @@
 import express from "express";
 import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
-import RESPONSES from "../data/responses.js";
+import { fileURLToPath } from "url";
+import path from "path";
+import { readFile } from "fs/promises";
+import { readChats } from "../scripts/script.js";
+import chatMessagesRouter from "./messages.js"
 
 const router = express.Router();
 let messages = []; // Array to store messages
 let chats = []; // Array to store chats
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // --- IGNORE ---
 // SECTION - Endpoints
 // Base path: /api/v1/chats
@@ -16,18 +22,54 @@ let chats = []; // Array to store chats
 // DELETE /chats (delete all chats) - implemented
 // DELETE /chats/:id (delete chat by id) - implemented
 
-// GET /chat
-router.get("/", (req, res) => {
-  res.json({ chats });
+// Load responses.json ONCE (async)
+let RESPONSES = [];
+async function loadResponses() {
+  const filePath = path.resolve(__dirname, "../data/responses.json");
+  const text = await readFile(filePath, "utf8");
+  RESPONSES = JSON.parse(text);
+}
+await loadResponses(); // load at module init
+
+// GET /api/v1/chats
+router.get("/", async (_req, res, next) => {
+try {
+  const chats = await readChats();
+  //return a list
+  const list = chats.map((c) => {
+    const last = c.messages?.[c.messages.length - 1];
+    return {
+      id: c.id,
+      title: c.title,
+      date: c.date,
+      messageCount: c.messages?.length ?? 0,
+      lastPreview: last ? last.text : "",
+      lastAt: last ? last.date : c.date
+    }
+  });
+  res.json({chats: list}) // object-literal, key = chats, value = list
+} catch (err) {
+  next(err)
+}
 });
 
+// GET /api/v1/chats/:id | Display 1 chat with messages
+router.get("/:id", async(req, res, next) => {
+    try {
+    const chats = await readChats();
+      const chat = chats.find((c) => c.id === req.params.id);
+      if (!chat) return res.status(404).json({error: "Chat not found"})
+  } catch (err) {
+      next(err);
+  }
+})
+
 // POST /chat
-//SECTION - ChatBot msg
 router.post("/", (req, res) => {
-  let userMessage = req.body.message; // Fetches messages from forminput
+  let userMessage = (req.body?.message ?? "").toString() // Fetches messages from forminput
   //Sanitize FIRST
   userMessage = sanitizeInputAdv(userMessage);
-  const currentUser = req.session.user || {
+  const currentUser = req.session?.user ?? {
     name: "GUEST",
     avatar: createAvatar("Guest"),
   };
@@ -73,14 +115,19 @@ router.post("/", (req, res) => {
   ) {
     botReply = "I am just a bunch of code, but thanks for asking!";
   } else {
-    // Check keywords in RESPONSES
+    // Check keywords in RESPONSES.json
+    let lower = userMessage.toLowerCase();
     let found = false;
+
     for (let resp of RESPONSES) {
       for (let keyword of resp.keywords) {
-        if (userMessage.toLowerCase().includes(keyword.toLowerCase())) {
+        if (resp.label?.toLowerCase() === "fallback") continue;
+
+        if (resp.keywords?.(some(k => lower.includes(k.toLowerCase())))) {
           // Random answer from array
+          const list = resp.answers ?? [];
           botReply =
-            resp.answers[Math.floor(Math.random() * resp.answers.length)] ||
+            list[Math.floor(Math.random() * list.length)] ||
             "I'm not sure how to respond to that.";
           found = true;
           break;
@@ -90,7 +137,7 @@ router.post("/", (req, res) => {
     }
     // Fallback if no keywords matched
     if (!found) {
-      const fallback = RESPONSES.find((r) => r.label === "fallback");
+      const fallback = RESPONSES.find(r => (r.label || "").toLowerCase() === "fallback");
       botReply =
         fallback.answers[Math.floor(Math.random() * fallback.answers.length)] ||
         "I'm not sure how to respond to that.";
@@ -115,18 +162,8 @@ router.post("/", (req, res) => {
       avatar: createAvatar("Bot"),
     });
   }
-  res.json(messages, botReply, error);
+  res.json(messages, error, botReply);
   console.log(error); // TEST
-});
-
-router.get("/:id", async (req, res) => {
-  const chatId = req.params.id;
-  const chat = chats.find((c) => c.id === chatId);
-  if (chat) {
-    res.json({ chat });
-  } else {
-    res.status(404).json({ error: "Chat not found" });
-  }
 });
 
 // delete chat by id
@@ -148,5 +185,7 @@ router.delete("/", (req, res) => {
   chats = [];
   res.json({ messages, chats });
 });
+
+router.use("/:id/messages", chatMessagesRouter);
 
 export default router;

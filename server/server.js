@@ -21,10 +21,10 @@ server.use(
   })
 );
 
-// Root endpoint
-server.get("/", (req, res) => {
-  res.send("Node.js Express Chatbot API 🎉");
-});
+// // Root endpoint
+// server.get("/", (req, res) => {
+//   res.send("Node.js Express Chatbot API 🎉");
+// });
 
 // SECTION - Routes
 let api_v = "v1"; // api version

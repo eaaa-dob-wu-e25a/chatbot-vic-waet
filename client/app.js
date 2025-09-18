@@ -1,127 +1,135 @@
 //FRONTEND
+const chatsList = document.getElementById("chats-list");
 const chatMessages = document.getElementById("msg-bubble");
 const form = document.getElementById("chat-form");
-const input = document.getElementById("user-input");
+const chatInput = document.getElementById("chat-message-input");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
 const createChat = document.getElementById("new-chat");
+const inputEl = document.getElementById("chat-title-input");
 
 const chatsUrl = "http://localhost:3300/api/v1/chats";
 const signupUrl = "http://localhost:3300/api/v1/signup";
+let currentChatId = null;
 
-window.addEventListener("DOMContentLoaded", fetchChats);
+window.addEventListener("DOMContentLoaded", fetchMessages);
 form.addEventListener("submit", handleSubmit);
 resetBtn.addEventListener("click", handleResetChat);
 createChat.addEventListener("click", createNewChat);
 
 function createNewChat() {
-  let chatTitle = req.body.title;
+  let chatTitle = (inputEl?.value ?? "").trim();
   if (!chatTitle || chatTitle.trim() === "") {
     chatTitle = "New Chat";
   }
   chatTitle = chatTitle.trim().substring(0, 50); // Limit title length
-  document.querySelector("#chat-title-input").value = "";
+  inputEl && (inputEl.value = "");
   renderMessages([]);
   document.querySelector(".chat-title").textContent = chatTitle;
-  fetchGroups(); // Refresh groups list
 }
 
-async function fetchChats() {
-  try {
-    const res = await fetch("http://localhost:3300/api/v1/chats"); // server.js serverer endpoint = (/api/v1/chats), chat.js skal kalde blot "/" for endpoints
-    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-    const data = res.json();
-    console.log(data);
-    renderChats(data.chats);
-  } catch (error) {
-    console.error("Error: ", error);
-    chatMessages.innerHTML = "<div>Kunne ikke hente chats.</div>";
+async function initiate() {
+  await loadChatList();
+  const first = chatsList.querySelector("[data-chat-id]");
+  if (first) {
+    first.click();
   }
 }
 
-function renderChats(chats) {
-  if (chats && chats.length) {
-    let chatHTML = "";
-    for (let chat of chats) {
-      chatHTML += /*html*/ `
-            <div class="chat-group-item">
-                <div class="chat-title">${chat.title || "No Title"}</div>
-                <div class="chat-date">${new Date(
-                  chat.date
-                ).toLocaleString()}</div>
-                <div class="chat-messages"></div>           
-                    ${chat.messages
-                      .map(
-                        (msg) => `
-                        <div class="message-row ${
-                          msg.sender ? msg.sender.toLowerCase() : "GUEST"
-                        }">
-                            ${msg.avatar} ${msg.text}
-                        </div>
-                    `
-                      )
-                      .join("")}
-            </div>`;
-    }
-    chatMessages.innerHTML = chatHTML;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  } else {
-    chatMessages.innerHTML = "Ingen chats tilgængelige.";
+async function loadChatList() {
+  try {
+    const res = await fetch(chatsUrl);
+    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    const data = await res.json();
+    console.log(data);
+    renderChatList(data.chats);
+  } catch (error) {
+    console.error(error);
+    chatsList.innerHTML = "<div>Could not fetch chats. Try again later.</div>";
   }
 }
 
-async function fetchMessages() {
+function renderChatList(chats) {
+  chatsList.innerHTML = chats
+    .map(
+      (c) => `
+    <button class="chat-list-item" data-chat-id="${c.id}">
+      <div class="title">${c.title ?? "Untitled"}</div>
+      <div class="meta">
+        <span>${new Date(c.lastAt ?? c.date).toLocaleString()}</span>
+        <span>${c.messageCount} beskeder</span>
+      </div>
+      <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
+    </button>`
+    )
+    .join("");
+
+  // click handlers
+  chatsList.querySelectorAll("[data-chat-id]").forEach((btn) => {
+    btn.addEventListener("click", () => openChat(btn.dataset.chatId));
+  });
+}
+
+async function fetchMessages(chatId) {
   try {
-    const res = await fetch("http://localhost:3300/api/v1/chats"); // server.js serverer endpoint = (/api/v1/chats), chat.js skal kalde blot "/" for endpoints
+    const res = await fetch(chatsUrl + "/" + chatId); // server.js serverer endpoint = (/api/v1/chats), chat.js skal kalde blot "/" for endpoints
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-    const data = res.json();
+    const data = await res.json();
     console.log(data);
-    renderMessages(data.messages);
+    currentChatId = data.chat.id;
+    renderMessages(data.chat.messages);
   } catch (error) {
     console.error("Error: ", error);
-    chatMessages.innerHTML = "<div>Kunne ikke hente beskeder.</div>";
+    chatMessages.innerHTML =
+      "<div>Could not fetch messages. Try again later.</div>";
   }
 }
 
 function renderMessages(messages) {
-  if (messages && messages.length) {
-    let chatHTML = "";
-    for (let message of messages) {
-      chatHTML += /*html*/ `
-      <div class="message-row ${
-        message.sender ? message.sender.toLowerCase() : "GUEST"
-      }">
-        ${message.avatar} ${message.text}
-      </div>`;
-    }
-
-    chatMessages.innerHTML = chatHTML;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  } else {
-    chatMessages.innerHTML = "helo";
+  if (!messages?.length) {
+    chatMessages.innerHTML = "<div>No messages yet.</div>"
+    return
+  }else{
+    chatMessages.innerHTML = messages
+      .map(
+        (m) => `
+      <div class="message-row ${m.sender}">
+      <div class="bubble">
+        <div class="meta">
+          <span class="who">${m.sender}</span>
+          <span class="when">${new Date(m.date).toLocaleString()}</span>
+        </div>
+        <div class="text">${escapeHtml(m.text)}</div>
+      </div>
+    </div>`
+      )
+      .join("");
   }
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
 }
 
 async function handleSubmit(e) {
   e.preventDefault();
-  const message = input.value.trim();
-  if (!message) return;
+  const message = chatInput.value.trim();
+  if (!message || !currentChatId) return;
   errorDiv.style.display = "none";
   try {
-    const res = await fetch(chatsUrl, {
+    const res = await fetch(`${chatsUrl}/${currentChatId}/messages`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message }),
     });
+    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
-    renderChats(data.messages);
+    renderMessages(data.chat.messages);
     if (data.error) {
       errorDiv.textContent = data.error;
       errorDiv.style.display = "block";
     }
-    input.value = "";
+    chatInput.value = "";
   } catch (error) {
-    errorDiv.textContent = "Der opstod en fejl ved kontakt til serveren.";
+    errorDiv.textContent = "Server error.";
     errorDiv.style.display = "block";
   }
 }
@@ -133,6 +141,7 @@ async function handleResetChat() {
       method: "DELETE",
     });
     if (!res.ok) throw new Error();
+    const data = await res.json();
     renderMessages([]);
   } catch {
     errorDiv.textContent = "Kunne ikke nulstille chatten.";
@@ -140,33 +149,12 @@ async function handleResetChat() {
   }
 }
 
-async function fetchGroups() {
-  try {
-    const res = await fetch("http://localhost:3300/api/v1/chats");
-    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-    const groups = await res.json();
-    console.log(groups);
-    renderGroups(groups);
-  } catch (error) {
-    console.error("Error: ", error);
-    document.getElementById("chats-list").innerHTML =
-      "<div>Kunne ikke hente grupper.</div>";
-  }
-}
-
-function renderGroups(groups) {
-  if (groups && groups.length) {
-    let groupsHTML = "";
-    for (let group of groups) {
-      groupsHTML += /*html*/ `
-      <div class="group-item">
-        ${group}
-      </div>`;
-    }
-
-    document.getElementById("chats-list").innerHTML = groupsHTML;
-  } else {
-    document.getElementById("chats-list").innerHTML =
-      "Ingen grupper tilgængelige.";
-  }
+// small XSS guard for rendering text
+function escapeHtml(s) {
+  return s
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }

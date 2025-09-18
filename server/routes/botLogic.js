@@ -7,7 +7,7 @@ let messages = [];
 
 const data = "../data/responses.json";
 
-server.get("/api/chats", async (req, res) => {
+server.get("/", async (req, res) => {
     const messages = await readData(data);
   fetch(messages)
     .then((resp) => resp.json())
@@ -75,7 +75,7 @@ server.post("/", (req, res) => {
         break;
       } else if (!foundResponse) {
         //if no keywords matches
-        const fallback = RESPONSES.find((item) => item.label === "fallback");
+        const fallback = data.find((item) => item.label === "fallback");
         botReply = fallback
           ? fallback.answers[
               Math.floor(Math.random() * fallback.answers.length)
