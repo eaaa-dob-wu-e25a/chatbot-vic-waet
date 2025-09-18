@@ -8,7 +8,7 @@
 }
 
 html {
-  background-image: url("../../public/bg-img.jpg");
+  background-image: url("/public/bg-img.jpg");
   background-repeat: no-repeat;
   padding: var(--space-md);
   width: var(--full-w);

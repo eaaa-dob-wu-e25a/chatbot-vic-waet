@@ -14,11 +14,25 @@ input.ask-input {
   border: 1px solid rgba(var(--primary-rgb), 0.4);
 }
 
-/* chat layout */
-.chat-lists-item{
-  height:500px;
-  background-color: red;
+body > div{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
+
+/* chat layout */
+.chats-history {
+  width:var(--full-w);
+  max-width: 300px;
+  overflow-y: auto;
+
+}
+
+#chats-list{
+  width: 100%;
+  height:350px;
+  background-color: ghostwhite;
+}
+
 .chat-container {
   padding-inline: var(--space-xl);
   scrollbar-width: 0 !important;

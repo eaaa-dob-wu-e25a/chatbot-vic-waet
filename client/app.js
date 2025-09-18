@@ -1,32 +1,21 @@
 //FRONTEND
+const newChatForm = document.getElementById("new-chat-form");
 const chatsList = document.getElementById("chats-list");
 const chatMessages = document.getElementById("msg-bubble");
-const form = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-message-input");
+const inputEl = document.querySelector("chat-title-input");
+const messageForm = document.getElementById("message-form");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
-const createChat = document.getElementById("new-chat");
-const inputEl = document.getElementById("chat-title-input");
 
-const chatsUrl = "http://localhost:3300/api/v1/chats";
-const signupUrl = "http://localhost:3300/api/v1/signup";
+const chatsUrl = "/api/v1/chats";
+//const signupUrl = "/api/v1/signup";
 let currentChatId = null;
 
-window.addEventListener("DOMContentLoaded", fetchMessages);
-form.addEventListener("submit", handleSubmit);
+window.addEventListener("DOMContentLoaded", initiate);
+messageForm.addEventListener("submit", handleSubmitMessage);
 resetBtn.addEventListener("click", handleResetChat);
-createChat.addEventListener("click", createNewChat);
-
-function createNewChat() {
-  let chatTitle = (inputEl?.value ?? "").trim();
-  if (!chatTitle || chatTitle.trim() === "") {
-    chatTitle = "New Chat";
-  }
-  chatTitle = chatTitle.trim().substring(0, 50); // Limit title length
-  inputEl && (inputEl.value = "");
-  renderMessages([]);
-  document.querySelector(".chat-title").textContent = chatTitle;
-}
+newChatForm.addEventListener("submit", createNewChat);
 
 async function initiate() {
   await loadChatList();
@@ -41,11 +30,10 @@ async function loadChatList() {
     const res = await fetch(chatsUrl);
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
-    console.log(data);
     renderChatList(data.chats);
   } catch (error) {
     console.error(error);
-    chatsList.innerHTML = "<div>Could not fetch chats. Try again later.</div>";
+    chatsList.innerHTML = "<div>Could not fetch chats.</div>";
   }
 }
 
@@ -70,30 +58,75 @@ function renderChatList(chats) {
   });
 }
 
-async function fetchMessages(chatId) {
+async function createNewChat(e) {
+  e.preventDefault(); //prevent form submit
+
+  let chatTitle = (inputEl?.value ?? "").trim();
+  if (!chatTitle) chatTitle = "New Chat";
+
   try {
-    const res = await fetch(chatsUrl + "/" + chatId); // server.js serverer endpoint = (/api/v1/chats), chat.js skal kalde blot "/" for endpoints
+    const res = await fetch(chatsUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: chatTitle.substring(0, 50) }),
+    });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
-    console.log(data);
+    inputEl && (inputEl.value = "");
+
+    await loadChatList(); //refresh sidebar chatlist
+    await openChat(data.chat.id); //open created chat
+  } catch (err) {
+    errorDiv.textContent = "Couldn't create chat.";
+    errorDiv.style.display = "block";
+  }
+}
+
+async function openChat(chatId) {
+  // TODO: styling => highlight selected chat
+  document
+    .querySelectorAll("#chats-list .chat-list-item.is-active")
+    .forEach((el) => el.classList.remove("is-active"));
+  const btn = document.querySelector(`[data-chat-id="${chatId}"]`);
+  if (btn) btn.classList.add("is-active");
+
+  // load + render messages
+  await fetchMessages(chatId);
+
+  const titleEl = document.querySelector(".title");
+  if (titleEl) {
+    const t = btn?.querySelector(".title")?.textContent?.trim();
+    if (t) titleEl.textContent = t;
+  }
+}
+
+async function fetchMessages(chatId) {
+  try {
+    const res = await fetch(`/api/v1/chats/${chatId}`);
+    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    const data = await res.json(); // {chat}
     currentChatId = data.chat.id;
     renderMessages(data.chat.messages);
   } catch (error) {
     console.error("Error: ", error);
-    chatMessages.innerHTML =
-      "<div>Could not fetch messages. Try again later.</div>";
+    chatMessages.innerHTML = `<div class="bubble">Could not fetch messages. Try again later.</div>`;
   }
 }
 
 function renderMessages(messages) {
   if (!messages?.length) {
-    chatMessages.innerHTML = "<div>No messages yet.</div>"
-    return
-  }else{
+    chatMessages.innerHTML = "<div>No messages yet.</div>";
+    return;
+  } else {
     chatMessages.innerHTML = messages
       .map(
         (m) => `
       <div class="message-row ${m.sender}">
+      ${
+        m.avatar
+          ? `<img class="avatar" src="${m.avatar}" alt="${m.sender}" />`
+          : ""
+      }
       <div class="bubble">
         <div class="meta">
           <span class="who">${m.sender}</span>
@@ -105,11 +138,10 @@ function renderMessages(messages) {
       )
       .join("");
   }
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-async function handleSubmit(e) {
+async function handleSubmitMessage(e) {
   e.preventDefault();
   const message = chatInput.value.trim();
   if (!message || !currentChatId) return;
@@ -118,7 +150,7 @@ async function handleSubmit(e) {
     const res = await fetch(`${chatsUrl}/${currentChatId}/messages`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ text: message }),
     });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
@@ -141,17 +173,18 @@ async function handleResetChat() {
       method: "DELETE",
     });
     if (!res.ok) throw new Error();
-    const data = await res.json();
+    await loadChatList();
     renderMessages([]);
+    currentChatId = null;
   } catch {
-    errorDiv.textContent = "Kunne ikke nulstille chatten.";
+    errorDiv.textContent = "Could not reset chat.";
     errorDiv.style.display = "block";
   }
 }
 
 // small XSS guard for rendering text
 function escapeHtml(s) {
-  return s
+  return String(s)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")

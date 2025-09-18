@@ -23,44 +23,21 @@ function getInitials(name) {
   }
 }
 
-function createAvatar(name) {
+function createAvatar(name = "User") {
   const initials = getInitials(name);
-  const colors = [
-    "#e57373",
-    "#f06292",
-    "#ba68c8",
-    "#9575cd",
-    "#7986cb",
-    "#64b5f6",
-    "#4fc3f7",
-    "#4dd0e1",
-    "#4db6ac",
-    "#81c784",
-    "#aed581",
-    "#dce775",
-    "#fff176",
-    "#ffd54f",
-    "#ffb74d",
-    "#ff8a65",
-    "#a1887f",
-    "#e0e0e0",
-    "#90a4ae",
-  ]; //NOTE - Deterministic color
-  const charCodeSum = initials.charCodeAt(0) + (initials.charCodeAt(1) || 0);
-  const color = colors[charCodeSum % colors.length];
+  const hue = [...name].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 
   // Create SVG avatar as a data URL
-
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-      <rect width="100" height="100" fill="${color}" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+      <rect width="80" height="80" fill="hsl(${hue} 60% 50%)" />
       <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" 
-            font-family="Arial, sans-serif" font-size="40" fill="#000">
+            font-family="Arial, sans-serif" font-size="40" fill="#202020ff">
         ${initials}
       </text>
     </svg>
   `;
-  return `data:image/svg+xml;base64,${btoa(svg)}`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
 export { sanitizeInputAdv, getInitials, createAvatar };
