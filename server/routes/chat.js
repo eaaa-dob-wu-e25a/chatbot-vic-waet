@@ -3,13 +3,22 @@ import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
 import RESPONSES from "../data/responses.js";
 
 const router = express.Router();
-let messages = [];
-// const default_path = `${api_path}/chats`;
-// const id_path = `${default_path}/chats/:id`;
-// const responses_api = "../data/responses.json";
+let messages = []; // Array to store messages
+let chats = []; // Array to store chats
 
+// --- IGNORE ---
+// SECTION - Endpoints
+// Base path: /api/v1/chats
+// GET /chats (get all chats) - implemented
+// POST /chats (send message + get bot reply) - implemented
+// GET /chats/:id (get chat by id) - implemented
+// GET /chats/all (get all chats with titles) - implemented
+// DELETE /chats (delete all chats) - implemented
+// DELETE /chats/:id (delete chat by id) - implemented
+
+// GET /chat
 router.get("/", (req, res) => {
-  res.json({ messages }); //chats historik json
+  res.json({ chats });
 });
 
 // POST /chat
@@ -51,39 +60,45 @@ router.post("/", (req, res) => {
     userMessage.includes("sorry") ||
     userMessage.includes("beklager")
   ) {
-    botReply = "That's okay. No harm done.";
+    botReply = "No worries - how can I assist you?";
+  } else if (
+    userMessage.includes("hvad kan du") ||
+    userMessage.includes("what can you")
+  ) {
+    botReply =
+      "I am KamiBo, your friendly chatbot! I can assist you with various tasks, answer questions, and provide information. How can I help you today?";
+  } else if (
+    userMessage.includes("hvordan har du det") ||
+    userMessage.includes("how are you")
+  ) {
+    botReply = "I am just a bunch of code, but thanks for asking!";
   } else {
-    //Responses
-    let lowerMessage = userMessage.toLowerCase().trim();
-    let foundResponse = false;
-
-    //Loop igennem
-    for (const response of RESPONSES) {
-      if (response.label === "fallback") continue;
-      //Check if any keywords match
-      if (response.keywords.some((keyword) => lowerMessage.includes(keyword))) {
-        const randomIndex = Math.floor(Math.random() * response.answers.length);
-        botReply = response.answers[randomIndex];
-        console.log(
-          `Chosen answer ${randomIndex + 1} of ${
-            response.answers.length
-          } possible`
-        );
-        foundResponse = true;
-        break;
-      } else if (!foundResponse) {
-        //if no keywords matches
-        const fallback = RESPONSES.find((item) => item.label === "fallback");
-        botReply = fallback
-          ? fallback.answers[
-              Math.floor(Math.random() * fallback.answers.length)
-            ]
-          : "I don’t know what to say 🤔";
+    // Check keywords in RESPONSES
+    let found = false;
+    for (let resp of RESPONSES) {
+      for (let keyword of resp.keywords) {
+        if (userMessage.toLowerCase().includes(keyword.toLowerCase())) {
+          // Random answer from array
+          botReply =
+            resp.answers[Math.floor(Math.random() * resp.answers.length)] ||
+            "I'm not sure how to respond to that.";
+          found = true;
+          break;
+        }
       }
+      if (found) break;
+    }
+    // Fallback if no keywords matched
+    if (!found) {
+      const fallback = RESPONSES.find((r) => r.label === "fallback");
+      botReply =
+        fallback.answers[Math.floor(Math.random() * fallback.answers.length)] ||
+        "I'm not sure how to respond to that.";
     }
   }
 
   if (!error) {
+    //user message
     messages.push({
       id: crypto.randomUUID(),
       date: new Date().toISOString(),
@@ -91,11 +106,12 @@ router.post("/", (req, res) => {
       sender: currentUser.name || "Guest",
       avatar: currentUser.avatar || createAvatar("Guest"),
     });
+    // bot reply
     messages.push({
       id: crypto.randomUUID(),
       date: new Date().toISOString(),
       text: botReply,
-      sender: "Bot",
+      sender: "KamiBo",
       avatar: createAvatar("Bot"),
     });
   }
@@ -103,15 +119,34 @@ router.post("/", (req, res) => {
   console.log(error); // TEST
 });
 
-router.get("/:id", (req, res) => {
-  const chat = RESPONSES.find((c) => c.id === req.params.id);
-  if (!chat) return res.status(404).json({ error: "Chat not found" });
-  res.json(chat);
+router.get("/:id", async (req, res) => {
+  const chatId = req.params.id;
+  const chat = chats.find((c) => c.id === chatId);
+  if (chat) {
+    res.json({ chat });
+  } else {
+    res.status(404).json({ error: "Chat not found" });
+  }
 });
 
+// delete chat by id
+router.delete("/:id", async (req, res) => {
+  const chats = await fetchChats();
+  const chatId = req.params.id;
+  const chatIndex = chats.findIndex((c) => c.id === chatId);
+  if (chatIndex !== -1) {
+    chats.splice(chatIndex, 1);
+    res.json({ message: "Chat deleted" });
+  } else {
+    res.status(404).json({ error: "Chat not found" });
+  }
+});
+
+// Delete EVERYTHING
 router.delete("/", (req, res) => {
   messages = [];
-  res.json({ messages });
+  chats = [];
+  res.json({ messages, chats });
 });
 
 export default router;

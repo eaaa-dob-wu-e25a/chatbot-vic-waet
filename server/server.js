@@ -1,7 +1,9 @@
+//BACKEND
 import express from "express"; // Import express framework
 import cors from "cors"
 import chatRoutes from "./routes/chat.js";
 import signupRoutes from "./routes/signup.js";
+import messagesRoutes from "./routes/messages.js";
 import session from "express-session";
 
 const server = express(); // Create an instance of express
@@ -19,20 +21,21 @@ server.use(
   })
 );
 
-// SECTION - Routes
-let api_v = "v1"; // api version
-export const api_path = `/api/${api_v}`;
-
 // Root endpoint
 server.get("/", (req, res) => {
   res.send("Node.js Express Chatbot API 🎉");
 });
 
-server.use(`${api_path}/chats`, chatRoutes);
-// server.use(`${api_path}/signup`, signupRoutes);
+// SECTION - Routes
+let api_v = "v1"; // api version
+const api_path = `api/${api_v}`;
+
+server.use(`/${api_path}/chats`, chatRoutes);
+server.use(`/${api_path}/signup`, signupRoutes);
+server.use(`/${api_path}/chats`, messagesRoutes);
 
 // Listen on port 3300
 const port = 3300;
 server.listen(port, () => {
-  console.log(`Server running on https://localhost:${port}`);
+  console.log(`Server running on https://localhost:${port}/${api_path}/chats`);
 });

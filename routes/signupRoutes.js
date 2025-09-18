@@ -1,5 +1,8 @@
 import express from "express";
-import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
+import {
+  sanitizeInputAdv,
+  createAvatar,
+} from "../app/script/helperFunctions.js";
 
 const router = express.Router();
 const users = []; // {name, avatar}
@@ -47,8 +50,8 @@ router.post("/", (req, res) => {
   }
 
   // redirect to /signup for safe refresh
-
-  return res.redirect("/chat"); 
+  return res.redirect("/signup");
+  //return res.redirect("/chat"); TODO - enable for prod
 });
 
 router.post("/signup/clear", (req, res) => {
