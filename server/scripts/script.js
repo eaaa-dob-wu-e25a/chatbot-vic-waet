@@ -16,5 +16,3 @@ export async function readChats() {
 export async function writeChats(chats) {
   await writeFile(DATA_PATH, JSON.stringify(chats, null, 2), "utf8");
 }
-
-const RES_PATH = path.resolve(__dirname, "../data/responses.json");

@@ -47,7 +47,7 @@ function gotBotReply(userText) {
 // POST /api/v1/chats/:id -- user og bot svar
 router.post("/", async (req, res) => {
   try {
-    const rawText = req.body?.message;
+    const rawText = req.body?.text;
     const text = sanitizeInputAdv(rawText).trim();
 
     chats = await readChats();
@@ -60,16 +60,16 @@ router.post("/", async (req, res) => {
     };
     // user message
     chat.messages.push({
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       date: new Date().toISOString(),
-      text,
+      text: text,
       sender: currentUser.name || "GUEST",
       avatar: currentUser.avatar || createAvatar("Guest"),
     });
 
     // bot reply
     chat.messages.push({
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       date: new Date().toISOString(),
       text: gotBotReply(text),
       sender: "chatbot",

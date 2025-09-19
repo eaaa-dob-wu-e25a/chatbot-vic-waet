@@ -95,21 +95,21 @@ body > div{
 }
 
 /* meta + text inside bubble (optional) */
-.bubble .meta {
-  font-size: 0.8rem;
-  opacity: 0.75;
-  display: flex;
-  gap: .5rem;
-  margin-bottom: .25rem;
-}
-.bubble .text { line-height: 1.4; }
+  .bubble .meta {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    display: flex;
+    gap: .5rem;
+    margin-bottom: .25rem;
+  }
+  .bubble .text { line-height: 1.4; }
 
 /* USER (right) */
-.message-row.user {
+.message-row.GUEST {
   justify-content: flex-end;
 }
-.message-row.user .avatar { order: 2; } /* avatar after bubble */
-.message-row.user .bubble {
+.message-row.GUEST .avatar { order: 2; } /* avatar after bubble */
+.message-row.GUEST .bubble {
   text-align: right;
   border-radius: 20px 20px 2px 20px;
   background-color: rgba(var(--secondary-rgb), 0.7);

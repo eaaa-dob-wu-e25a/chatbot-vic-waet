@@ -107,12 +107,12 @@ server.post("/", (req, res) => {
     });
   }
   // Send data to ESJ template - Render response view (server-side render)
-  res.render("chat", {
-    messages,
-    botReply,
-    avatar: currentUser.avatar,
-    error,
-    currentUser,
-  });
+  // res.render("chat", {
+  //   messages,
+  //   botReply,
+  //   avatar: currentUser.avatar,
+  //   error,
+  //   currentUser,
+  // });
   console.log(error); // TEST
 });

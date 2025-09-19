@@ -128,7 +128,7 @@ function renderMessages(messages) {
       <div class="bubble">
         <div class="meta">
           <span class="who">${m.sender}</span>
-          <span class="when">${new Date(m.date).toLocaleString()}</span>
+          <span class="when">${new Date(m.date).toISOString()}</span>
         </div>
         <div class="text">${escapeHtml(m.text)}</div>
       </div>
@@ -141,7 +141,7 @@ function renderMessages(messages) {
 
 async function handleSubmitMessage(e) {
   e.preventDefault();
-  let message = (messageInput?.value ?? "").trim();
+  let message = messageInput.value.trim();
   if (!message || !currentChatId) return;
 
   try {
