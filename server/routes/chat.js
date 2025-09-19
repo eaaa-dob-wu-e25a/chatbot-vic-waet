@@ -1,9 +1,10 @@
 import express from "express";
 import { readChats, writeChats } from "../scripts/script.js";
 import chatMessagesRouter from "./messages.js";
+import { randomUUID } from 'crypto';
 
 const router = express.Router();
-
+let chats = [];
 // --- IGNORE ---
 // SECTION - Endpoints
 // Base path: /api/v1/chats
@@ -14,20 +15,22 @@ const router = express.Router();
 // DELETE /chats (delete all chats) - implemented
 // DELETE /chats/:id (delete chat by id) - implemented
 
+// TODO: POST
+
 // GET /api/v1/chats
 router.get("/", async (_req, res) => {
   try {
-    const chats = await readChats();
+    chats = await readChats();
     //return a list
     const list = chats.map((c) => {
-      const last = c.messages?.[c.messages.length - 1];
+      //const last = c.messages?.[c.messages.length - 1];
       return {
         id: c.id,
         title: c.title,
         date: c.date,
         messageCount: c.messages?.length ?? 0,
-        lastPreview: last ? last.text : "",
-        lastAt: last ? last.date : c.date,
+        // lastPreview: last ? last.text : "",
+        // lastAt: last ? last.date : c.date,
       };
     });
     res.json({ chats: list }); // object-literal, key = chats, value = list
@@ -39,7 +42,7 @@ router.get("/", async (_req, res) => {
 // GET /api/v1/chats/:id | Display one chat with messages
 router.get("/:id", async (req, res) => {
   try {
-    const chats = await readChats();
+    chats = await readChats();
     const chat = chats.find((c) => c.id === req.params.id);
     if (!chat) return res.status(404).json({ error: "Chat not found" });
     res.json({ chat });
@@ -48,22 +51,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// POST /api/v1/chats
 router.post("/", async (req, res) => {
   try {
     const title = (req.body?.title ?? "New Chat")
-      .toString()
-      .trim()
-      .slice(0, 50);
-    const chats = await readChats();
+
+    chats = await readChats();
     const newChat = {
       id: randomUUID(),
-      title,
+      title: title,
       date: new Date().toISOString(),
       messages: [],
     };
     chats.push(newChat);
     await writeChats(chats);
-    res.status(201).json({ chat: newChat });
+    return res.status(201).json({ chat: newChat });
   } catch (err) {
     console.error(err);
   }
@@ -71,7 +73,7 @@ router.post("/", async (req, res) => {
 
 // delete chat by id
 router.delete("/:id", async (req, res) => {
-  const chats = await readChats();
+  chats = await readChats();
   const chatId = req.params.id;
   const chatIndex = chats.findIndex((c) => c.id === chatId);
   if (chatIndex !== -1) {
@@ -92,6 +94,7 @@ router.delete("/", async (req, res) => {
   }
 });
 
-router.use("/:id/messages", chatMessagesRouter);
+// use /api/v1/chats/:id -- show chats messages
+router.use("/:id", chatMessagesRouter);
 
 export default router;

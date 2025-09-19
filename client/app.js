@@ -2,9 +2,9 @@
 const newChatForm = document.getElementById("new-chat-form");
 const chatsList = document.getElementById("chats-list");
 const chatMessages = document.getElementById("msg-bubble");
-const chatInput = document.getElementById("chat-message-input");
-const inputEl = document.querySelector("chat-title-input");
+const chatTitleInput = document.getElementById("chat-title-input");
 const messageForm = document.getElementById("message-form");
+const messageInput = document.getElementById("chat-message-input");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
 
@@ -58,25 +58,23 @@ function renderChatList(chats) {
   });
 }
 
-async function createNewChat(e) {
-  e.preventDefault(); //prevent form submit
-
-  let chatTitle = (inputEl?.value ?? "").trim();
+async function createNewChat() {
+  let chatTitle = (chatTitleInput?.value ?? "").trim();
   if (!chatTitle) chatTitle = "New Chat";
 
   try {
-    const res = await fetch(chatsUrl, {
+    const res = await fetch(`${chatsUrl}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: chatTitle.substring(0, 50) }),
     });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
-    inputEl && (inputEl.value = "");
-
+    chatTitleInput && (chatTitleInput.value = "");
+    
     await loadChatList(); //refresh sidebar chatlist
     await openChat(data.chat.id); //open created chat
-  } catch (err) {
+  } catch {
     errorDiv.textContent = "Couldn't create chat.";
     errorDiv.style.display = "block";
   }
@@ -93,7 +91,7 @@ async function openChat(chatId) {
   // load + render messages
   await fetchMessages(chatId);
 
-  const titleEl = document.querySelector(".title");
+  let titleEl = document.querySelector(".title");
   if (titleEl) {
     const t = btn?.querySelector(".title")?.textContent?.trim();
     if (t) titleEl.textContent = t;
@@ -102,21 +100,21 @@ async function openChat(chatId) {
 
 async function fetchMessages(chatId) {
   try {
-    const res = await fetch(`/api/v1/chats/${chatId}`);
+    const res = await fetch(`${chatsUrl}/${chatId}`);
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json(); // {chat}
     currentChatId = data.chat.id;
     renderMessages(data.chat.messages);
   } catch (error) {
     console.error("Error: ", error);
-    chatMessages.innerHTML = `<div class="bubble">Could not fetch messages. Try again later.</div>`;
+    chatMessages.innerHTML = `<div class="bubble">Could not fetch messages.</div>`;
   }
 }
 
 function renderMessages(messages) {
   if (!messages?.length) {
     chatMessages.innerHTML = "<div>No messages yet.</div>";
-    return;
+
   } else {
     chatMessages.innerHTML = messages
       .map(
@@ -143,35 +141,30 @@ function renderMessages(messages) {
 
 async function handleSubmitMessage(e) {
   e.preventDefault();
-  const message = chatInput.value.trim();
+  let message = (messageInput?.value ?? "").trim();
   if (!message || !currentChatId) return;
-  errorDiv.style.display = "none";
+
   try {
-    const res = await fetch(`${chatsUrl}/${currentChatId}/messages`, {
+    const res = await fetch(`${chatsUrl}/${currentChatId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: message }),
     });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+
     const data = await res.json();
     renderMessages(data.chat.messages);
-    if (data.error) {
-      errorDiv.textContent = data.error;
-      errorDiv.style.display = "block";
-    }
-    chatInput.value = "";
-  } catch (error) {
+    messageInput.value = "";
+    await loadChatList();
+  } catch {
     errorDiv.textContent = "Server error.";
     errorDiv.style.display = "block";
   }
 }
 
 async function handleResetChat() {
-  errorDiv.style.display = "none";
   try {
-    const res = await fetch(chatsUrl, {
-      method: "DELETE",
-    });
+    const res = await fetch(`${chatsUrl}/${currentChatId}`);
     if (!res.ok) throw new Error();
     await loadChatList();
     renderMessages([]);

@@ -35,54 +35,51 @@
   </header>
   <body>
     <div>
-    <aside class="chats-history">
-      <form
-        id="new-chat-form"
-        style="margin-bottom: 1rem;"
-        autocomplete="off"
-        name="new-chat"
-      >
-        <input
-          type="text"
-          id="chat-title-input"
-          placeholder="Enter chat title"
-          maxlength="50"
-          name="title"
-        />
-        <button class="create primary" id="new-chat" type="submit">
-          New Chat
-        </button>
-      </form>
-      <div id="chats-list"></div>
-    </aside>
-    <main>
-      <section class="chat-container">
-        <span class="title"></span>
-        <div class="flx-center-col glassmorph">
-          <div id="msg-bubble"></div>
-        </div>
-
+      
+      <aside class="chats-history">
+                          <h1 id="title" class="title"></h1>
         <form
-          method="POST"
-          class="flx-center-row"
-          id="chat-form"
+          id="new-chat-form"
+          style="margin-bottom: 1rem;"
           autocomplete="off"
+          name="chats"
         >
           <input
-            class="glassmorph ask-input"
-            id="chat-message-input"
             type="text"
-            name="message"
-            placeholder="Ask me anything"
-            maxlength="250"
-            autocomplete="off"
+            id="chat-title-input"
+            placeholder="Enter chat title"
+            maxlength="50"
+            name="title"
           />
-          <button type="submit" class="primary">Send</button>
-          <button type="button" id="reset-btn" class="primary">Reset</button>
+          <button class="create primary" id="new-chat" type="submit">
+            New Chat
+          </button>
         </form>
-        <div id="error" class="error-message" style="display: none;"></div>
-      </section>
-    </main>
+        <div id="chats-list"></div>
+      </aside>
+      <main>
+        <section class="chat-container">
+
+          <div class="flx-center-col glassmorph">
+            <div id="msg-bubble"></div>
+          </div>
+
+          <form name="messages" class="flx-center-row" id="message-form" autocomplete="off">
+            <input
+              class="glassmorph ask-input"
+              id="chat-message-input"
+              type="text"
+              name="message"
+              placeholder="Ask me anything"
+              maxlength="250"
+              autocomplete="off"
+            />
+            <button type="submit" class="primary">Send</button>
+            <button type="button" id="reset-btn" class="primary">Reset</button>
+          </form>
+          <div id="error" class="error-message" style="display: none;"></div>
+        </section>
+      </main>
     </div>
     <section>
       <form

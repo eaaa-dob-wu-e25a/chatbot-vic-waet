@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 const server = express(); // Create an instance of express
 server.use(cors())
 server.use(express.json())
-server.use(express.static(path.resolve(__dirname, "../client")));
+server.use(express.static(path.resolve(__dirname, "../client"))); // directory = client
 server.use(express.static("./scripts"));
 server.use(express.static("../client/styles"));
 
