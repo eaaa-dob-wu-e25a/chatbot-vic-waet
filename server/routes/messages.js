@@ -25,19 +25,18 @@ async function loadResponses() {
     RESPONSES = [];
   }
 }
-await loadResponses()
+await loadResponses();
 // TODO - fix gotBotReply
 function gotBotReply(userText) {
-  
   const lower = userText.toLowerCase();
   for (const rep of RESPONSES) {
     if ((rep.label || "").toLowerCase() === "fallback") continue;
-    if (rep.keywords?.some(k => lower.includes(k.toLowerCase()))) {
+    if (rep.keywords?.some((k) => lower.includes(k.toLowerCase()))) {
       const list = rep.answers ?? [];
       return list[Math.floor(Math.random() * list.length || "🤖 ...")];
     }
   }
-  const fallback = RESPONSES.find(
+  const fallback = rep.find(
     (r) => (r.label || "").toLowerCase() === "fallback"
   );
   const list = fallback?.answers ?? [];
@@ -55,8 +54,8 @@ router.post("/", async (req, res) => {
     if (!chat) return res.status(404).json({ error: "Chat not found" });
 
     const currentUser = req.session?.user ?? {
-      name: "GUEST",
-      avatar: createAvatar("GUEST"),
+      name: "User",
+      avatar: createAvatar("User"),
     };
     const botAgent = "https://avatar.iran.liara.run/public/job/operator/female";
     // user message
@@ -64,8 +63,8 @@ router.post("/", async (req, res) => {
       id: randomUUID(),
       date: new Date().toISOString(),
       text: text,
-      sender: currentUser.name || "GUEST",
-      avatar: currentUser.avatar || createAvatar("GUEST"),
+      sender: currentUser.name || "User",
+      avatar: currentUser.avatar || createAvatar("User"),
     });
 
     // bot reply
@@ -82,6 +81,7 @@ router.post("/", async (req, res) => {
     return res.json({ chat }); // returnér opdateret chat
   } catch (err) {
     console.error(err);
+    throw new Error("Error:", err);
   }
 });
 

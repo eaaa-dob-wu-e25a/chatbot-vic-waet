@@ -15,9 +15,9 @@
       ],
       "answers": [
         "Hello! 👋",
-        "Hey! What’s on your mind?",
+        "Hey! What&#039;s on your mind?",
         "Hi there — ready when you are.",
-        "Yo - what's up?",
+        "Yo - what&#039;s up?",
         "Hello! What can I do for you?"
       ]
     },
@@ -35,7 +35,7 @@
         "hvordan går det"
       ],
       "answers": [
-        "I’m all code and coffee, but feeling great!",
+        "I am all code and coffee, but feeling great!",
         "Running smoothly. You?",
         "Here and ready to help."
       ]
@@ -53,9 +53,9 @@
       "label": "time",
       "keywords": ["time", "what time is it", "clock"],
       "answers": [
-        "I don’t have a watch, but your OS does 😉",
-        "Time flies when you’re chatting with bots!",
-        "It’s always now."
+        "I don&#039;t have a watch, but your OS does 😉",
+        "Time flies when you&#039;re chatting with bots!",
+        "It&#039;s always now."
       ]
     },
     {
@@ -67,9 +67,10 @@
       "label": "fallback",
       "keywords": [],
       "answers": [
-        "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
-        "I’m not sure I follow. Could you try another way?",
-        "Hmm, that one’s new to me. Want to ask something simpler?"
+        "Unfortunately, I don&#039;t have an answer for that. Try rephrasing 🙂",
+        "I&#039;m not sure I follow. Could you try another way?",
+        "Hmm, that one&#039;s new to me. Want to ask something simpler?",
+        "🤖 ..."
       ]
     }
   ]

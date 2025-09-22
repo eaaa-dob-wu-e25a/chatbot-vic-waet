@@ -45,7 +45,7 @@ function renderChatList(chats) {
       <div class="title">${c.title ?? "Untitled"}</div>
       <div class="meta">
         <span>${new Date(c.lastAt ?? c.date).toLocaleString()}</span>
-        <span>${c.messageCount} beskeder</span>
+        <span class="msg-count">${c.messageCount} beskeder</span>
       </div>
       <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
     </button>`
@@ -71,7 +71,7 @@ async function createNewChat() {
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
     chatTitleInput && (chatTitleInput.value = "");
-    
+
     await loadChatList(); //refresh sidebar chatlist
     await openChat(data.chat.id); //open created chat
   } catch {
@@ -85,6 +85,11 @@ async function openChat(chatId) {
   document
     .querySelectorAll("#chats-list .chat-list-item.is-active")
     .forEach((el) => el.classList.remove("is-active"));
+  
+  if (`[data - chat - id]`) {
+    document.querySelectorAll("#chats-list .chat-list-item.is-active");
+  }
+  
   const btn = document.querySelector(`[data-chat-id="${chatId}"]`);
   if (btn) btn.classList.add("is-active");
 
@@ -106,7 +111,7 @@ async function fetchMessages(chatId) {
     currentChatId = data.chat.id;
     renderMessages(data.chat.messages);
   } catch (error) {
-    console.error("Error: ", error);
+    console.error(error);
     chatMessages.innerHTML = `<div class="bubble">Could not fetch messages.</div>`;
   }
 }
@@ -114,9 +119,7 @@ async function fetchMessages(chatId) {
 function renderMessages(messages) {
   if (!messages?.length) {
     chatMessages.innerHTML = "<div>No messages yet.</div>";
-
   } else {
-    
     chatMessages.innerHTML = messages
       .map(
         (m) =>

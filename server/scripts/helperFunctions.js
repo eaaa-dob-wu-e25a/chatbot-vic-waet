@@ -23,7 +23,7 @@ function getInitials(name) {
   }
 }
 
-function createAvatar(name) {
+function createAvatar(name = "User") {
   const initials = getInitials(name);
   const hue = [...name].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 

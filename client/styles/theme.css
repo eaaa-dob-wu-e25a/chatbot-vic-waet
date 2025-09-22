@@ -72,7 +72,8 @@ small,
   font-size: var(--font-size-sm);
 }
 
-.text-tiny, .caption {
+.text-tiny,
+.caption {
   font-size: var(--font-size-xs);
 }
 
@@ -100,27 +101,55 @@ section {
   width: 100%;
 }
 
+.chat-list-item {
+  width: var(--full-w);
+  border: none;
+  border-bottom: 0.8px solid grey;
+  padding: var(--space-sm);
+  text-align: left;
+  color: var(--text);
+  background-color: transparent;
+  align-items: start;
+  transition: all ease-out 200ms;
+}
+
+.chat-list-item .meta {
+  font-size: small;
+  color: rgba(var(--text-rgb), 0.8);
+}
+
 input {
   font-family: var(--font-family-body);
   font-weight: 300;
-  font-size: large;
+  font-size: medium;
 }
 
-.chat-container input {
-  width: calc(100% / 12 * 6);
-  height: clamp(60px, 2.5vh, 72px);
-
-  padding: var(--space-md);
-  border-radius: var(--border-radius-full);
+.chats-history input {
+  width: calc(100% / 12 * 8);
+  height: clamp(32px, 1vh, 44px);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
   transition: ease-in-out 0.25s outline;
 }
 
-.chat-container input:hover {
+.chats-history button:not(.chat-list-item) {
+  width: calc(100% / 12 * 4);
+}
+
+.chat-container input {
+  width: var(--full-w);
+  height: clamp(50px, 2vh, 62px);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  transition: ease-in-out 0.25s outline;
+}
+
+input:hover{
   outline: rgba(var(--primary-rgb), 0.5) solid 2px;
 }
 
-.chat-container input:active,
-.chat-container input:focus {
+input:active,
+input:focus {
   outline: rgba(var(--primary-rgb), 1) solid 3px;
   outline-offset: 1px;
 }
@@ -130,19 +159,39 @@ input {
   height: var(--full-h);
 }
 
-.chat-container form {
-  /* position: relative; */
-  gap: 0.7rem;
+.chat-container #input-message{
+  width:100%;
+}
+
+.chat-container .ask-input {
+  position:relative;
+}
+
+.chat-container .send-btn{
+  position:absolute;
+  right:0;
+  border:none;
+  color:var(--primary);
+  font-size: var(--font-size-xl);
+  background-color: transparent;
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  transition: background-color ease-in-out 200ms;
+}
+
+.chat-container .send-btn:hover{
+  border:none;
+  background-color: rgba(var(--secondary-rgb), 0.8);
+  cursor: pointer;
 }
 
 .chat-container .submit-btn {
-  position: relative;
   border-radius: var(--border-radius-full);
   border: none;
   background-color: rgba(var(--primary-rgb), 1);
   color: rgba(var(--text-rgb), 1);
   cursor: pointer;
-  mask-image: url("_custom-icons/sparkle.svg");
+  mask-image: url("/client/public/_custom-icons/sparkle.svg");
   mask-repeat: no-repeat;
 
   width: 50px;
@@ -189,7 +238,7 @@ a.link-underline {
   font-size: smaller !important;
   display: inline-block;
   position: relative;
-  bottom:0;
+  bottom: 0;
   padding-bottom: 3px;
   cursor: pointer !important;
 }
@@ -198,7 +247,7 @@ a.link-underline:after {
   content: "";
   position: absolute;
   width: 100%;
-  height: .5px;
+  height: 0.5px;
   bottom: 0;
   left: 0;
   color: rgba(var(--text-rgb), 0.455);
@@ -218,18 +267,18 @@ a.link-underline:hover:after {
 }
 
 .dot {
-    position: fixed;
-    left: 0; 
-    top: 0;
-    width: 12px; 
-    height: 12px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: currentColor;
-    color: rgba(var(--primary-rgb), 0.8);
-    transform: translate(-50%, -50%);
-    will-change: transform;
-  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: currentColor;
+  color: rgba(var(--primary-rgb), 0.8);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
 
 .nav {
   border-radius: var(--border-radius-full);
@@ -272,7 +321,7 @@ button.primary:hover {
   margin: 10px 0;
   border-radius: 5px;
   position: absolute;
-  bottom:0;
+  bottom: 0;
 }
 
 .success-message {
@@ -282,10 +331,10 @@ button.primary:hover {
   margin: 10px 0;
   border-radius: 5px;
   position: absolute;
-  bottom:0;
+  bottom: 0;
 }
 
-.sign-up-terms{
+.sign-up-terms {
   justify-content: space-between;
   height: min(40vh, 100px);
 }
@@ -296,7 +345,7 @@ button.primary:hover {
   text-align: center;
 }
 
-#charCount{
-  position:absolute;
-  bottom:2em;
+#charCount {
+  position: absolute;
+  bottom: 2em;
 }

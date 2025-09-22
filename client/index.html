@@ -35,48 +35,52 @@
   </header>
   <body>
     <div>
-      
       <aside class="chats-history">
-                          <h1 id="title" class="title"></h1>
+        <div id="chats-list" class="glassmorph flx-center-col"></div>
         <form
           id="new-chat-form"
-          style="margin-bottom: 1rem;"
+          style="margin-top: 1rem;"
           autocomplete="off"
           name="chats"
         >
-          <input
-            type="text"
-            id="chat-title-input"
-            placeholder="Enter chat title"
-            maxlength="50"
-            name="title"
-          />
-          <button class="create primary" id="new-chat" type="submit">
-            New Chat
-          </button>
+          <div class="flx-center-row" style="gap: 16px; justify-content: left;">
+            <input
+              type="text"
+              id="chat-title-input"
+              placeholder="Enter chat title"
+              maxlength="250"
+              name="title"
+            />
+            <button class="create util" id="new-chat" type="submit">
+              Add
+            </button>
+          </div>
         </form>
-        <div id="chats-list"></div>
       </aside>
       <main>
-        <section class="chat-container">
 
+        <section class="chat-container">
+                  <h1 id="title" class="title"></h1>
           <div class="flx-center-col glassmorph msg-container">
             <div id="msg-bubble"></div>
+            <div id="input-message">
+              <form class="flx-center-row" id="message-form" autocomplete="off">
+                <input
+                  class="glassmorph ask-input"
+                  id="chat-message-input"
+                  type="text"
+                  name="message"
+                  placeholder="Ask me anything"
+                  maxlength="250"
+                  autocomplete="off"
+                />
+
+                <button type="submit" class="send-btn">Send</button>
+                <!-- <button type="button" id="reset-btn" class="primary">Reset</button> -->
+              </form>
+            </div>
           </div>
 
-          <form class="flx-center-row" id="message-form" autocomplete="off">
-            <input
-              class="glassmorph ask-input"
-              id="chat-message-input"
-              type="text"
-              name="message"
-              placeholder="Ask me anything"
-              maxlength="250"
-              autocomplete="off"
-            />
-            <button type="submit" class="primary">Send</button>
-            <button type="button" id="reset-btn" class="primary">Reset</button>
-          </form>
           <div id="error" class="error-message" style="display: none;"></div>
         </section>
       </main>
