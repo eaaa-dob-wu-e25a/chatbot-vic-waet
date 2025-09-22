@@ -60,7 +60,7 @@ function renderChatList(chats) {
 
 async function createNewChat() {
   let chatTitle = (chatTitleInput?.value ?? "").trim();
-  if (!chatTitle) chatTitle = "New Chat";
+  if (!chatTitle) chatTitle = "Untitled";
 
   try {
     const res = await fetch(`${chatsUrl}`, {

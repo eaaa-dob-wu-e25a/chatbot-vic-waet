@@ -1,6 +1,7 @@
 import express from "express";
 import { readChats, writeChats } from "../scripts/script.js";
 import chatMessagesRouter from "./messages.js";
+import signUpRouter from "./signup.js"
 import { randomUUID } from 'crypto';
 
 const router = express.Router();
@@ -54,7 +55,7 @@ router.get("/:id", async (req, res) => {
 // POST /api/v1/chats
 router.post("/", async (req, res) => {
   try {
-    const title = (req.body?.title ?? "New Chat")
+    const title = (req.body?.title ?? "Untitled")
 
     chats = await readChats();
     const newChat = {
@@ -96,5 +97,6 @@ router.delete("/", async (req, res) => {
 
 // use /api/v1/chats/:id -- show chats messages
 router.use("/:id", chatMessagesRouter);
+// router.use("/:id", signUpRouter);
 
 export default router;

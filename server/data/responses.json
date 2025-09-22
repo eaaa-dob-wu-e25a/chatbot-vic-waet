@@ -27,11 +27,11 @@
       "answers": ["Bye! 👋", "Catch you later.", "Take care!"]
     },
     {
-      "label": "smalltalk_howareyou",
+      "label": "smalltalk",
       "keywords": [
         "how are you",
         "hows it going",
-        "what's up",
+        "whats up",
         "hvordan går det"
       ],
       "answers": [

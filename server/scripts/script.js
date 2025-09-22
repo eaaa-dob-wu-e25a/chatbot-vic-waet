@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DATA_PATH = path.resolve(__dirname, "../data/chats.json");
+
 // --- helpers: read / write local JSON (async/await) ---
 export async function readChats() {
   const txt = await readFile(DATA_PATH, "utf8");

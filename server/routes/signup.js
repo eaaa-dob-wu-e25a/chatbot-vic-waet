@@ -1,18 +1,18 @@
 import express from "express";
 import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const users = []; // {name, avatar}
 
 //GET /signup
 router.get("/", (req, res) => {
   // NOTE: Show signup form + current users
-  res.render("signup", {
-    error: "",
-    success: "",
-    name: "",
-    users,
-  });
+  // res.render("signup", {
+  //   error: "",
+  //   success: "",
+  //   name: "",
+  //   users,
+  // });
 });
 
 //POST /signup

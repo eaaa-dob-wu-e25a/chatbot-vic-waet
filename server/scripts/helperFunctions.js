@@ -23,7 +23,7 @@ function getInitials(name) {
   }
 }
 
-function createAvatar(name = "User") {
+function createAvatar(name) {
   const initials = getInitials(name);
   const hue = [...name].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 
@@ -38,6 +38,13 @@ function createAvatar(name = "User") {
     </svg>
   `;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
+function userAvatars() {
+  // Avatar API
+  // Boys: https://avatar.iran.liara.run/public/boy
+  // Girls: https://avatar.iran.liara.run/public/girl
+  // Initials: https://avatar.iran.liara.run/username?username=[firstname+lastname]
 }
 
 export { sanitizeInputAdv, getInitials, createAvatar };

@@ -69,6 +69,10 @@ body > div{
   );
 }
 
+.msg-container{
+    border-radius: var(--border-radius-sm);
+}
+
 /* rows and avatar */
 .message-row {
   display: flex;

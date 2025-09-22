@@ -1,5 +1,6 @@
 import express from "express";
-import { sanitizeInputAdv, createAvatar, readData } from "../scripts/helperFunctions.js";
+import { createAvatar, sanitizeInputAdv } from "../scripts/helperFunctions";
+import { readChats } from "../scripts/script";
 import { randomUUID } from "crypto";
 
 const server = express();
@@ -8,12 +9,12 @@ let messages = [];
 const data = "../data/responses.json";
 
 server.get("/", async (req, res) => {
-    const messages = await readData(data);
+  const messages = await readData(data);
   fetch(messages)
     .then((resp) => resp.json())
     .then((d) => console.log(d))
-      .catch((err) => console.error(err));
-    return res.json();
+    .catch((err) => console.error(err));
+  return res.json();
 });
 
 server.post("/", (req, res) => {
