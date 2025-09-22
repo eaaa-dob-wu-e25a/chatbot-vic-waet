@@ -14,7 +14,7 @@ let currentChatId = null;
 
 window.addEventListener("DOMContentLoaded", initiate);
 messageForm.addEventListener("submit", handleSubmitMessage);
-resetBtn.addEventListener("click", handleResetChat);
+// resetBtn.addEventListener("click", handleResetChat);
 newChatForm.addEventListener("submit", createNewChat);
 
 async function initiate() {
@@ -69,7 +69,9 @@ async function createNewChat() {
       body: JSON.stringify({ title: chatTitle.substring(0, 50) }),
     });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+   
     const data = await res.json();
+   
     chatTitleInput && (chatTitleInput.value = "");
 
     await loadChatList(); //refresh sidebar chatlist
@@ -81,12 +83,11 @@ async function createNewChat() {
 }
 
 async function openChat(chatId) {
-  // TODO: styling => highlight selected chat
   document
     .querySelectorAll("#chats-list .chat-list-item.is-active")
     .forEach((el) => el.classList.remove("is-active"));
   
-  if (`[data - chat - id]`) {
+  if (`[data-chat-id]`) {
     document.querySelectorAll("#chats-list .chat-list-item.is-active");
   }
   

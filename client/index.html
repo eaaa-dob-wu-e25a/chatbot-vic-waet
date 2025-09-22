@@ -36,6 +36,8 @@
   <body>
     <div>
       <aside class="chats-history">
+        <h1 id="title" class="title"></h1>
+
         <div id="chats-list" class="glassmorph flx-center-col"></div>
         <form
           id="new-chat-form"
@@ -43,24 +45,22 @@
           autocomplete="off"
           name="chats"
         >
-          <div class="flx-center-row" style="gap: 16px; justify-content: left;">
+          <div class="flx-center-row" style="gap: 8px; justify-content: left;">
             <input
               type="text"
               id="chat-title-input"
               placeholder="Enter chat title"
-              maxlength="250"
+              maxlength="50"
               name="title"
             />
-            <button class="create util" id="new-chat" type="submit">
+            <button class="create primary" id="new-chat" type="submit">
               Add
             </button>
           </div>
         </form>
       </aside>
       <main>
-
         <section class="chat-container">
-                  <h1 id="title" class="title"></h1>
           <div class="flx-center-col glassmorph msg-container">
             <div id="msg-bubble"></div>
             <div id="input-message">

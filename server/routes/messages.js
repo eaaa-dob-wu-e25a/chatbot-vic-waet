@@ -36,7 +36,7 @@ function gotBotReply(userText) {
       return list[Math.floor(Math.random() * list.length || "🤖 ...")];
     }
   }
-  const fallback = rep.find(
+  const fallback = RESPONSES.find(
     (r) => (r.label || "").toLowerCase() === "fallback"
   );
   const list = fallback?.answers ?? [];
@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
     chats = await readChats();
     const chat = chats.find((c) => c.id === req.params.id);
     if (!chat) return res.status(404).json({ error: "Chat not found" });
-
+    
     const currentUser = req.session?.user ?? {
       name: "User",
       avatar: createAvatar("User"),
@@ -81,7 +81,7 @@ router.post("/", async (req, res) => {
     return res.json({ chat }); // returnér opdateret chat
   } catch (err) {
     console.error(err);
-    throw new Error("Error:", err);
+    throw new Error(err);
   }
 });
 

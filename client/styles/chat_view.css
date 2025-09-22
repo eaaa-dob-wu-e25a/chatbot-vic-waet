@@ -27,7 +27,7 @@ body > div {
 /* chat layout */
 .chats-history {
   width: var(--full-w);
-  max-width: 400px;
+  max-width: 25vw;
 }
 
 #chats-list {

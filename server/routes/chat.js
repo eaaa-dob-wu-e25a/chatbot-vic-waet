@@ -16,8 +16,6 @@ let chats = [];
 // DELETE /chats (delete all chats) - implemented
 // DELETE /chats/:id (delete chat by id) - implemented
 
-// TODO: POST
-
 // GET /api/v1/chats
 router.get("/", async (_req, res) => {
   try {

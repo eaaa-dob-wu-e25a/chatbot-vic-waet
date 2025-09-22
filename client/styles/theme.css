@@ -176,7 +176,7 @@ input:focus {
   background-color: transparent;
   padding: var(--space-sm);
   border-radius: var(--border-radius-sm);
-  transition: background-color ease-in-out 200ms;
+  transition: all ease-out 2s;
 }
 
 .chat-container .send-btn:hover{
@@ -301,7 +301,7 @@ button.primary {
   background-color: rgba(var(--secondary-rgb), 0.4);
   color: rgba(var(--primary-rgb), 0.8);
   border: 1px solid rgba(var(--primary-rgb), 0.5);
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-sm);
   padding: var(--space-xs);
   font-size: var(--font-size-sm);
 
@@ -313,6 +313,10 @@ button.primary:hover {
   color: rgba(var(--secondary-rgb), 1);
   cursor: pointer;
 }
+
+button.create.primary{
+  padding:2%;
+} 
 
 .error-message {
   color: whitesmoke;
