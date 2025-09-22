@@ -116,9 +116,11 @@ function renderMessages(messages) {
     chatMessages.innerHTML = "<div>No messages yet.</div>";
 
   } else {
+    
     chatMessages.innerHTML = messages
       .map(
-        (m) => `
+        (m) =>
+          `
       <div class="message-row ${m.sender}">
       ${
         m.avatar

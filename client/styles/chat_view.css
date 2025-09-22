@@ -105,11 +105,11 @@ body > div{
   .bubble .text { line-height: 1.4; }
 
 /* USER (right) */
-.message-row.GUEST {
+.message-row.user {
   justify-content: flex-end;
 }
-.message-row.GUEST .avatar { order: 2; } /* avatar after bubble */
-.message-row.GUEST .bubble {
+.message-row.user .avatar { order: 2; } /* avatar after bubble */
+.message-row.user .bubble {
   text-align: right;
   border-radius: 20px 20px 2px 20px;
   background-color: rgba(var(--secondary-rgb), 0.7);

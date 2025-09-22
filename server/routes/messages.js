@@ -31,13 +31,13 @@ function gotBotReply(userText) {
   const lower = userText.toLowerCase();
   for (const rep of RESPONSES) {
     if ((rep.label || "").toLowerCase() === "fallback") continue;
-    if (rep.keywords?.some((k) => lower.includes(k.toLowerCase()))) {
+    if (rep.keywords?.some(k => lower.includes(k.toLowerCase()))) {
       const list = rep.answers ?? [];
       return list[Math.floor(Math.random() * list.length || "🤖 ...")];
     }
   }
   const fallback = RESPONSES.find(
-    (r) => (r.label || "").toLowerCase() === "fallback"
+    r => (r.label || "").toLowerCase() === "fallback"
   );
   const list = fallback?.answers ?? [];
   return list[Math.floor(Math.random() * list.length || "🤖 ...")];
