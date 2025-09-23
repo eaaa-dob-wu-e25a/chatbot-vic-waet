@@ -37,6 +37,10 @@ async function loadChatList() {
 
     const totalChats = data.chats.length;
     chatTotal.innerHTML = `<strong>Total chats: </strong> ${totalChats}`;
+    
+    if (totalChats === 0) {
+      chatTotal.innerHTML = `<h1 style="color:white; background-color:red; font-weight: 500;">Create new chat to continue.</h1>`;
+    }
 
     renderChatList(data.chats);
   } catch (error) {
@@ -113,7 +117,7 @@ async function openChat(chatId) {
   if (titleEl) {
     const t = btn?.querySelector(".title")?.textContent?.trim();
     if (t) titleEl.textContent = t;
-  }
+  } 
 }
 
 async function fetchMessages(chatId) {
@@ -221,13 +225,6 @@ async function handleDeleteChat(e) {
 
   const item = e.target.closest(".chat-list-item");
   if (item) openChat(item.dataset.chatId);
-
-  console.log("click", {
-    target: e.target,
-    delBtn,
-    item,
-    id: delBtn?.dataset.chatId,
-  });
 }
 
 // small XSS guard for rendering text
