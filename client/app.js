@@ -8,6 +8,9 @@ const messageInput = document.getElementById("chat-message-input");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
 
+const chatHeader = document.getElementById("active-chat");
+const chatTotal = document.getElementById("chats-list-total");
+
 const chatsUrl = "/api/v1/chats";
 //const signupUrl = "/api/v1/signup";
 let currentChatId = null;
@@ -16,6 +19,7 @@ window.addEventListener("DOMContentLoaded", initiate);
 messageForm.addEventListener("submit", handleSubmitMessage);
 // resetBtn.addEventListener("click", handleResetChat);
 newChatForm.addEventListener("submit", createNewChat);
+chatsList.addEventListener("click", handleDeleteChat);
 
 async function initiate() {
   await loadChatList();
@@ -30,6 +34,10 @@ async function loadChatList() {
     const res = await fetch(chatsUrl);
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json();
+
+    const totalChats = data.chats.length;
+    chatTotal.innerHTML = `<strong>Total chats: </strong> ${totalChats}`;
+
     renderChatList(data.chats);
   } catch (error) {
     console.error(error);
@@ -41,19 +49,24 @@ function renderChatList(chats) {
   chatsList.innerHTML = chats
     .map(
       (c) => `
-    <button class="chat-list-item" data-chat-id="${c.id}">
+      <div id="chats-list-container" class="flx-center-row">
+    <button type="button" class="chat-list-item" data-chat-id="${c.id}">
       <div class="title">${c.title ?? "Untitled"}</div>
       <div class="meta">
         <span>${new Date(c.lastAt ?? c.date).toLocaleString()}</span>
         <span class="msg-count">${c.messageCount} messages</span>
       </div>
       <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
-    </button>`
+    </button>
+          <button type="button" aria-label="Delete chat ‘${c.title ?? "Untitled"}’" id="chat-item-del" class="chat-del-btn" data-chat-id="${
+        c.id
+      }">x</button>
+          </div>`
     )
     .join("");
 
   // click handlers
-  chatsList.querySelectorAll("[data-chat-id]").forEach((btn) => {
+  chatsList.querySelectorAll(".chat-list-item").forEach((btn) => {
     btn.addEventListener("click", () => openChat(btn.dataset.chatId));
   });
 }
@@ -89,10 +102,6 @@ async function openChat(chatId) {
   document
     .querySelectorAll("#chats-list .chat-list-item.is-active")
     .forEach((el) => el.classList.remove("is-active"));
-
-  if (`[data-chat-id]`) {
-    document.querySelectorAll("#chats-list .chat-list-item.is-active");
-  }
 
   const btn = document.querySelector(`[data-chat-id="${chatId}"]`);
   if (btn) btn.classList.add("is-active");
@@ -172,8 +181,10 @@ async function handleSubmitMessage(e) {
 
 async function handleResetChat() {
   try {
-    const res = await fetch(`${chatsUrl}/${currentChatId}`);
-    if (!res.ok) throw new Error();
+    const res = await fetch(`${chatsUrl}/${currentChatId}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     await loadChatList();
     renderMessages([]);
     currentChatId = null;
@@ -181,6 +192,42 @@ async function handleResetChat() {
     errorDiv.textContent = "Could not reset chat.";
     errorDiv.style.display = "block";
   }
+}
+
+async function handleDeleteChat(e) {
+  const delBtn = e.target.closest(".chat-del-btn");
+  if (delBtn) {
+    e.stopPropagation(); // Avoid opening chat
+    const id = delBtn.dataset.chatId; // using button ID
+
+    try {
+      const res = await fetch(`${chatsUrl}/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (res.status !== 204) {
+        await res.json();
+      }
+      if (id === currentChatId) {
+        currentChatId = null; // 
+        renderMessages([]); // clear messages
+      }
+      await loadChatList(); // sync/load list
+      return;
+    } catch (err) {
+      console.error(err);
+      errorDiv.textContent = "Could not delete chat.";
+      errorDiv.style.display = "block";
+    }
+  }
+
+  const item = e.target.closest(".chat-list-item");
+  if (item) openChat(item.dataset.chatId);
+
+  console.log("click", {
+    target: e.target,
+    delBtn,
+    item,
+    id: delBtn?.dataset.chatId,
+  });
 }
 
 // small XSS guard for rendering text

@@ -77,7 +77,8 @@ router.delete("/:id", async (req, res) => {
   const chatIndex = chats.findIndex((c) => c.id === chatId);
   if (chatIndex !== -1) {
     chats.splice(chatIndex, 1);
-    res.json({ message: "Chat deleted" });
+    await writeChats(chats);
+    res.status(200).json({ message: "Chat deleted successfully", deletedId: chatId });
   } else {
     res.status(404).json({ error: "Chat not found" });
   }

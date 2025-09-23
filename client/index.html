@@ -36,17 +36,19 @@
   <body>
     <div>
       <aside class="chats-history">
-        <h1 id="title" class="title"></h1>
-        <p id="chats-list-total">0</p>
+        <div class="active-chat">
+          <h1 id="title" class="title"></h1>
+          <p id="chats-list-total">0</p>
+        </div>
 
         <div id="chats-list" class="glassmorph flx-center-col"></div>
         <form
           id="new-chat-form"
-          style="margin-top: 1rem;"
+          style="margin-top: 1rem"
           autocomplete="off"
           name="chat"
         >
-          <div class="flx-center-row" style="gap: 8px; justify-content: left;">
+          <div class="flx-center-row" style="gap: 8px; justify-content: left">
             <input
               type="text"
               id="chat-title-input"
@@ -82,13 +84,13 @@
             </div>
           </div>
 
-          <div id="error" class="error-message" style="display: none;"></div>
+          <div id="error" class="error-message" style="display: none"></div>
         </section>
       </main>
     </div>
     <section>
       <form
-        style="margin-bottom: 1rem;"
+        style="margin-bottom: 1rem"
         name="signup"
         id="signup-form"
         autocomplete="off"

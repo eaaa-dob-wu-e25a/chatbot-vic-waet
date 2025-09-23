@@ -58,6 +58,7 @@ router.post("/", async (req, res) => {
       avatar: createAvatar("user"),
     };
     const botAgent = "https://avatar.iran.liara.run/public/job/operator/female";
+    const botAvatar = botAgent ? createAvatar("chatbot") : createAvatar("KamiBo");
     // user message
     chat.messages.push({
       id: randomUUID(),
@@ -75,7 +76,7 @@ router.post("/", async (req, res) => {
       text: gotBotReply(text),
       sender: "chatbot",
       name: "KamiBo",
-      avatar: botAgent,
+      avatar: botAvatar,
       //https://avatar.iran.liara.run/public/job/operator/female
     });
 
