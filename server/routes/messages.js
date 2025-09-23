@@ -54,8 +54,8 @@ router.post("/", async (req, res) => {
     if (!chat) return res.status(404).json({ error: "Chat not found" });
     
     const currentUser = req.session?.user ?? {
-      name: "User",
-      avatar: createAvatar("User"),
+      name: "user",
+      avatar: createAvatar("user"),
     };
     const botAgent = "https://avatar.iran.liara.run/public/job/operator/female";
     // user message
@@ -63,8 +63,8 @@ router.post("/", async (req, res) => {
       id: randomUUID(),
       date: new Date().toISOString(),
       text: text,
-      sender: currentUser.name || "User",
-      avatar: currentUser.avatar || createAvatar("User"),
+      sender: currentUser.name || "user",
+      avatar: currentUser.avatar || createAvatar("user"),
     });
 
     // bot reply
