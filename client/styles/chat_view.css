@@ -137,13 +137,13 @@ body > div {
 }
 
 /* USER (right) */
-.message-row.user {
+.message-row.right-align {
   justify-content: flex-end;
 }
-.message-row.user .avatar {
+.message-row.right-align .avatar {
   order: 2;
 } /* avatar after bubble */
-.message-row.user .bubble {
+.message-row.right-align .bubble {
   text-align: right;
   border-radius: 20px 20px 2px 20px;
   background-color: rgba(var(--secondary-rgb), 0.7);
@@ -151,13 +151,13 @@ body > div {
 }
 
 /* BOT (left) */
-.message-row.chatbot {
+.message-row.left-align {
   justify-content: flex-start;
 }
-.message-row.chatbot .avatar {
+.message-row.left-align .avatar {
   order: 0;
 }
-.message-row.chatbot .bubble {
+.message-row.left-align .bubble {
   text-align: left;
   border-radius: 20px 20px 20px 2px;
   background-color: rgba(var(--background-rgb), 0.5);

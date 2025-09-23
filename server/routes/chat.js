@@ -10,7 +10,7 @@ let chats = [];
 // SECTION - Endpoints
 // Base path: /api/v1/chats
 // GET /chats (get all chats) - implemented
-// POST /chats (send message + get bot reply) - implemented
+// POST /chats (new chat) - implemented
 // GET /chats/:id (get chat by id) - implemented
 // GET /chats/all (get all chats with titles) - implemented
 // DELETE /chats (delete all chats) - implemented
@@ -93,7 +93,7 @@ router.delete("/", async (req, res) => {
   }
 });
 
-// use /api/v1/chats/:id -- show chats messages
+// use /api/v1/chats/:id -- show chats messages. user og bot svar
 router.use("/:id", chatMessagesRouter);
 // router.use("/:id", signUpRouter);
 

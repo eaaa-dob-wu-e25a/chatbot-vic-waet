@@ -113,6 +113,10 @@ section {
   transition: all ease-out 200ms;
 }
 
+.chat-list-item:last-child{
+  border-bottom:none !important;
+}
+
 .chat-list-item .meta {
   font-size: small;
   color: rgba(var(--text-rgb), 0.8);
