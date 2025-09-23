@@ -29,16 +29,40 @@
     <script src="./app.js" defer></script>
   </head>
   <header>
-    <section class="flx-center-row chat-logo">
-      <img src="./public/logo_sm.svg" alt="Logo" />
+    <section class="signup">
+      <form
+        style="margin-bottom: 1rem"
+        name="signup"
+        id="signup-form"
+        autocomplete="off"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Create username"
+          id="signup-input"
+          autocomplete="off"
+        />
+
+        <button type="submit" class="primary smaller-y">Sign up</button>
+      </form>
     </section>
+    <div class="flx-center-row">
+      <h1 id="title" class="title"></h1>
+    </div>
   </header>
+
   <body>
+    <div id="error" class="error-message" style="display: none"></div>
+    <div id="success" class="success-message" style="display: none"></div>
     <div>
       <aside class="chats-history">
         <div class="active-chat">
-          <h1 id="title" class="title"></h1>
-          <p id="chats-list-total">0</p>
+          <section class="chat-logo">
+            <img src="./public/logo_md.svg" alt="Logo" />
+          </section>
+
+          <p id="chats-list-total"></p>
         </div>
 
         <div id="chats-list" class="glassmorph flx-center-col"></div>
@@ -56,12 +80,13 @@
               maxlength="50"
               name="title"
             />
-            <button class="create primary" id="new-chat" type="submit">
+            <button class="smaller-y primary" id="new-chat" type="submit">
               Add
             </button>
           </div>
         </form>
       </aside>
+
       <main>
         <section class="chat-container">
           <div class="flx-center-col glassmorph msg-container">
@@ -83,29 +108,10 @@
               </form>
             </div>
           </div>
-
-          <div id="error" class="error-message" style="display: none"></div>
         </section>
       </main>
     </div>
-    <section>
-      <form
-        style="margin-bottom: 1rem"
-        name="signup"
-        id="signup-form"
-        autocomplete="off"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Create username"
-          id="signup-input"
-          autocomplete="off"
-        />
 
-        <button type="submit" class="primary">Sign up</button>
-      </form>
-    </section>
     <section class="flx-center-col sign-up-terms">
       <!-- <button type="button" class="primary" onclick="location.href='/signup'">
         Create Account

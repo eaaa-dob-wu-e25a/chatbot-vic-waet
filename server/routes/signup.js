@@ -1,26 +1,15 @@
 import express from "express";
 import { sanitizeInputAdv, createAvatar } from "../scripts/helperFunctions.js";
 
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 const users = []; // {name, avatar}
 
-//GET /signup
-router.get("/", (req, res) => {
-  // NOTE: Show signup form + current users
-  // res.render("signup", {
-  //   error: "",
-  //   success: "",
-  //   name: "",
-  //   users,
-  // });
-});
-
-//POST /signup
-router.post("/", (req, res) => {
+router.post("/signup", async (req, res) => {
   let name = sanitizeInputAdv(req.body.name || "");
-  let avatar = createAvatar(name); // NOTE - svg data url (hex bg + initials)
+  let avatar = createAvatar(name);
+  req.session.user = { id, name, gender, avatar };
 
-  // input validaton
+  // input validation
   let error = "";
   if (!name) {
     error = "Please enter a username to continue.";
@@ -31,24 +20,6 @@ router.post("/", (req, res) => {
   } else if (users.some((u) => u.name.toLowerCase() === name.toLowerCase())) {
     error = "Username is already taken.";
   }
-
-  let success = "";
-  if (!error) {
-    success = "Signup successful!";
-    users.push({ name, avatar });
-    // Save current user in session
-    req.session.user = { name, avatar };
-    return res.render("signup", { error, name, users, avatar: "", success });
-  }
-
-  if (error) {
-    // on error: stay on page /signup and show message
-    return res.render("signup", { error, name, users, avatar: "" });
-  }
-
-  // redirect to /signup for safe refresh
-
-  return res.redirect("/chat"); 
 });
 
 router.post("/signup/clear", (req, res) => {

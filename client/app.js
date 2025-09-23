@@ -7,6 +7,7 @@ const messageForm = document.getElementById("message-form");
 const messageInput = document.getElementById("chat-message-input");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
+const successDiv = document.getElementById("success");
 
 const chatHeader = document.getElementById("active-chat");
 const chatTotal = document.getElementById("chats-list-total");
@@ -29,6 +30,8 @@ async function initiate() {
   }
 }
 
+function userCreation() {}
+
 async function loadChatList() {
   try {
     const res = await fetch(chatsUrl);
@@ -37,7 +40,7 @@ async function loadChatList() {
 
     const totalChats = data.chats.length;
     chatTotal.innerHTML = `<strong>Total chats: </strong> ${totalChats}`;
-    
+
     if (totalChats === 0) {
       chatTotal.innerHTML = `<h1 style="color:white; background-color:red; font-weight: 500;">Create new chat to continue.</h1>`;
     }
@@ -62,7 +65,9 @@ function renderChatList(chats) {
       </div>
       <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
     </button>
-          <button type="button" aria-label="Delete chat ‘${c.title ?? "Untitled"}’" id="chat-item-del" class="chat-del-btn" data-chat-id="${
+          <button type="button" aria-label="Delete chat ‘${
+            c.title ?? "Untitled"
+          }’" id="chat-item-del" class="chat-del-btn" data-chat-id="${
         c.id
       }">x</button>
           </div>`
@@ -117,7 +122,7 @@ async function openChat(chatId) {
   if (titleEl) {
     const t = btn?.querySelector(".title")?.textContent?.trim();
     if (t) titleEl.textContent = t;
-  } 
+  }
 }
 
 async function fetchMessages(chatId) {
@@ -211,15 +216,18 @@ async function handleDeleteChat(e) {
         await res.json();
       }
       if (id === currentChatId) {
-        currentChatId = null; // 
+        currentChatId = null; //
         renderMessages([]); // clear messages
       }
+
+      successDiv.style.display = "block";
+      successDiv.textContent = "Chat deleted successfully";
       await loadChatList(); // sync/load list
       return;
     } catch (err) {
       console.error(err);
-      errorDiv.textContent = "Could not delete chat.";
       errorDiv.style.display = "block";
+      errorDiv.textContent = "Could not delete chat.";
     }
   }
 

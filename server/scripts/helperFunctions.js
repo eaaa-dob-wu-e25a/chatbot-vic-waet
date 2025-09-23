@@ -47,4 +47,11 @@ function userAvatars() {
   // Initials: https://avatar.iran.liara.run/username?username=[firstname+lastname]
 }
 
+function popUpMsg(error, success) {
+  let errorMsg = document.getElementById("error");
+  let successMsg = document.getElementById("success");
+
+
+}
+
 export { sanitizeInputAdv, getInitials, createAvatar };

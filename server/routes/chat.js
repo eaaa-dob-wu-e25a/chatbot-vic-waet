@@ -1,8 +1,9 @@
 import express from "express";
 import { readChats, writeChats } from "../scripts/script.js";
 import chatMessagesRouter from "./messages.js";
-import signUpRouter from "./signup.js"
-import { randomUUID } from 'crypto';
+import signUpRouter from "./signup.js";
+import { randomUUID } from "crypto";
+import { createAvatar, sanitizeInputAdv } from "../scripts/helperFunctions.js";
 
 const router = express.Router();
 let chats = [];
@@ -53,7 +54,7 @@ router.get("/:id", async (req, res) => {
 // POST /api/v1/chats
 router.post("/", async (req, res) => {
   try {
-    const title = (req.body?.title ?? "Untitled")
+    const title = req.body?.title ?? "Untitled";
 
     chats = await readChats();
     const newChat = {
@@ -70,6 +71,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+
 // delete chat by id
 router.delete("/:id", async (req, res) => {
   chats = await readChats();
@@ -78,7 +80,9 @@ router.delete("/:id", async (req, res) => {
   if (chatIndex !== -1) {
     chats.splice(chatIndex, 1);
     await writeChats(chats);
-    res.status(200).json({ message: "Chat deleted successfully", deletedId: chatId });
+    res
+      .status(200)
+      .json({ message: "Chat deleted successfully", deletedId: chatId });
   } else {
     res.status(404).json({ error: "Chat not found" });
   }

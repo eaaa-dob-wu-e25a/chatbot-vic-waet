@@ -15,6 +15,11 @@ html {
   height: var(--full-h);
 }
 
+header{
+  display:grid;
+  grid-template-columns: 25% 75%;
+}
+
 /* Base styles */
 body {
   font-family: var(--font-family-body);
@@ -41,7 +46,7 @@ h6 {
 /* Typography scale */
 h1,
 .h1 {
-  font-size: var(--font-size-xxxl);
+  /*font-size: var(--font-size-xxxl);*/
   line-height: var(--line-height-tight);
   margin-bottom: var(--space-md);
 }
@@ -128,7 +133,7 @@ input {
   font-size: medium;
 }
 
-.chats-history input {
+.chats-history input, .signup input {
   width: calc(100% / 12 * 8);
   height: clamp(32px, 1vh, 44px);
   padding: var(--space-sm);
@@ -295,6 +300,10 @@ a.link-underline:hover:after {
   justify-content: space-evenly;
 }
 
+.signup{
+  width:100%;
+}
+
 button.cta-menu {
   width: 4em;
   height: 4em;
@@ -318,12 +327,12 @@ button.primary:hover {
   cursor: pointer;
 }
 
-button.create.primary{
+button.smaller-y.primary{
   padding:2%;
 } 
 
 .error-message {
-  color: whitesmoke;
+  color:var(--background);
   background: #d73131;
   padding: 10px;
   margin: 10px 0;
@@ -333,8 +342,8 @@ button.create.primary{
 }
 
 .success-message {
-  color: whitesmoke;
-  background: #19bf2a;
+  color:var(--background);
+  background: #12a721;
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
