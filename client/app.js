@@ -45,7 +45,7 @@ function renderChatList(chats) {
       <div class="title">${c.title ?? "Untitled"}</div>
       <div class="meta">
         <span>${new Date(c.lastAt ?? c.date).toLocaleString()}</span>
-        <span class="msg-count">${c.messageCount} beskeder</span>
+        <span class="msg-count">${c.messageCount} messages</span>
       </div>
       <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
     </button>`
@@ -58,7 +58,9 @@ function renderChatList(chats) {
   });
 }
 
-async function createNewChat() {
+async function createNewChat(e) {
+  e.preventDefault();
+
   let chatTitle = (chatTitleInput?.value ?? "").trim();
   if (!chatTitle) chatTitle = "Untitled";
 
@@ -69,14 +71,15 @@ async function createNewChat() {
       body: JSON.stringify({ title: chatTitle.substring(0, 50) }),
     });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-   
-    const data = await res.json();
-   
-    chatTitleInput && (chatTitleInput.value = "");
+
+    const data = await res.json(); // { chat }
+
+    chatTitleInput.value = "";
 
     await loadChatList(); //refresh sidebar chatlist
     await openChat(data.chat.id); //open created chat
-  } catch {
+  } catch (err) {
+    console.error(err);
     errorDiv.textContent = "Couldn't create chat.";
     errorDiv.style.display = "block";
   }
@@ -86,11 +89,11 @@ async function openChat(chatId) {
   document
     .querySelectorAll("#chats-list .chat-list-item.is-active")
     .forEach((el) => el.classList.remove("is-active"));
-  
+
   if (`[data-chat-id]`) {
     document.querySelectorAll("#chats-list .chat-list-item.is-active");
   }
-  
+
   const btn = document.querySelector(`[data-chat-id="${chatId}"]`);
   if (btn) btn.classList.add("is-active");
 
@@ -113,7 +116,7 @@ async function fetchMessages(chatId) {
     renderMessages(data.chat.messages);
   } catch (error) {
     console.error(error);
-    chatMessages.innerHTML = `<div class="bubble">Could not fetch messages.</div>`;
+    chatMessages.innerHTML = `<div>Could not fetch messages.</div>`;
   }
 }
 
@@ -122,24 +125,23 @@ function renderMessages(messages) {
     chatMessages.innerHTML = "<div>No messages yet.</div>";
   } else {
     chatMessages.innerHTML = messages
-      .map(
-        (m) =>
-          `
-      <div class="message-row ${m.sender}">
-      ${
-        m.avatar
-          ? `<img class="avatar" src="${m.avatar}" alt="${m.sender}" />`
-          : ""
-      }
+      .map((m) => {
+        const role = (m.sender || "").toLowerCase();
+        const side = role === "user" ? "right-align" : "left-align"; //for layout purposes
+        const who = m.name || m.sender || "Unknown";
+        return `
+      <div class="message-row ${side}">
+      ${m.avatar ? `<img class="avatar" src="${m.avatar}" alt="${who}" />` : ""}
       <div class="bubble">
         <div class="meta">
-          <span class="who">${m.sender}</span>
+          <span class="who">${escapeHtml(who)}</span>
           <span class="when">${new Date(m.date).toISOString()}</span>
         </div>
         <div class="text">${escapeHtml(m.text)}</div>
       </div>
-    </div>`
-      )
+    </div>
+    `;
+      })
       .join("");
   }
   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -163,7 +165,7 @@ async function handleSubmitMessage(e) {
     messageInput.value = "";
     await loadChatList();
   } catch {
-    errorDiv.textContent = "Server error.";
+    errorDiv.textContent = "Could not send message.";
     errorDiv.style.display = "block";
   }
 }

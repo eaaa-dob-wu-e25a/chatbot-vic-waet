@@ -26,7 +26,7 @@ async function loadResponses() {
   }
 }
 await loadResponses();
-// TODO - fix gotBotReply
+
 function gotBotReply(userText) {
   const lower = userText.toLowerCase();
   for (const rep of RESPONSES) {
@@ -63,7 +63,8 @@ router.post("/", async (req, res) => {
       id: randomUUID(),
       date: new Date().toISOString(),
       text: text,
-      sender: currentUser.name || "user",
+      sender: "user",
+      name: currentUser.name || "user",
       avatar: currentUser.avatar || createAvatar("user"),
     });
 
@@ -73,6 +74,7 @@ router.post("/", async (req, res) => {
       date: new Date().toISOString(),
       text: gotBotReply(text),
       sender: "chatbot",
+      name: "KamiBo",
       avatar: botAgent,
       //https://avatar.iran.liara.run/public/job/operator/female
     });
