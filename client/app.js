@@ -93,14 +93,14 @@ async function handleSignup(e) {
     }
 
     // if username already exists = login (for DEMO purposes only)
-    if (res.status === 409) {
-      res = await fetch(`${signupUrl}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "same-origin",
-        body: JSON.stringify({ name }),
-      });
-    }
+    // if (res.status === 409) {
+    //   res = await fetch(`${signupUrl}/login`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     credentials: "same-origin",
+    //     body: JSON.stringify({ name }),
+    //   });
+    // }
 
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
