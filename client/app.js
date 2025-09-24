@@ -8,21 +8,44 @@ const messageInput = document.getElementById("chat-message-input");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
 const successDiv = document.getElementById("success");
+const signupForm = document.getElementById("signup-form");
+const signupInput = document.getElementById("signup-input");
+const greeting = document.getElementById("greet-user");
+const logoutBtn = document.getElementById("logout-btn");
 
 const chatHeader = document.getElementById("active-chat");
 const chatTotal = document.getElementById("chats-list-total");
 
 const chatsUrl = "/api/v1/chats";
+const signupUrl = "/api/v1/signup";
 //const signupUrl = "/api/v1/signup";
 let currentChatId = null;
 
 window.addEventListener("DOMContentLoaded", initiate);
+signupForm.addEventListener("submit", handleSignup);
 messageForm.addEventListener("submit", handleSubmitMessage);
 // resetBtn.addEventListener("click", handleResetChat);
 newChatForm.addEventListener("submit", createNewChat);
 chatsList.addEventListener("click", handleDeleteChat);
+logoutBtn.addEventListener("click", handleLogout);
 
 async function initiate() {
+  const res = await fetch(`${signupUrl}/me`);
+  if (res.ok) {
+    const { user } = await res.json();
+    // save user globally
+    window.currentUser = user;
+
+    greeting && (greeting.textContent = `Hello ${user.name}`);
+    signupForm && (signupForm.style.display = "none");
+    logoutBtn && (logoutBtn.style.display = "inline-flex");
+  } else {
+    greeting && (greeting.textContent = `Signup or log in to continue`);
+    signupForm && (signupForm.style.display = "block");
+    logoutBtn && (logoutBtn.style.display = "none");
+    window.currentUser = null;
+  }
+
   await loadChatList();
   const first = chatsList.querySelector("[data-chat-id]");
   if (first) {
@@ -30,12 +53,116 @@ async function initiate() {
   }
 }
 
-function userCreation() {}
+async function handleSignup(e) {
+  e.preventDefault();
+  const name = (signupInput?.value || "").trim();
+
+  errorDiv.style.display = "none";
+  successDiv.style.display = "none";
+  logoutBtn.style.display = "none";
+
+  if (!name) {
+    errorDiv.textContent = "Enter a username.";
+    errorDiv.style.display = "block";
+    return;
+  }
+  try {
+    const res = await fetch(signupUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name.substring(0, 40) }),
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      errorDiv.textContent = data.error || `Signup failed (${res.status})`;
+      errorDiv.style.display = "block";
+
+      return;
+    }
+    // save new user globally
+    window.currentUser = data.user;
+
+    signupInput.value = "";
+    greeting.textContent = `Hello ${data.user.name}`;
+    signupForm.style.display = "none";
+    logoutBtn.style.display = "block";
+
+    successDiv.textContent = "Signed in successfully!";
+    successDiv.style.display = "block";
+
+    await loadChatList();
+  } catch (err) {
+    errorDiv.textContent = "Network error";
+    errorDiv.style.display = "block";
+  }
+}
+
+async function deleteAllUsers(e) {
+  e.preventDefault();
+
+  const id = window.currentUser?.id;
+  if (!id) {
+    if (errorDiv) {
+      errorDiv.textContent = "No user is signed in.";
+      errorDiv.style.display = "block";
+    }
+    return;
+  }
+
+  try {
+    const res = await fetch(`${signupUrl}/clear`, { method: "DELETE" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    currentChatId = null;
+    renderMessages([]);
+    if (signupForm) signupForm.style.display = "block";
+    await loadChatList();
+  } catch (err) {
+    if (errorDiv) {
+      errorDiv.textContent = "Deletion failed. Try again.";
+      errorDiv.style.display = "block";
+    }
+  }
+}
+
+// logout
+async function handleLogout(e) {
+  e.preventDefault();
+  const id = window.currentUser?.id;
+  if (!id) {
+    if (errorDiv) {
+      errorDiv.textContent = "No user is signed in.";
+      errorDiv.style.display = "block";
+    }
+    return;
+  }
+
+  try {
+    const res = await fetch(`${signupUrl}/clear`, { method: "DELETE" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    window.currentUser = null;
+    renderMessages([]);
+
+    signupForm && (signupForm.style.display = "block");
+    greeting && (greeting.textContent = "Sign in to continue");
+    logoutBtn && (logoutBtn.style.display = "none");
+
+    await loadChatList();
+  } catch (err) {
+    console.error(err);
+    if (errorDiv) {
+      errorDiv.textContent = "Logout failed. Try again.";
+      errorDiv.style.display = "block";
+    }
+  }
+}
 
 async function loadChatList() {
   try {
     const res = await fetch(chatsUrl);
-    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
 
     const totalChats = data.chats.length;
@@ -92,7 +219,7 @@ async function createNewChat(e) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: chatTitle.substring(0, 50) }),
     });
-    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
 
     const data = await res.json(); // { chat }
 
@@ -153,7 +280,13 @@ function renderMessages(messages) {
       <div class="bubble">
         <div class="meta">
           <span class="who">${escapeHtml(who)}</span>
-          <span class="when">${new Date(m.date).toISOString()}</span>
+          <span class="when">
+          ${new Intl.DateTimeFormat("da-DK", {
+            dataStyle: "medium",
+            timeStyle: "short",
+            timeZone: "Europe/Copenhagen",
+          }).format(new Date(m.date))}
+          </span>
         </div>
         <div class="text">${escapeHtml(m.text)}</div>
       </div>

@@ -32,7 +32,7 @@ let api_v = "v1"; // api version
 const api_path = `api/${api_v}`;
 
 server.use(`/${api_path}/chats`, chatRoutes);
-//server.use(`/${api_path}/signup`, signupRoutes);
+server.use(`/${api_path}/signup`, signupRoutes);
 
 
 // Listen on port 3300

@@ -7,8 +7,8 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { randomUUID } from "crypto";
 
-const router = express.Router({ mergeParams: true });
-// mergeParams = så :id fra parent (/api/v1/chats/:id/messages) er tilgængelig her
+const router = express.Router({ mergeParams: true }); // mergeParams = så :id fra parent (/api/v1/chats/:id) er tilgængelig her
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 let chats = [];
@@ -52,13 +52,15 @@ router.post("/", async (req, res) => {
     chats = await readChats();
     const chat = chats.find((c) => c.id === req.params.id);
     if (!chat) return res.status(404).json({ error: "Chat not found" });
-    
+
     const currentUser = req.session?.user ?? {
       name: "user",
       avatar: createAvatar("user"),
     };
     const botAgent = "https://avatar.iran.liara.run/public/job/operator/female";
-    const botAvatar = botAgent ? createAvatar("chatbot") : createAvatar("KamiBo");
+    const botAvatar = "chatbot"
+      ? botAgent
+      : createAvatar("KamiBo");
     // user message
     chat.messages.push({
       id: randomUUID(),
