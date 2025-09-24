@@ -3,6 +3,7 @@ function sanitizeInputAdv(input) {
   if (typeof input !== "string") return "";
 
   return input
+    .normalize("NFC")
     .replace(/[<>'""]/g, "") // Removes potential dangerous characters
     .replace(/script/gi, "") // Removes the word "script"
     .replace(/\s+/g, " ") // collapse whitespace
@@ -40,18 +41,7 @@ function createAvatar(name = "user") {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-function userAvatars() {
-  // Avatar API
-  // Boys: https://avatar.iran.liara.run/public/boy
-  // Girls: https://avatar.iran.liara.run/public/girl
-  // Initials: https://avatar.iran.liara.run/username?username=[firstname+lastname]
-}
-
-function popUpMsg(error, success) {
-  let errorMsg = document.getElementById("error");
-  let successMsg = document.getElementById("success");
 
 
-}
 
 export { sanitizeInputAdv, getInitials, createAvatar };

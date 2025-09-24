@@ -33,61 +33,63 @@ function gotBotReply(userText) {
     if ((rep.label || "").toLowerCase() === "fallback") continue;
     if (rep.keywords?.some((k) => lower.includes(k.toLowerCase()))) {
       const list = rep.answers ?? [];
-      return list[Math.floor(Math.random() * list.length || "🤖 ...")];
+      if (list.length) return list[Math.floor(Math.random() * list.length)];
+      return "🤖 ..."
     }
   }
   const fallback = RESPONSES.find(
     (r) => (r.label || "").toLowerCase() === "fallback"
   );
   const list = fallback?.answers ?? [];
-  return list[Math.floor(Math.random() * list.length || "🤖 ...")];
+  if (list.length) return list[Math.floor(Math.random() * list.length)];
+  return "🤖 ..."
+
 }
 
 // POST /api/v1/chats/:id -- user og bot svar
 router.post("/", async (req, res) => {
-  try {
-    const rawText = req.body?.text;
-    const text = sanitizeInputAdv(rawText).trim();
+  const activeUser = req.session?.user;
+  if (!activeUser) return res.status(401).json({ error: "Not signed in" });
+  
+  const rawText = req.body?.text;
+  const text = sanitizeInputAdv(rawText).trim();
+  if (!text) return res.status(400).json({ error: "Message text is required" });
 
-    chats = await readChats();
-    const chat = chats.find((c) => c.id === req.params.id);
-    if (!chat) return res.status(404).json({ error: "Chat not found" });
+  chats = await readChats();
+  const chat = chats.find((c) => c.id === req.params.id && c.ownerId === activeUser.id);
+  if (!chat) return res.status(404).json({ error: "Chat not found" });
 
-    const currentUser = req.session?.user ?? {
-      name: "user",
-      avatar: createAvatar("user"),
-    };
-    const botAgent = "https://avatar.iran.liara.run/public/job/operator/female";
-    const botAvatar = "chatbot"
-      ? botAgent
-      : createAvatar("KamiBo");
-    // user message
-    chat.messages.push({
-      id: randomUUID(),
-      date: new Date().toISOString(),
-      text: text,
-      sender: "user",
-      name: currentUser.name || "user",
-      avatar: currentUser.avatar || createAvatar("user"),
-    });
+  // const currentUser = req.session?.user ?? {
+  //   name: "user",
+  //   avatar: createAvatar("user"),
+  // };
 
-    // bot reply
-    chat.messages.push({
-      id: randomUUID(),
-      date: new Date().toISOString(),
-      text: gotBotReply(text),
-      sender: "chatbot",
-      name: "KamiBo",
-      avatar: botAvatar,
-      //https://avatar.iran.liara.run/public/job/operator/female
-    });
+  // user message
+  chat.messages.push({
+    id: randomUUID(),
+    date: new Date().toISOString(),
+    text: text,
+    sender: "user",
+    name: activeUser.name,
+    avatar: activeUser.avatar
+  });
+  
+  // simulate delay on bot response
+  await new Promise(r => setTimeout(r, 700)) // 0.7 sec
+  
+  // bot reply
+  chat.messages.push({
+    id: randomUUID(),
+    date: new Date().toISOString(),
+    text: gotBotReply(text),
+    sender: "chatbot",
+    name: "KamiBo",
+    avatar: `https://avatar.iran.liara.run/username?username=KamiBo`
+  });
 
-    await writeChats(chats);
-    return res.json({ chat }); // returnér opdateret chat
-  } catch (err) {
-    console.error(err);
-    throw new Error(err);
-  }
+  await writeChats(chats);
+  return res.json({ chat }); // returnér opdateret chat
+
 });
 
 // router.use("/", botLogicRoute);

@@ -1,3 +1,5 @@
+import lockUI from "./front/lockUI.js";
+import toast from "./ui/toast.js";
 //FRONTEND
 const newChatForm = document.getElementById("new-chat-form");
 const chatsList = document.getElementById("chats-list");
@@ -7,19 +9,21 @@ const messageForm = document.getElementById("message-form");
 const messageInput = document.getElementById("chat-message-input");
 const resetBtn = document.getElementById("reset-btn");
 const errorDiv = document.getElementById("error");
-const successDiv = document.getElementById("success");
 const signupForm = document.getElementById("signup-form");
 const signupInput = document.getElementById("signup-input");
 const greeting = document.getElementById("greet-user");
 const logoutBtn = document.getElementById("logout-btn");
+const submitSignup = document.getElementById("signup")
+const loginTxt = document.getElementById("login-info");
 
 const chatHeader = document.getElementById("active-chat");
 const chatTotal = document.getElementById("chats-list-total");
 
 const chatsUrl = "/api/v1/chats";
-const signupUrl = "/api/v1/signup";
+const signupUrl = "/api/v1/profile";
 //const signupUrl = "/api/v1/signup";
 let currentChatId = null;
+let titleEl = document.querySelector(".title");
 
 window.addEventListener("DOMContentLoaded", initiate);
 signupForm.addEventListener("submit", handleSignup);
@@ -29,101 +33,132 @@ newChatForm.addEventListener("submit", createNewChat);
 chatsList.addEventListener("click", handleDeleteChat);
 logoutBtn.addEventListener("click", handleLogout);
 
+const defaultGreeting = "Create a username and start chatting!"
+
 async function initiate() {
-  const res = await fetch(`${signupUrl}/me`);
+  const res = await fetch(`${signupUrl}/me`, { credentials: "same-origin" });
   if (res.ok) {
     const { user } = await res.json();
-    // save user globally
     window.currentUser = user;
 
+    //ui
     greeting && (greeting.textContent = `Hello ${user.name}`);
-    signupForm && (signupForm.style.display = "none");
-    logoutBtn && (logoutBtn.style.display = "inline-flex");
-  } else {
-    greeting && (greeting.textContent = `Signup or log in to continue`);
-    signupForm && (signupForm.style.display = "block");
-    logoutBtn && (logoutBtn.style.display = "none");
-    window.currentUser = null;
-  }
+    lockUI(false);
+    await loadChatList();
 
-  await loadChatList();
-  const first = chatsList.querySelector("[data-chat-id]");
-  if (first) {
-    first.click();
+    const first = chatsList.querySelector("[data-chat-id]");
+    if (first) first.click();
+  } else {
+    loggedOutUI()
+    lockUI(true);
   }
+}
+
+function enterLoginMode() {
+  window.authMode = "login";
+  if (signupInput) {
+    greeting && (greeting.textContent = "");
+    loginTxt && (loginTxt.innerHTML = "")
+
+    signupInput.placeholder = "Enter username to log in";
+    signupInput.focus();
+  }
+  if (submitSignup) submitSignup.textContent = "Log in";
 }
 
 async function handleSignup(e) {
   e.preventDefault();
   const name = (signupInput?.value || "").trim();
+  if (!name) return toast({ error: "Enter a username" });
 
-  errorDiv.style.display = "none";
-  successDiv.style.display = "none";
-  logoutBtn.style.display = "none";
-
-  if (!name) {
-    errorDiv.textContent = "Enter a username.";
-    errorDiv.style.display = "block";
-    return;
-  }
   try {
-    const res = await fetch(signupUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name.substring(0, 40) }),
-    });
+    let res;
+
+    // if authentication mode is login or if user exists => login
+    if (window.authMode === "login") {
+      res = await fetch(`${signupUrl}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ name }),
+      });
+    } else {
+      //create username
+      res = await fetch(signupUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ name: name.substring(0, 40) }),
+      })
+    }
+
+    // if username already exists = login (for DEMO purposes only)
+    if (res.status === 409) {
+      res = await fetch(`${signupUrl}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ name }),
+      });
+    }
 
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
-      errorDiv.textContent = data.error || `Signup failed (${res.status})`;
-      errorDiv.style.display = "block";
-
+      toast({ error: data.error || `Authentication failed (${res.status})` });
       return;
     }
     // save new user globally
     window.currentUser = data.user;
 
     signupInput.value = "";
-    greeting.textContent = `Hello ${data.user.name}`;
-    signupForm.style.display = "none";
-    logoutBtn.style.display = "block";
-
-    successDiv.textContent = "Signed in successfully!";
-    successDiv.style.display = "block";
+    greeting && (greeting.textContent = `Hello, ${data.user.name}!`);
+    loginTxt && (loginTxt.innerHTML = "")
+    lockUI(false)
+    toast({ success: "Signed in successfully!" })
 
     await loadChatList();
-  } catch (err) {
-    errorDiv.textContent = "Network error";
-    errorDiv.style.display = "block";
+    const first = chatsList.querySelector("[data-chat-id]");
+    if (first) first.click();
+
+    //reset mode
+    window.authMode = undefined;
+    if (submitSignup) submitSignup.textContent = "Sign up"
+    signupInput.placeholder = "Create username";
+  } catch {
+    toast({ error: "Network error" })
   }
 }
 
-async function deleteAllUsers(e) {
-  e.preventDefault();
+function loggedOutUI() {
+  window.currentUser = null;
+  currentChatId = null;
 
-  const id = window.currentUser?.id;
-  if (!id) {
-    if (errorDiv) {
-      errorDiv.textContent = "No user is signed in.";
-      errorDiv.style.display = "block";
+  // lock ui
+  lockUI(true);
+  greeting && (greeting.textContent = defaultGreeting);
+  titleEl && (titleEl.textContent = "")
+  // reset chats list
+  chatTotal && (chatTotal.textContent = "");
+  chatsList.innerHTML =
+    "<div class='flx-center-col' style='height:100%; width: 100%; align-items:center'>" +
+    "<p>No chats yet.</p>" +
+    "</div>";
+  loginTxt.innerHTML = "<div style='height:100%; width: 100%; align-items:center'>" +
+    "<p>..or <a class='link js-login-trigger'>log in</a> to chat.</p>" +
+    "</div>"
+
+  chatMessages.innerHTML = "";
+  signupInput.placeholder = "Create username";
+  document
+    .querySelectorAll('#chats-list .chat-list-item.is-active')
+    .forEach(el => el.classList.remove('is-active'));
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".js-login-trigger")) {
+      enterLoginMode();
     }
-    return;
-  }
+  });
 
-  try {
-    const res = await fetch(`${signupUrl}/clear`, { method: "DELETE" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    currentChatId = null;
-    renderMessages([]);
-    if (signupForm) signupForm.style.display = "block";
-    await loadChatList();
-  } catch (err) {
-    if (errorDiv) {
-      errorDiv.textContent = "Deletion failed. Try again.";
-      errorDiv.style.display = "block";
-    }
-  }
 }
 
 // logout
@@ -132,50 +167,54 @@ async function handleLogout(e) {
   const id = window.currentUser?.id;
   if (!id) {
     if (errorDiv) {
-      errorDiv.textContent = "No user is signed in.";
-      errorDiv.style.display = "block";
+      toast({ error: "No user is signed in" })
     }
     return;
   }
 
   try {
-    const res = await fetch(`${signupUrl}/clear`, { method: "DELETE" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetch(`${signupUrl}/clear`, { method: "DELETE", credentials: "same-origin" });
+    if (!(res.ok)) {
+      let msg = `Error ${res.status}`
+      try {
+        const j = await res.json()
+        if (j?.error) msg = j.error;
+      } catch { }
+      return toast({ error: msg });
+    }
 
     window.currentUser = null;
     renderMessages([]);
 
-    signupForm && (signupForm.style.display = "block");
-    greeting && (greeting.textContent = "Sign in to continue");
-    logoutBtn && (logoutBtn.style.display = "none");
-
-    await loadChatList();
+    lockUI(true);
+    toast({ success: "Logout complete. Come back soon!" });
+    loggedOutUI();
   } catch (err) {
     console.error(err);
-    if (errorDiv) {
-      errorDiv.textContent = "Logout failed. Try again.";
-      errorDiv.style.display = "block";
-    }
+    toast({ error: "Logout failed." })
+
   }
 }
 
 async function loadChatList() {
   try {
-    const res = await fetch(chatsUrl);
+    const res = await fetch(chatsUrl, { credentials: "same-origin" });
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
 
     const totalChats = data.chats.length;
-    chatTotal.innerHTML = `<strong>Total chats: </strong> ${totalChats}`;
 
-    if (totalChats === 0) {
-      chatTotal.innerHTML = `<h1 style="color:white; background-color:red; font-weight: 500;">Create new chat to continue.</h1>`;
+    if (totalChats > 0) {
+      chatTotal.innerHTML = `<strong>Total chats: </strong> ${totalChats}`;
+    } else {
+      chatTotal.innerHTML = `<h1 style="font-weight: 500;">Get started by creating a chat!</h1>`;
     }
 
     renderChatList(data.chats);
   } catch (error) {
     console.error(error);
     chatsList.innerHTML = "<div>Could not fetch chats.</div>";
+    chatTotal && (chatTotal.textContent = "");
   }
 }
 
@@ -192,11 +231,9 @@ function renderChatList(chats) {
       </div>
       <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
     </button>
-          <button type="button" aria-label="Delete chat ‘${
-            c.title ?? "Untitled"
-          }’" id="chat-item-del" class="chat-del-btn" data-chat-id="${
-        c.id
-      }">x</button>
+          <button type="button" aria-label="Delete chat ‘${c.title ?? "Untitled"
+        }’" id="chat-item-del" class="chat-del-btn" data-chat-id="${c.id
+        }">x</button>
           </div>`
     )
     .join("");
@@ -217,20 +254,20 @@ async function createNewChat(e) {
     const res = await fetch(`${chatsUrl}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
       body: JSON.stringify({ title: chatTitle.substring(0, 50) }),
     });
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
 
     const data = await res.json(); // { chat }
-
     chatTitleInput.value = "";
+    toast({ success: "Chat created successfully" });
 
     await loadChatList(); //refresh sidebar chatlist
     await openChat(data.chat.id); //open created chat
   } catch (err) {
     console.error(err);
-    errorDiv.textContent = "Couldn't create chat.";
-    errorDiv.style.display = "block";
+    toast({ error: "Couldn't create chat" });
   }
 }
 
@@ -245,7 +282,6 @@ async function openChat(chatId) {
   // load + render messages
   await fetchMessages(chatId);
 
-  let titleEl = document.querySelector(".title");
   if (titleEl) {
     const t = btn?.querySelector(".title")?.textContent?.trim();
     if (t) titleEl.textContent = t;
@@ -254,7 +290,7 @@ async function openChat(chatId) {
 
 async function fetchMessages(chatId) {
   try {
-    const res = await fetch(`${chatsUrl}/${chatId}`);
+    const res = await fetch(`${chatsUrl}/${chatId}`, { credentials: "same-origin" });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
     const data = await res.json(); // {chat}
     currentChatId = data.chat.id;
@@ -282,10 +318,9 @@ function renderMessages(messages) {
           <span class="who">${escapeHtml(who)}</span>
           <span class="when">
           ${new Intl.DateTimeFormat("da-DK", {
-            dataStyle: "medium",
-            timeStyle: "short",
-            timeZone: "Europe/Copenhagen",
-          }).format(new Date(m.date))}
+          timeStyle: "short",
+          timeZone: "Europe/Copenhagen",
+        }).format(new Date(m.date))}
           </span>
         </div>
         <div class="text">${escapeHtml(m.text)}</div>
@@ -307,6 +342,7 @@ async function handleSubmitMessage(e) {
     const res = await fetch(`${chatsUrl}/${currentChatId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
       body: JSON.stringify({ text: message }),
     });
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
@@ -316,8 +352,7 @@ async function handleSubmitMessage(e) {
     messageInput.value = "";
     await loadChatList();
   } catch {
-    errorDiv.textContent = "Could not send message.";
-    errorDiv.style.display = "block";
+    toast({ error: "Could not send message." });
   }
 }
 
@@ -325,14 +360,14 @@ async function handleResetChat() {
   try {
     const res = await fetch(`${chatsUrl}/${currentChatId}`, {
       method: "DELETE",
+      credentials: "same-origin"
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     await loadChatList();
     renderMessages([]);
     currentChatId = null;
   } catch {
-    errorDiv.textContent = "Could not reset chat.";
-    errorDiv.style.display = "block";
+    toast({ error: "Could not reset chat." });
   }
 }
 
@@ -343,7 +378,7 @@ async function handleDeleteChat(e) {
     const id = delBtn.dataset.chatId; // using button ID
 
     try {
-      const res = await fetch(`${chatsUrl}/${id}`, { method: "DELETE" });
+      const res = await fetch(`${chatsUrl}/${id}`, { method: "DELETE", credentials: "same-origin" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       if (res.status !== 204) {
         await res.json();
@@ -352,15 +387,22 @@ async function handleDeleteChat(e) {
         currentChatId = null; //
         renderMessages([]); // clear messages
       }
+      toast({ success: "Chat deleted succesfully" });
 
-      successDiv.style.display = "block";
-      successDiv.textContent = "Chat deleted successfully";
       await loadChatList(); // sync/load list
+      const first = chatsList.querySelector("[data-chat-id]");
+      if (first) {
+        openChat(first.dataset.chatId);
+      } else {
+        currentChatId = null;
+        renderMessages([]);
+        document.querySelector(".title") && (document.querySelector(".title").textContent = "");
+        chatMessages.innerHTML = `<div>No chats yet. Create a new chat to get started.</div>`;
+      }
       return;
     } catch (err) {
       console.error(err);
-      errorDiv.style.display = "block";
-      errorDiv.textContent = "Could not delete chat.";
+      toast({ error: "Could not delete chat" });
     }
   }
 

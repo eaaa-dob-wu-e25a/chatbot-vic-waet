@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="./styles/theme.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/chat_view.css" />
-    <script src="./app.js" defer></script>
+    <script type="module" src="./app.js" defer></script>
   </head>
   <header>
     <section class="signup">
@@ -39,7 +39,7 @@
           Logout
         </button>
       </div>
-      <a></a>
+
       <form
         style="margin-bottom: 1rem"
         name="signup"
@@ -52,10 +52,12 @@
           placeholder="Create username"
           id="signup-input"
           autocomplete="off"
+          maxlength="40"
         />
 
-        <button type="submit" class="primary smaller-y">Sign up</button>
+        <button type="submit" class="primary smaller-y" id="signup">Sign up</button>
       </form>
+      <p id="login-info"></p>
     </section>
     <div class="flx-center-row">
       <h1 id="title" class="title"></h1>
@@ -63,8 +65,9 @@
   </header>
 
   <body>
-    <div id="error" class="error-message" style="display: none"></div>
-    <div id="success" class="success-message" style="display: none"></div>
+    <div id="error" class="toast toast--error" aria-live="polite"></div>
+    <div id="success" class="toast toast--success" aria-live="polite"></div>
+
     <div>
       <aside class="chats-history">
         <div class="active-chat">
@@ -74,11 +77,9 @@
 
           <p id="chats-list-total"></p>
         </div>
-
-        <div id="chats-list" class="glassmorph flx-center-col"></div>
         <form
           id="new-chat-form"
-          style="margin-top: 1rem"
+          style="margin-bottom: 1rem"
           autocomplete="off"
           name="chat"
         >
@@ -91,10 +92,12 @@
               name="title"
             />
             <button class="smaller-y primary" id="new-chat" type="submit">
-              Add
+              Create
             </button>
           </div>
         </form>
+        <div id="chats-list" class="glassmorph flx-center-col"></div>
+
       </aside>
 
       <main>
@@ -136,7 +139,6 @@
       </p> -->
     </section>
 
-    <div class="dot" id="dot" aria-hidden="true"></div>
   </body>
   <!-- <script>
     fetch('https://dummyjson.com/produts')
