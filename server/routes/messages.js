@@ -59,11 +59,6 @@ router.post("/", async (req, res) => {
   const chat = chats.find((c) => c.id === req.params.id && c.ownerId === activeUser.id);
   if (!chat) return res.status(404).json({ error: "Chat not found" });
 
-  // const currentUser = req.session?.user ?? {
-  //   name: "user",
-  //   avatar: createAvatar("user"),
-  // };
-
   // user message
   chat.messages.push({
     id: randomUUID(),
@@ -74,7 +69,7 @@ router.post("/", async (req, res) => {
     avatar: activeUser.avatar
   });
   
-  // simulate delay on bot response
+  // simulate delay on bot response (doesnt work)
   await new Promise(r => setTimeout(r, 700)) // 0.7 sec
   
   // bot reply
@@ -92,6 +87,5 @@ router.post("/", async (req, res) => {
 
 });
 
-// router.use("/", botLogicRoute);
 
 export default router;

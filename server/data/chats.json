@@ -409,103 +409,63 @@
     ]
   },
   {
-    "id": "feee3d3a-e5f3-4b79-ae5e-e74c68d69557",
-    "ownerId": "91ac7c3c-14a5-4618-befe-0976fc2020ae",
-    "title": "newchat",
-    "date": "2025-09-24T18:20:09.761Z",
+    "id": "524eb7ec-a9e6-478c-9f26-7fa17db7afcb",
+    "ownerId": "5994a0ff-3c2c-413d-a35e-9aab6d10fb1d",
+    "title": "nicolai chat",
+    "date": "2025-09-24T18:32:54.013Z",
     "messages": [
       {
-        "id": "adb841ca-9fd8-4432-948c-875225d2112d",
-        "date": "2025-09-24T18:20:12.840Z",
+        "id": "e98f3453-924b-42b4-8d9b-f59eeb5bc710",
+        "date": "2025-09-24T18:32:56.504Z",
+        "text": "jhej",
+        "sender": "user",
+        "name": "nicolaí",
+        "avatar": "https://avatar.iran.liara.run/username?username=nicola%C3%AD"
+      },
+      {
+        "id": "3ff56739-5371-4ae9-b449-edee59b25abd",
+        "date": "2025-09-24T18:32:57.204Z",
+        "text": "Hey! What’s on your mind?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "54cc770e-9e95-47d5-9e5a-6631215fc13d",
+        "date": "2025-09-24T18:32:58.415Z",
+        "text": "farvel",
+        "sender": "user",
+        "name": "nicolaí",
+        "avatar": "https://avatar.iran.liara.run/username?username=nicola%C3%AD"
+      },
+      {
+        "id": "e81b2451-3ed0-4dec-b892-61d795fe5434",
+        "date": "2025-09-24T18:32:59.116Z",
+        "text": "See ya!",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "0d257a92-3e3e-43da-8f9d-c568749419e3",
+    "ownerId": "91ac7c3c-14a5-4618-befe-0976fc2020ae",
+    "title": "vic chat",
+    "date": "2025-09-24T18:33:08.575Z",
+    "messages": [
+      {
+        "id": "5082fa37-d857-4bc8-b300-f101d91a5928",
+        "date": "2025-09-24T18:33:10.864Z",
         "text": "hi",
         "sender": "user",
         "name": "vic",
         "avatar": "https://avatar.iran.liara.run/username?username=vic"
       },
       {
-        "id": "f89af400-5e2d-4871-8852-31fb484a62e6",
-        "date": "2025-09-24T18:20:13.548Z",
-        "text": "Hello! What can I do for you?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "466ac8fa-fda4-4999-9a87-79e23584e22a",
-        "date": "2025-09-24T18:20:17.572Z",
-        "text": "tell me a joke",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "30150847-63a8-4b12-a9af-8378f81a287c",
-        "date": "2025-09-24T18:20:18.275Z",
-        "text": "Debugging: being the detective in a crime movie where you are also the murderer.",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "bf2365e6-6e87-4bc9-8e37-3ac953802de5",
-        "date": "2025-09-24T18:20:28.283Z",
-        "text": "what food should i eat?`",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "6310cd74-6ede-45ca-ad25-15e3c1d8b7c9",
-        "date": "2025-09-24T18:20:28.985Z",
-        "text": "Food is always a good idea!",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "190d646d-dee0-41db-af73-4193e30b2d48",
-        "date": "2025-09-24T18:20:38.849Z",
-        "text": "how are you?",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "61300131-3d0a-479d-b13b-219ccf0ad530",
-        "date": "2025-09-24T18:20:39.563Z",
-        "text": "Hi there — ready when you are.",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "ffed0857-97a4-42a1-88ea-0bacdff516d4",
-        "date": "2025-09-24T18:20:44.965Z",
-        "text": ":(",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "436ae591-280b-41f4-8ec7-9be341dd8649",
-        "date": "2025-09-24T18:20:45.672Z",
-        "text": "🤖 ...",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "80e3209d-acf1-49ec-85b0-8ca357bfda27",
-        "date": "2025-09-24T18:21:14.222Z",
-        "text": "bye",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "b691298a-df42-4a2d-8417-6fc51af4b087",
-        "date": "2025-09-24T18:21:14.926Z",
-        "text": "Take care!",
+        "id": "0a66563b-8853-4cc2-b1bd-fe2471b44f54",
+        "date": "2025-09-24T18:33:11.564Z",
+        "text": "Yo - what's up?",
         "sender": "chatbot",
         "name": "KamiBo",
         "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
