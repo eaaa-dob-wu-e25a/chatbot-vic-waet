@@ -36,7 +36,7 @@ server.use(`/${api_path}/chats`, chatRoutes);
 
 
 // Listen on port 3300
-const port = 3300;
+const port = 3000;
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
