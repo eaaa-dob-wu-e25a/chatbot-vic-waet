@@ -13,7 +13,7 @@ const signupForm = document.getElementById("signup-form");
 const signupInput = document.getElementById("signup-input");
 const greeting = document.getElementById("greet-user");
 const logoutBtn = document.getElementById("logout-btn");
-const submitSignup = document.getElementById("signup")
+const authBtn = document.getElementById("signup")
 const loginTxt = document.getElementById("login-info");
 
 const chatHeader = document.getElementById("active-chat");
@@ -23,7 +23,7 @@ const chatsUrl = "/api/v1/chats";
 const signupUrl = "/api/v1/profile";
 //const signupUrl = "/api/v1/signup";
 let currentChatId = null;
-let titleEl = document.querySelector(".title");
+let titleEl = document.getElementById("active-chat-title");
 
 window.addEventListener("DOMContentLoaded", initiate);
 signupForm.addEventListener("submit", handleSignup);
@@ -33,7 +33,8 @@ newChatForm.addEventListener("submit", createNewChat);
 chatsList.addEventListener("click", handleDeleteChat);
 logoutBtn.addEventListener("click", handleLogout);
 
-const defaultGreeting = "Create a username and start chatting!"
+const defaultGreeting = ""
+const defaultSignupTxt = "Create username";
 
 async function initiate() {
   const res = await fetch(`${signupUrl}/me`, { credentials: "same-origin" });
@@ -63,7 +64,7 @@ function enterLoginMode() {
     signupInput.placeholder = "Enter username to log in";
     signupInput.focus();
   }
-  if (submitSignup) submitSignup.textContent = "Log in";
+  if (authBtn) authBtn.innerHTML = `<i class="fa-solid fa-arrow-right-to-bracket"></i>`;
 }
 
 async function handleSignup(e) {
@@ -122,7 +123,7 @@ async function handleSignup(e) {
 
     //reset mode
     window.authMode = undefined;
-    if (submitSignup) submitSignup.textContent = "Sign up"
+    if (authBtn) authBtn.textContent = "Sign up";
     signupInput.placeholder = "Create username";
   } catch {
     toast({ error: "Network error" })
@@ -141,14 +142,14 @@ function loggedOutUI() {
   chatTotal && (chatTotal.textContent = "");
   chatsList.innerHTML =
     "<div class='flx-center-col' style='height:100%; width: 100%; align-items:center'>" +
-    "<p>No chats yet.</p>" +
+    "<p>You must login to chat.</p>" +
     "</div>";
   loginTxt.innerHTML = "<div style='height:100%; width: 100%; align-items:center'>" +
     "<p>..or <a class='link js-login-trigger'>log in</a> to chat.</p>" +
-    "</div>"
+    "</div>";
 
   chatMessages.innerHTML = "";
-  signupInput.placeholder = "Create username";
+  signupInput.placeholder = defaultSignupTxt;
   document
     .querySelectorAll('#chats-list .chat-list-item.is-active')
     .forEach(el => el.classList.remove('is-active'));
@@ -156,6 +157,12 @@ function loggedOutUI() {
   document.addEventListener("click", (e) => {
     if (e.target.closest(".js-login-trigger")) {
       enterLoginMode();
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".js-sign-trigger")) {
+      enterSignupMode();
     }
   });
 
@@ -201,11 +208,10 @@ async function loadChatList() {
     const res = await fetch(chatsUrl, { credentials: "same-origin" });
     if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
-
     const totalChats = data.chats.length;
 
     if (totalChats > 0) {
-      chatTotal.innerHTML = `<strong>Total chats: </strong> ${totalChats}`;
+      chatTotal.innerHTML = `<h1><strong>Total chats: </strong> ${totalChats}</h1>`;
     } else {
       chatTotal.innerHTML = `<h1 style="font-weight: 500;">Get started by creating a chat!</h1>`;
     }
@@ -222,19 +228,22 @@ function renderChatList(chats) {
   chatsList.innerHTML = chats
     .map(
       (c) => `
-      <div id="chats-list-container" class="flx-center-row">
+
     <button type="button" class="chat-list-item" data-chat-id="${c.id}">
-      <div class="title">${c.title ?? "Untitled"}</div>
+    <div id="chats-item-content"> 
+    <div class="title">${c.title ?? "Untitled"}</div>
       <div class="meta">
         <span>${new Date(c.lastAt ?? c.date).toLocaleString()}</span>
         <span class="msg-count">${c.messageCount} messages</span>
       </div>
       <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
-    </button>
-          <button type="button" aria-label="Delete chat ‘${c.title ?? "Untitled"
+      </div>
+                <button type="button" aria-label="Delete chat ‘${c.title ?? "Untitled"
         }’" id="chat-item-del" class="chat-del-btn" data-chat-id="${c.id
-        }">x</button>
-          </div>`
+        }"><i class="fa-regular fa-trash-can"></i></button>
+    </button>
+
+`
     )
     .join("");
 
@@ -297,7 +306,7 @@ async function fetchMessages(chatId) {
     renderMessages(data.chat.messages);
   } catch (error) {
     console.error(error);
-    chatMessages.innerHTML = `<div>Could not fetch messages.</div>`;
+    chatMessages.innerHTML = `<div>Could not get messages.</div>`;
   }
 }
 

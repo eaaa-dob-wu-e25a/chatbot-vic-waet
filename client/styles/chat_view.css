@@ -12,13 +12,7 @@ html {
   width: 100%;
 }
 
-/* inputs */
-input.ask-input,
-input#chat-title-input,
-input#signup-input {
-  background-color: var(--background);
-  border: 1px solid rgba(var(--primary-rgb), 0.4);
-}
+
 
 body > div {
   display: grid;
@@ -33,32 +27,78 @@ body > div {
 
 #chats-list {
   width: 100%;
-  height: 500px;
+  height: 100%;
   justify-content: flex-start;
   max-height: 50vh;
   overflow-y: auto;
   background-color: rgba(var(--background-rgb), 0.4);
   border-radius: var(--border-radius-sm);
-}
+  overflow-x: hidden;
 
-#chats-list .chat-list-item.is-active {
-  background-color: rgba(var(--secondary-rgb), 1);
-}
+  button#chat-item-del {
+    position: absolute;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: 12.5px;
+    cursor: pointer;
+    border: none;
+    border-radius:  0 0 0 12px;
+    background-color: transparent;
+    color: rgba(var(--text-rgb), .5);
+    transition: all ease-out 200ms;
+  }
 
-#chats-list .chat-list-item.is-active:hover {
-  background-color: rgba(var(--primary-rgb), 0.6);
-  cursor: pointer;
-}
+  button#chat-item-del:hover {
+    background: #ffdddd;
+    color: #7a1a1a;
+  }
 
-#chats-list .chat-list-item:hover {
-  background-color: rgba(var(--secondary-rgb), 1);
-  cursor: pointer;
-}
+  #chats-item-content {
+    width: max-content;
+  }
 
-#chats-list .chat-list-item.is-active .title {
-  font-weight: bold;
-  font-size: 14pt;
-  color: rgba(var(--text-rgb), 0.8);
+  .chat-list-item {
+    position: relative;
+    width: var(--full-w);
+    border: none;
+    border-bottom: 0.8px solid grey;
+    padding: var(--space-sm);
+    text-align: left;
+    color: var(--text);
+    background-color: transparent;
+    align-items: start;
+    cursor: pointer;
+    transition: all ease-out 200ms;
+  }
+
+  .chat-list-item.is-active {
+    background-color: rgba(var(--secondary-rgb), 1);
+    border-left: inset var(--primary) 4px;
+  }
+  .chat-list-item.is-active:hover {
+    background-color: rgba(var(--primary-rgb), 0.6);
+    cursor: pointer;
+  }
+  .chat-list-item:hover {
+    background-color: rgba(var(--secondary-rgb), 1);
+    cursor: pointer;
+  }
+
+  .chat-list-item.is-active .title {
+    font-weight: bold;
+    font-size: 14pt;
+    color: rgba(var(--text-rgb), 0.8);
+  }
+
+  .chat-list-item:last-child {
+    border-bottom: none !important;
+  }
+
+  .chat-list-item .meta {
+    font-size: small;
+    color: rgba(var(--text-rgb), 0.8);
+  }
 }
 
 .chat-container {

@@ -26,8 +26,9 @@
     <link rel="stylesheet" href="./styles/theme.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/chat_view.css" />
-    <script type="module" src="./app.js" defer></script>
-  </head>
+    <script src="https://kit.fontawesome.com/60cddcb918.js" crossorigin="anonymous"></script>
+     <script type="module" src="./app.js" defer></script> 
+    </head>
   <header>
     <section class="signup">
       <div
@@ -36,7 +37,7 @@
       >
         <p id="greet-user"></p>
         <button type="click" class="primary smaller-y" id="logout-btn">
-          Logout
+          <i class="fa-arrow-right-to-bracket fa-solid"></i>
         </button>
       </div>
 
@@ -55,12 +56,12 @@
           maxlength="40"
         />
 
-        <button type="submit" class="primary smaller-y" id="signup">Sign up</button>
+        <button type="submit" class="primary smaller-y" id="signup"><i class="fa-user-plus fa-solid"></i></button>
       </form>
       <p id="login-info"></p>
     </section>
     <div class="flx-center-row">
-      <h1 id="title" class="title"></h1>
+      <h1 id="active-chat-title" class="title"></h1>
     </div>
   </header>
 
@@ -91,12 +92,12 @@
               maxlength="50"
               name="title"
             />
-            <button class="smaller-y primary" id="new-chat" type="submit">
-              Create
+            <button class="smaller-y primary" style="width: fit-content;" id="new-chat" type="submit">
+              <i class="fa-solid fa-plus"></i>
             </button>
           </div>
         </form>
-        <div id="chats-list" class="glassmorph flx-center-col"></div>
+        <div id="chats-list" class="glassmorph"></div>
 
       </aside>
 

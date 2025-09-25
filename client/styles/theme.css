@@ -106,42 +106,22 @@ section {
   width: 100%;
 }
 
-.chat-list-item {
-  width: var(--full-w);
-  border: none;
-  border-bottom: 0.8px solid grey;
-  padding: var(--space-sm);
-  text-align: left;
-  color: var(--text);
-  background-color: transparent;
-  align-items: start;
-  transition: all ease-out 200ms;
-}
-
-.chat-list-item:last-child {
-  border-bottom: none !important;
-}
-
-.chat-list-item .meta {
-  font-size: small;
-  color: rgba(var(--text-rgb), 0.8);
-}
-
 input {
   font-family: var(--font-family-body);
   font-weight: 300;
   font-size: medium;
+  padding: var(--space-sm);
+  width: var(--full-w);
+  border-radius: var(--border-radius-sm);
+  height: clamp(32px, 1vh, 44px);
+    background-color: var(--background);
+  border: 1px solid rgba(var(--primary-rgb), 0.4);
+    transition: ease-in-out 0.25s outline;
 }
 
-.chats-history input,
 .signup input {
   width: calc(100% / 12 * 8);
-  height: clamp(32px, 1vh, 44px);
-  padding: var(--space-sm);
-  border-radius: var(--border-radius-sm);
-  transition: ease-in-out 0.25s outline;
 }
-
 .chats-history button:not(.chat-list-item) {
   width: calc(100% / 12 * 4);
 }
@@ -149,18 +129,18 @@ input {
 .chat-container input {
   width: var(--full-w);
   height: clamp(50px, 2vh, 62px);
-  padding: var(--space-sm);
+
   border-radius: var(--border-radius-sm);
   transition: ease-in-out 0.25s outline;
 }
 
 input:hover {
-  outline: rgba(var(--primary-rgb), 0.5) solid 2px;
+  outline: rgba(var(--primary-rgb), 0.5) solid 1px;
 }
 
 input:active,
 input:focus {
-  outline: rgba(var(--primary-rgb), 1) solid 3px;
+  outline: rgba(var(--primary-rgb), 1) solid 2px;
   outline-offset: 1px;
 }
 
@@ -332,7 +312,8 @@ button.smaller-y.primary {
   padding: 2%;
 }
 
-button.link, .link {
+button.link,
+.link {
   font-family: var(--font-family-body);
   background-color: transparent;
   border: none;
@@ -340,31 +321,12 @@ button.link, .link {
   transition: all ease-out 200ms;
 }
 
-button.link:hover, .link:hover {
+button.link:hover,
+.link:hover {
   cursor: pointer;
   text-decoration: underline;
   color: var(--primary);
   font-weight: bold;
-}
-
-.error-message {
-  color: var(--background);
-  background: #d73131;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 0;
-}
-
-.success-message {
-  color: var(--background);
-  background: #12a721;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 0;
 }
 
 .sign-up-terms {
@@ -384,12 +346,13 @@ button.link:hover, .link:hover {
 }
 
 .toast {
+  width: max-content;
   display: none;
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
+  position: absolute;
+  left: 20%;
   padding: 0.75rem 1rem;
   border-radius: 8px;
+  z-index: 1000;
 }
 .toast--error {
   background: #ffdddd;
