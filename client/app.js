@@ -160,12 +160,6 @@ function loggedOutUI() {
     }
   });
 
-  document.addEventListener("click", (e) => {
-    if (e.target.closest(".js-sign-trigger")) {
-      enterSignupMode();
-    }
-  });
-
 }
 
 // logout
@@ -194,11 +188,11 @@ async function handleLogout(e) {
     renderMessages([]);
 
     lockUI(true);
-    toast({ success: "Logout complete. Come back soon!" });
+    toast({ success: "Logged out" });
     loggedOutUI();
   } catch (err) {
     console.error(err);
-    toast({ error: "Logout failed." })
+    toast({ error: "Logout failed" })
 
   }
 }
@@ -211,7 +205,7 @@ async function loadChatList() {
     const totalChats = data.chats.length;
 
     if (totalChats > 0) {
-      chatTotal.innerHTML = `<h1><strong>Total chats: </strong> ${totalChats}</h1>`;
+      chatTotal.innerHTML = `<h1><strong style="color: var(--primary)">Total chats: </strong> ${totalChats}</h1>`;
     } else {
       chatTotal.innerHTML = `<h1 style="font-weight: 500;">Get started by creating a chat!</h1>`;
     }
@@ -229,20 +223,21 @@ function renderChatList(chats) {
     .map(
       (c) => `
 
-    <button type="button" class="chat-list-item" data-chat-id="${c.id}">
-    <div id="chats-item-content"> 
-    <div class="title">${c.title ?? "Untitled"}</div>
-      <div class="meta">
-        <span>${new Date(c.lastAt ?? c.date).toLocaleString()}</span>
-        <span class="msg-count">${c.messageCount} messages</span>
-      </div>
-      <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
-      </div>
-                <button type="button" aria-label="Delete chat ‘${c.title ?? "Untitled"
-        }’" id="chat-item-del" class="chat-del-btn" data-chat-id="${c.id
-        }"><i class="fa-regular fa-trash-can"></i></button>
-    </button>
-
+  <div class="chat-row">
+      <button type="button"
+        class="chat-list-item ${c.id === currentChatId ? "is-active" : ""}"
+        data-chat-id="${c.id}">
+        <div class="title">${c.title ?? "Untitled"}</div>
+        <div class="meta">
+          <p class="caption">${new Date(c.lastAt ?? c.date).toLocaleString()}</p>
+          <p class="caption msg-count">${c.messageCount} messages</p>
+        </div>
+        <div class="preview">${(c.lastPreview ?? "").slice(0, 60)}</div>
+      </button>
+      <button type="button" id="chat-item-del" class="chat-del-btn" data-chat-id="${c.id}" aria-label="Delete chat ‘${c.title ?? "Untitled"}’">
+        <i class="fa-regular fa-trash-can"></i>
+      </button>
+    </div>
 `
     )
     .join("");

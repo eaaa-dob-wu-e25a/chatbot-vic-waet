@@ -10,9 +10,11 @@
 html {
   background-image: url("/public/bg-img.jpg");
   background-repeat: no-repeat;
+ 
   padding: var(--space-md);
   width: var(--full-w);
   height: var(--full-h);
+  
 }
 
 header {

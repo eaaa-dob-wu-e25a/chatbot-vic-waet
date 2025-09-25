@@ -42,6 +42,4 @@ function createAvatar(name = "user") {
 }
 
 
-
-
 export { sanitizeInputAdv, getInitials, createAvatar };

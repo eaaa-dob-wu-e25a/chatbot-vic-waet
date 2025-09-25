@@ -58,8 +58,6 @@ router.delete("/clear", (req, res) => {
 });
 
 
-
-
 // GET all users
 router.get("/", async (req, res) => {
   await loadUsers();
