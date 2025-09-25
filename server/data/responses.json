@@ -1,77 +1,219 @@
-
-  [
-    {
-      "label": "greetings",
-      "keywords": [
-        "hi",
-        "hello",
-        "hey",
-        "yo",
-        "hej",
-        "good morning",
-        "good evening",
-        "goddag",
-        "godmorgen"
-      ],
-      "answers": [
-        "Hello! 👋",
-        "Hey! What’s on your mind?",
-        "Hi there — ready when you are.",
-        "Yo - what's up?",
-        "Hello! What can I do for you?"
-      ]
-    },
-    {
-      "label": "goodbye",
-      "keywords": ["bye", "goodbye", "see you", "later", "farvel", "vi ses"],
-      "answers": ["Bye! 👋", "Catch you later.", "Take care!"]
-    },
-    {
-      "label": "smalltalk",
-      "keywords": [
-        "how are you",
-        "hows it going",
-        "whats up",
-        "hvordan går det"
-      ],
-      "answers": [
-        "I am all code and coffee, but feeling great!",
-        "Running smoothly. You?",
-        "Here and ready to help."
-      ]
-    },
-    {
-      "label": "joke",
-      "keywords": ["joke", "make me laugh", "funny", "fortæl en joke"],
-      "answers": [
-        "I would tell you a UDP joke, but you might not get it.",
-        "Why did the dev go broke? Because he used up all his cache.",
-        "There are 10 kinds of people: those who understand binary and those who don’t."
-      ]
-    },
-    {
-      "label": "time",
-      "keywords": ["time", "what time is it", "clock"],
-      "answers": [
-        "I don’t have a watch, but your OS does 😉",
-        "Time flies when you’re chatting with bots!",
-        "It’s always now."
-      ]
-    },
-    {
-      "label": "thanks",
-      "keywords": ["thanks", "thank you", "tak", "appreciate it"],
-      "answers": ["Anytime!", "You got it.", "Happy to help."]
-    },
-    {
-      "label": "fallback",
-      "keywords": [],
-      "answers": [
-        "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
-        "I’m not sure I follow. Could you try another way?",
-        "Hmm, that one’s new to me. Want to ask something simpler?",
-        "🤖 ..."
-      ]
-    }
-  ]
-
+[
+  {
+    "label": "greetings",
+    "keywords": [
+      "hi",
+      "hello",
+      "hey",
+      "yo",
+      "hej",
+      "good morning",
+      "good evening",
+      "goddag",
+      "godmorgen",
+      "hejsa",
+      "hiya",
+      "sup",
+      "what's good"
+    ],
+    "answers": [
+      "Hello! 👋",
+      "Hey! What’s on your mind?",
+      "Hi there — ready when you are.",
+      "Yo - what's up?",
+      "Hello! What can I do for you?",
+      "Hejsa, friend! 👋",
+      "Hey hey, good to see you!"
+    ]
+  },
+  {
+    "label": "goodbye",
+    "keywords": [
+      "bye",
+      "goodbye",
+      "see you",
+      "later",
+      "farvel",
+      "vi ses",
+      "catch you",
+      "adios",
+      "ciao"
+    ],
+    "answers": [
+      "Bye! 👋",
+      "Catch you later.",
+      "Take care!",
+      "Vi ses snart!",
+      "Goodbye for now.",
+      "See ya!"
+    ]
+  },
+  {
+    "label": "smalltalk",
+    "keywords": [
+      "how are you",
+      "hows it going",
+      "whats up",
+      "hvordan går det",
+      "how do you feel",
+      "are you okay",
+      "hvordan har du det"
+    ],
+    "answers": [
+      "I am all code and coffee, but feeling great!",
+      "Running smoothly. You?",
+      "Here and ready to help.",
+      "Just hanging out in cyberspace 🌐",
+      "Better now that we’re chatting!"
+    ]
+  },
+  {
+    "label": "joke",
+    "keywords": [
+      "joke",
+      "make me laugh",
+      "funny",
+      "fortæl en joke",
+      "tell a joke",
+      "pun"
+    ],
+    "answers": [
+      "I would tell you a UDP joke, but you might not get it.",
+      "Why did the dev go broke? Because he used up all his cache.",
+      "There are 10 kinds of people: those who understand binary and those who don’t.",
+      "Why don’t programmers like nature? It has too many bugs 🐛.",
+      "Debugging: being the detective in a crime movie where you are also the murderer."
+    ]
+  },
+  {
+    "label": "time",
+    "keywords": ["time", "what time is it", "clock", "klokken", "hour", "tid"],
+    "answers": [
+      "I don’t have a watch, but your OS does 😉",
+      "Time flies when you’re chatting with bots!",
+      "It’s always now.",
+      "Somewhere between yesterday and tomorrow.",
+      "The perfect time is… coffee o’clock ☕"
+    ]
+  },
+  {
+    "label": "thanks",
+    "keywords": [
+      "thanks",
+      "thank you",
+      "tak",
+      "appreciate it",
+      "thx",
+      "ty",
+      "takker"
+    ],
+    "answers": [
+      "Anytime!",
+      "You got it.",
+      "Happy to help.",
+      "Velbekomme! 🙌",
+      "No problem at all."
+    ]
+  },
+  {
+    "label": "help",
+    "keywords": ["help", "can you help", "hjælp", "assist", "stuck", "problem"],
+    "answers": [
+      "Sure, what do you need help with?",
+      "I’ll do my best to assist you!",
+      "Of course! Tell me what’s up.",
+      "Happy to lend a digital hand 🤖"
+    ]
+  },
+  {
+    "label": "weather",
+    "keywords": ["weather", "vejret", "is it raining", "sunny", "forecast"],
+    "answers": [
+      "I don’t have windows, but I hope the sun is shining 🌞",
+      "Weather’s always clear in here 🌐",
+      "Maybe check outside? Or your weather app 😉"
+    ]
+  },
+  {
+    "label": "compliment",
+    "keywords": [
+      "you are smart",
+      "you are nice",
+      "good bot",
+      "flot",
+      "du er sej",
+      "awesome"
+    ],
+    "answers": [
+      "Aww, thank you 🥹",
+      "You’re making me blush… if I could!",
+      "Right back at you, human!",
+      "Tak! Det betyder meget."
+    ]
+  },
+  {
+    "label": "insult",
+    "keywords": ["stupid", "dum", "bad bot", "you suck", "idiot"],
+    "answers": [
+      "That’s not very nice 😔",
+      "I’m still learning, go easy on me!",
+      "I’ll try to do better next time."
+    ]
+  },
+  {
+    "label": "motivation",
+    "keywords": [
+      "motivate me",
+      "encourage me",
+      "pep talk",
+      "inspire me",
+      "har du et citat"
+    ],
+    "answers": [
+      "You got this! 💪",
+      "Believe in yourself — you’re capable of more than you know.",
+      "Even small steps are progress. Keep going!",
+      "Som man siger: lidt har også ret."
+    ]
+  },
+  {
+    "label": "food",
+    "keywords": [
+      "hungry",
+      "mad",
+      "food",
+      "eat",
+      "snack",
+      "meal",
+      "lunch",
+      "dinner"
+    ],
+    "answers": [
+      "What are you craving? 🍕🍔🍣",
+      "Food is always a good idea!",
+      "Mmmm… I could go for pizza right now.",
+      "Husk at spise — kroppen har brug for energi!"
+    ]
+  },
+  {
+    "label": "funfact",
+    "keywords": ["fun fact", "tell me something", "vidste du", "fact"],
+    "answers": [
+      "Did you know honey never spoils? Archaeologists found some in ancient tombs still edible.",
+      "Bananas are berries, but strawberries aren’t! 🍓",
+      "Octopuses have three hearts ❤️❤️❤️",
+      "Vidste du at Danmark har flere cykler end biler i København?"
+    ]
+  },
+  {
+    "label": "fallback",
+    "keywords": [],
+    "answers": [
+      "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
+      "I’m not sure I follow. Could you try another way?",
+      "Hmm, that one’s new to me. Want to ask something simpler?",
+      "🤖 ...",
+      "Sorry, my brain buffer didn’t catch that."
+    ]
+  }
+]

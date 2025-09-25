@@ -26,27 +26,64 @@
     <link rel="stylesheet" href="./styles/theme.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./styles/chat_view.css" />
-    <script src="./app.js" defer></script>
+    <script type="module" src="./app.js" defer></script>
   </head>
   <header>
-    <section class="flx-center-row chat-logo">
-      <img src="./public/logo_sm.svg" alt="Logo" />
+    <section class="signup">
+      <div
+        class="flx-center-row"
+        style="justify-content: space-between; width: 100%"
+      >
+        <p id="greet-user"></p>
+        <button type="click" class="primary smaller-y" id="logout-btn">
+          Logout
+        </button>
+      </div>
+
+      <form
+        style="margin-bottom: 1rem"
+        name="signup"
+        id="signup-form"
+        autocomplete="off"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Create username"
+          id="signup-input"
+          autocomplete="off"
+          maxlength="40"
+        />
+
+        <button type="submit" class="primary smaller-y" id="signup">Sign up</button>
+      </form>
+      <p id="login-info"></p>
     </section>
+    <div class="flx-center-row">
+      <h1 id="title" class="title"></h1>
+    </div>
   </header>
+
   <body>
+    <div id="error" class="toast toast--error" aria-live="polite"></div>
+    <div id="success" class="toast toast--success" aria-live="polite"></div>
+
     <div>
       <aside class="chats-history">
-        <h1 id="title" class="title"></h1>
-        <p id="chats-list-total">0</p>
+        <div class="active-chat">
+          <section class="chat-logo">
+            <img src="./public/logo_md.svg" alt="Logo" />
+          </section>
 
-        <div id="chats-list" class="glassmorph flx-center-col"></div>
+          <p id="chats-list-total"></p>
+        </div>
         <form
           id="new-chat-form"
-          style="margin-top: 1rem;"
+          style="margin-bottom: 1rem"
           autocomplete="off"
           name="chat"
         >
-          <div class="flx-center-row" style="gap: 8px; justify-content: left;">
+          <div class="flx-center-row" style="gap: 8px; justify-content: left">
             <input
               type="text"
               id="chat-title-input"
@@ -54,12 +91,15 @@
               maxlength="50"
               name="title"
             />
-            <button class="create primary" id="new-chat" type="submit">
-              Add
+            <button class="smaller-y primary" id="new-chat" type="submit">
+              Create
             </button>
           </div>
         </form>
+        <div id="chats-list" class="glassmorph flx-center-col"></div>
+
       </aside>
+
       <main>
         <section class="chat-container">
           <div class="flx-center-col glassmorph msg-container">
@@ -81,29 +121,10 @@
               </form>
             </div>
           </div>
-
-          <div id="error" class="error-message" style="display: none;"></div>
         </section>
       </main>
     </div>
-    <section>
-      <form
-        style="margin-bottom: 1rem;"
-        name="signup"
-        id="signup-form"
-        autocomplete="off"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Create username"
-          id="signup-input"
-          autocomplete="off"
-        />
 
-        <button type="submit" class="primary">Sign up</button>
-      </form>
-    </section>
     <section class="flx-center-col sign-up-terms">
       <!-- <button type="button" class="primary" onclick="location.href='/signup'">
         Create Account
@@ -118,7 +139,6 @@
       </p> -->
     </section>
 
-    <div class="dot" id="dot" aria-hidden="true"></div>
   </body>
   <!-- <script>
     fetch('https://dummyjson.com/produts')

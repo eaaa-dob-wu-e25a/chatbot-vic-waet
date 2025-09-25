@@ -1,342 +1,475 @@
 [
   {
-    "id": "4ebd2e24-7512-4543-b8fc-aef54b4c3f25",
-    "title": "æmæml",
-    "date": "2025-09-23T09:47:00.623Z",
+    "id": "c9427f83-024d-4286-b723-6464f7b727b4",
+    "ownerId": "8437efe3-c802-40c6-a97f-2b7a422c9453",
+    "title": "ddd",
+    "date": "2025-09-24T15:00:51.522Z",
     "messages": [
       {
-        "id": "0a767069-9de9-4352-9e55-c455bf7a58dd",
-        "date": "2025-09-23T09:48:47.168Z",
-        "text": "asd",
+        "id": "263a156d-1682-4ace-850a-c7e24cffe633",
+        "date": "2025-09-24T15:00:56.137Z",
+        "text": "hello",
         "sender": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
       },
       {
-        "id": "14f6ba8a-9645-4831-9900-e11b6bc5d8ff",
-        "date": "2025-09-23T09:48:47.168Z",
-        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
-        "sender": "chatbot",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "549b88dd-8a02-4826-92ea-82a1d81e2438",
-        "date": "2025-09-23T09:56:50.053Z",
-        "text": "awd",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "f64fafdf-6c26-4dda-a038-28b5bc730aa6",
-        "date": "2025-09-23T09:56:50.053Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "d50d924e-a62f-4cad-a54d-3cfff3d62bc6",
-        "date": "2025-09-23T09:56:52.451Z",
-        "text": "dwdwdw",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "1097b822-7d67-4a0a-a656-4942ab2978f0",
-        "date": "2025-09-23T09:56:52.451Z",
-        "text": "🤖 ...",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "03dfd89c-0d38-4d56-9251-f25e09aa035b",
-        "date": "2025-09-23T09:56:54.343Z",
-        "text": "wdwdw",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "c93308e3-d148-4ad1-90aa-15bbbe0a6c9e",
-        "date": "2025-09-23T09:56:54.343Z",
-        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "d1015236-d742-4028-9c75-e19784817ff0",
-        "date": "2025-09-23T09:57:47.890Z",
-        "text": "aw",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "b64d7900-ece6-4085-9d32-526bc989ca52",
-        "date": "2025-09-23T09:57:47.890Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "aef8fa64-7592-48b3-8280-b29acb970097",
-        "date": "2025-09-23T09:57:50.810Z",
-        "text": "awfawf",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "54102da2-6849-4064-aa4a-c8eb3b924dae",
-        "date": "2025-09-23T09:57:50.810Z",
-        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "3633fbec-ff16-4eac-bdb2-5292d8e8096b",
-        "date": "2025-09-23T09:57:52.164Z",
-        "text": "awdwadwd",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "d13cfa6e-c29c-4582-b395-1074b44aac1c",
-        "date": "2025-09-23T09:57:52.164Z",
-        "text": "I’m not sure I follow. Could you try another way?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "e4c7d57d-aeb9-41c8-a5f7-bb474facabda",
-        "date": "2025-09-23T09:57:56.481Z",
-        "text": "awdwawdawd",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "2ed0b607-1d24-41a7-a211-914212761453",
-        "date": "2025-09-23T09:57:56.481Z",
-        "text": "I’m not sure I follow. Could you try another way?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "a47b3298-f795-4c87-a665-c382920ce80f",
-        "date": "2025-09-23T09:58:00.098Z",
-        "text": "new",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "fdce380e-2e41-48a0-ab4c-94128026d688",
-        "date": "2025-09-23T09:58:00.098Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "1a56ce91-011f-4de9-8e9c-797e3b959f38",
-        "date": "2025-09-23T10:04:58.043Z",
-        "text": "fg",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "e153e830-746f-4bad-8ec0-0ecb4edf7d2b",
-        "date": "2025-09-23T10:04:58.043Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "d408c902-9a5d-4972-a5a4-6b9f7c875a99",
-        "date": "2025-09-23T10:05:00.504Z",
-        "text": "sdf",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "e1fb4bcd-2cb2-46ca-8a3f-ea2d30004125",
-        "date": "2025-09-23T10:05:00.504Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "2ecb46be-a0de-440c-bbee-28010dc99c94",
-        "date": "2025-09-23T10:05:35.551Z",
-        "text": "dfhg",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "be61ae28-28c7-4404-a385-9079bb2d6a1d",
-        "date": "2025-09-23T10:05:35.551Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "add8ec34-6e12-4e9f-9724-a30d16cfa2c5",
-        "date": "2025-09-23T10:05:37.609Z",
-        "text": "sdf",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "a73fcba7-99c8-4bf4-ae14-b9a589897290",
-        "date": "2025-09-23T10:05:37.609Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "ef60dae3-f3b6-4a02-9052-e0e057e24f81",
-        "date": "2025-09-23T10:06:14.802Z",
-        "text": "df",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "659c8732-ee7b-45d1-b147-62b29ce82722",
-        "date": "2025-09-23T10:06:14.802Z",
-        "text": "🤖 ...",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "944d0dcb-5e85-4f4d-b3e8-0ee30764de8c",
-        "date": "2025-09-23T10:06:17.083Z",
-        "text": "dfsdfsf",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "e9e84af8-1b65-49a8-9efc-0fb9b5c121f6",
-        "date": "2025-09-23T10:06:17.083Z",
-        "text": "🤖 ...",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "0225df39-b776-404b-8789-a888ac91af21",
-        "date": "2025-09-23T10:06:18.012Z",
-        "text": "sdfd",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "3a85d1a4-33b4-4e3a-8d73-864e4fad0dc3",
-        "date": "2025-09-23T10:06:18.012Z",
-        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "06cab630-dfdc-48c5-8a58-b3edd7eba3c4",
-        "date": "2025-09-23T10:06:19.306Z",
-        "text": "sdf",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "7da79e84-93e9-4407-bc27-61fa29ad8cce",
-        "date": "2025-09-23T10:06:19.306Z",
-        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "9901ffbf-1108-4142-807d-4b792c5e72a1",
-        "date": "2025-09-23T10:06:20.187Z",
-        "text": "sdf",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "7e0c2487-ee57-4c42-b50e-82cf0c90e9b6",
-        "date": "2025-09-23T10:06:20.187Z",
-        "text": "I’m not sure I follow. Could you try another way?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(21%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20C%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      }
-    ]
-  },
-  {
-    "id": "380bbe3d-099a-4d3d-a41b-05bf5ab886d6",
-    "title": "wdw",
-    "date": "2025-09-23T10:11:36.357Z",
-    "messages": []
-  },
-  {
-    "id": "f21d8f2f-1f94-4a92-8a71-e02d8d026c50",
-    "title": "asd",
-    "date": "2025-09-23T10:11:39.604Z",
-    "messages": []
-  },
-  {
-    "id": "659c344b-126f-4a28-9530-5a8c71d39b4d",
-    "title": "new chat",
-    "date": "2025-09-23T10:11:50.164Z",
-    "messages": [
-      {
-        "id": "b8bd021a-91ea-4c35-87d9-22b1acd2a496",
-        "date": "2025-09-23T10:11:54.262Z",
-        "text": "this is a new chat",
-        "sender": "user",
-        "name": "user",
-        "avatar": "data:image/svg+xml;utf8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22hsl(87%2060%25%2050%25)%22%20%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2240%22%20fill%3D%22%23202020ff%22%3E%0A%20%20%20%20%20%20%20%20U%0A%20%20%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20"
-      },
-      {
-        "id": "0bd57fe9-e34c-40a1-8d68-43cd25015c6b",
-        "date": "2025-09-23T10:11:54.262Z",
+        "id": "315a99ce-56bd-4193-93af-a57a956e1870",
+        "date": "2025-09-24T15:00:56.846Z",
         "text": "Hello! 👋",
         "sender": "chatbot",
         "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/public/job/operator/female"
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "2dbb7946-432c-4d25-bd64-c63afbb281e8",
+        "date": "2025-09-24T15:01:01.079Z",
+        "text": "how are upoiu",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "6bd6e7c5-8244-4c17-b67a-34dc91d0d0a1",
+        "date": "2025-09-24T15:01:01.789Z",
+        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "68f20970-ce94-43b7-be5e-99c5c38afea5",
+        "date": "2025-09-24T17:59:00.288Z",
+        "text": "hrej",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "d0db27b4-45e0-4fdf-9bdc-c5fe57aaaf73",
+        "date": "2025-09-24T17:59:00.991Z",
+        "text": "I’m not sure I follow. Could you try another way?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
       }
     ]
   },
   {
-    "id": "f4ea9c9e-00e0-48d7-930b-d4df161cd626",
-    "title": "aer",
-    "date": "2025-09-23T10:12:51.495Z",
+    "id": "b339e28f-dd06-4b46-b1e6-577873e7c334",
+    "ownerId": "80871b5f-9b65-4b2e-a27a-75fe1aca1c1b",
+    "title": "sdf",
+    "date": "2025-09-24T15:01:19.617Z",
+    "messages": [
+      {
+        "id": "bfdce94e-e409-4e56-b1f6-534ddfd66bdc",
+        "date": "2025-09-24T15:01:22.245Z",
+        "text": "sdfdfdf",
+        "sender": "user",
+        "name": "df",
+        "avatar": "https://avatar.iran.liara.run/username?username=df"
+      },
+      {
+        "id": "61b1e184-2859-471a-ad9d-7da22ce62311",
+        "date": "2025-09-24T15:01:22.956Z",
+        "text": "I’m not sure I follow. Could you try another way?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "34a6cebf-9e32-45be-b2ab-757e9c152c55",
+        "date": "2025-09-24T15:01:24.924Z",
+        "text": "ss",
+        "sender": "user",
+        "name": "df",
+        "avatar": "https://avatar.iran.liara.run/username?username=df"
+      },
+      {
+        "id": "1e31979f-7837-4300-b1bb-ae0f482bdf49",
+        "date": "2025-09-24T15:01:25.634Z",
+        "text": "🤖 ...",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "13d22549-e740-49bf-b03b-240cd478a5a1",
+        "date": "2025-09-24T15:01:28.165Z",
+        "text": "ss",
+        "sender": "user",
+        "name": "df",
+        "avatar": "https://avatar.iran.liara.run/username?username=df"
+      },
+      {
+        "id": "5cec3af0-fdb7-4ba9-9a40-b5222d5f24d4",
+        "date": "2025-09-24T15:01:28.877Z",
+        "text": "🤖 ...",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "28742fea-c40d-4ba5-8285-aa89b4e08a16",
+        "date": "2025-09-24T15:01:31.959Z",
+        "text": "hej",
+        "sender": "user",
+        "name": "df",
+        "avatar": "https://avatar.iran.liara.run/username?username=df"
+      },
+      {
+        "id": "ce3003d3-3af9-4a5f-bc22-529dc910f530",
+        "date": "2025-09-24T15:01:32.666Z",
+        "text": "Yo - what's up?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "ece7cf88-710d-404c-ae54-88ff7997050c",
+    "ownerId": "62e11114-c296-495c-a6f5-55ce2e2a6ccf",
+    "title": "dfdf",
+    "date": "2025-09-24T15:03:50.168Z",
     "messages": []
   },
   {
-    "id": "cfe8d7cf-b072-4acb-8354-de583ce27dad",
-    "title": "werw",
-    "date": "2025-09-23T10:16:28.174Z",
+    "id": "d5501937-bcc8-42dc-bd65-703fc02239d4",
+    "ownerId": "0f238475-a2f1-4f3c-b42f-1f8790736c58",
+    "title": "new chat",
+    "date": "2025-09-24T16:07:20.722Z",
+    "messages": [
+      {
+        "id": "48d17593-f440-48f1-823e-0fcd992b76f8",
+        "date": "2025-09-24T16:07:24.397Z",
+        "text": "hello",
+        "sender": "user",
+        "name": "erere",
+        "avatar": "https://avatar.iran.liara.run/username?username=erere"
+      },
+      {
+        "id": "00e2c338-9459-4088-ad3b-2118e8469bb5",
+        "date": "2025-09-24T16:07:25.099Z",
+        "text": "Hi there — ready when you are.",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "6ec33010-9704-4287-b619-caed5da13e35",
+    "ownerId": "c005dfac-1bf7-4663-8149-5d2a7290fabe",
+    "title": "hej",
+    "date": "2025-09-24T16:16:58.329Z",
+    "messages": [
+      {
+        "id": "2603bd0b-8bb1-4b4f-90ce-2f2c58e2fe83",
+        "date": "2025-09-24T16:17:01.455Z",
+        "text": "en ny chat",
+        "sender": "user",
+        "name": "vicsd",
+        "avatar": "https://avatar.iran.liara.run/username?username=vicsd"
+      },
+      {
+        "id": "5b15944c-e52c-4676-b358-b7dd176fa387",
+        "date": "2025-09-24T16:17:02.170Z",
+        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "8d244a72-dcc7-4327-aeec-a0ea2b1ce0be",
+    "ownerId": "f0659362-e4c9-461f-b7da-384358d3f96c",
+    "title": "dgh",
+    "date": "2025-09-24T16:40:11.325Z",
     "messages": []
+  },
+  {
+    "id": "2b8207bf-ba59-4637-9ea9-202aeba562a8",
+    "ownerId": "b27198e4-6675-42bc-8727-63f925351fc8",
+    "title": "asd",
+    "date": "2025-09-24T16:42:49.234Z",
+    "messages": [
+      {
+        "id": "5e157097-306f-493e-a3a4-dd3477960f2e",
+        "date": "2025-09-24T16:42:51.282Z",
+        "text": "asdfadf",
+        "sender": "user",
+        "name": "hejeygeg",
+        "avatar": "https://avatar.iran.liara.run/username?username=hejeygeg"
+      },
+      {
+        "id": "3996c045-cfdb-4e66-adda-f2a934cd5353",
+        "date": "2025-09-24T16:42:51.990Z",
+        "text": "Sorry, my brain buffer didn’t catch that.",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "289e9c58-9a03-4656-b93e-6549cd9220bf",
+    "ownerId": "79ccc20f-fe7a-41a5-a5fc-05925e3ad93b",
+    "title": "new",
+    "date": "2025-09-24T17:13:16.718Z",
+    "messages": [
+      {
+        "id": "ceaeed71-3207-45dd-b4c7-b5e170e98ccd",
+        "date": "2025-09-24T17:13:22.018Z",
+        "text": "hi",
+        "sender": "user",
+        "name": "hejjje",
+        "avatar": "https://avatar.iran.liara.run/username?username=hejjje"
+      },
+      {
+        "id": "ba74b83e-3494-40f1-979f-59ac0725d97c",
+        "date": "2025-09-24T17:13:22.720Z",
+        "text": "Hejsa, friend! 👋",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "49bc4537-2998-45f3-a078-dfedd55572ac",
+    "ownerId": "2e3b04df-d305-4960-ab4d-397f043f015a",
+    "title": "asdsadasd",
+    "date": "2025-09-24T17:15:25.937Z",
+    "messages": []
+  },
+  {
+    "id": "c0414fbb-9acf-4f22-a920-2369d5271253",
+    "ownerId": "2e3b04df-d305-4960-ab4d-397f043f015a",
+    "title": "Untitled",
+    "date": "2025-09-24T17:15:26.577Z",
+    "messages": []
+  },
+  {
+    "id": "cc044a16-3537-46c0-9820-faa94527ad7b",
+    "ownerId": "e1a9292d-7be3-4415-ad69-a48923de65cc",
+    "title": "awe",
+    "date": "2025-09-24T17:22:49.868Z",
+    "messages": []
+  },
+  {
+    "id": "3d851690-cb03-4ba2-8978-7e98abdd4f5d",
+    "ownerId": "c44df17a-ed64-4a80-9de9-0723db3f2e8c",
+    "title": "AAAA",
+    "date": "2025-09-24T17:24:05.006Z",
+    "messages": []
+  },
+  {
+    "id": "6b433064-95e0-4df0-8b20-db4a725eaedc",
+    "ownerId": "2ca29ed7-128d-4ed9-a107-6282509be348",
+    "title": "a",
+    "date": "2025-09-24T18:12:21.924Z",
+    "messages": []
+  },
+  {
+    "id": "44767d19-253f-4458-aee1-974ce89f0eb3",
+    "ownerId": "c94b6c71-5980-4805-b6a9-d12209e8a3de",
+    "title": "chat",
+    "date": "2025-09-24T18:16:19.086Z",
+    "messages": [
+      {
+        "id": "f49bbabb-e80b-42aa-949b-2348747246c5",
+        "date": "2025-09-24T18:16:24.245Z",
+        "text": "hi",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "861849e6-d84e-4bc5-bef1-969e2f94dc2f",
+        "date": "2025-09-24T18:16:24.960Z",
+        "text": "Yo - what's up?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "2657dc1a-6b80-418a-9384-058c86dcc73d",
+        "date": "2025-09-24T18:16:34.996Z",
+        "text": "can you recommend a movie?",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "39e2bf0c-5cd1-444b-ad87-d063ed832d4d",
+        "date": "2025-09-24T18:16:35.697Z",
+        "text": "Hello! 👋",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "aa844cb9-2fff-49ba-9361-512e2760c5b7",
+        "date": "2025-09-24T18:16:40.188Z",
+        "text": "movie !!",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "51aa20ef-a96b-4aa8-b773-e74e66bf2342",
+        "date": "2025-09-24T18:16:40.899Z",
+        "text": "🤖 ...",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "c197c476-3589-4e8c-89d3-472b1c846d4b",
+        "date": "2025-09-24T18:16:43.797Z",
+        "text": "T_T",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "52fddab4-f887-43f4-8e14-6095f8bfa2ed",
+        "date": "2025-09-24T18:16:44.509Z",
+        "text": "Hmm, that one’s new to me. Want to ask something simpler?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "ed462576-7548-4a4b-8599-b22e82322e00",
+        "date": "2025-09-24T18:16:57.419Z",
+        "text": "make me laugh",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "2a75e280-7578-4cda-8b01-ec2e025c3b1f",
+        "date": "2025-09-24T18:16:58.133Z",
+        "text": "Debugging: being the detective in a crime movie where you are also the murderer.",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "336c646c-15d4-4104-b94b-05381e29aa5a",
+        "date": "2025-09-24T18:17:12.679Z",
+        "text": "what time is it ?",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "80cce346-4f21-4b9c-b00c-f5bd90fd853f",
+        "date": "2025-09-24T18:17:13.391Z",
+        "text": "It’s always now.",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "7dde4599-8585-4476-a911-07f4a23529f7",
+        "date": "2025-09-24T18:17:24.012Z",
+        "text": "whats the forecast",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "eb0fe372-41ee-4c34-8533-4588953ae2a9",
+        "date": "2025-09-24T18:17:24.727Z",
+        "text": "Maybe check outside? Or your weather app 😉",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "8386cb41-59dd-40b6-af9c-cf8b8641899a",
+        "date": "2025-09-24T18:17:37.201Z",
+        "text": "i am hungry",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "8f111552-f07f-433e-b7c4-01e5dbf5984f",
+        "date": "2025-09-24T18:17:37.903Z",
+        "text": "Husk at spise — kroppen har brug for energi!",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "524eb7ec-a9e6-478c-9f26-7fa17db7afcb",
+    "ownerId": "5994a0ff-3c2c-413d-a35e-9aab6d10fb1d",
+    "title": "nicolai chat",
+    "date": "2025-09-24T18:32:54.013Z",
+    "messages": [
+      {
+        "id": "e98f3453-924b-42b4-8d9b-f59eeb5bc710",
+        "date": "2025-09-24T18:32:56.504Z",
+        "text": "jhej",
+        "sender": "user",
+        "name": "nicolaí",
+        "avatar": "https://avatar.iran.liara.run/username?username=nicola%C3%AD"
+      },
+      {
+        "id": "3ff56739-5371-4ae9-b449-edee59b25abd",
+        "date": "2025-09-24T18:32:57.204Z",
+        "text": "Hey! What’s on your mind?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      },
+      {
+        "id": "54cc770e-9e95-47d5-9e5a-6631215fc13d",
+        "date": "2025-09-24T18:32:58.415Z",
+        "text": "farvel",
+        "sender": "user",
+        "name": "nicolaí",
+        "avatar": "https://avatar.iran.liara.run/username?username=nicola%C3%AD"
+      },
+      {
+        "id": "e81b2451-3ed0-4dec-b892-61d795fe5434",
+        "date": "2025-09-24T18:32:59.116Z",
+        "text": "See ya!",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
+  },
+  {
+    "id": "0d257a92-3e3e-43da-8f9d-c568749419e3",
+    "ownerId": "91ac7c3c-14a5-4618-befe-0976fc2020ae",
+    "title": "vic chat",
+    "date": "2025-09-24T18:33:08.575Z",
+    "messages": [
+      {
+        "id": "5082fa37-d857-4bc8-b300-f101d91a5928",
+        "date": "2025-09-24T18:33:10.864Z",
+        "text": "hi",
+        "sender": "user",
+        "name": "vic",
+        "avatar": "https://avatar.iran.liara.run/username?username=vic"
+      },
+      {
+        "id": "0a66563b-8853-4cc2-b1bd-fe2471b44f54",
+        "date": "2025-09-24T18:33:11.564Z",
+        "text": "Yo - what's up?",
+        "sender": "chatbot",
+        "name": "KamiBo",
+        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
+      }
+    ]
   }
 ]
