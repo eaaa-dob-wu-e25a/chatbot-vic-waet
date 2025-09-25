@@ -29,14 +29,27 @@ await loadResponses();
 
 function gotBotReply(userText) {
   const lower = userText.toLowerCase();
+  const matchRes = [];
+
   for (const rep of RESPONSES) {
-    if ((rep.label || "").toLowerCase() === "fallback") continue;
+    //tilfældigt svar fra den første matchende label
+    if ((rep.label || "").toLowerCase() === "fallback") continue; // spring fallback over i første runde
+    // itererer over keywords i responses.js som matcher med brugerens input
     if (rep.keywords?.some((k) => lower.includes(k.toLowerCase()))) {
       const list = rep.answers ?? [];
       if (list.length) return list[Math.floor(Math.random() * list.length)];
-      return "🤖 ..."
+      return "🤖 ..." // hvis svaret er tomt
     }
   }
+
+  // retuner tilfædigt svar mellem alle matches
+  if (matchRes.length) {
+    const rep = candidates[Math.floor(Math.random() * candidates.length)];
+    const list = rep.answers;
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  // ellers bare brug fallback hvis der ikke er userinput
   const fallback = RESPONSES.find(
     (r) => (r.label || "").toLowerCase() === "fallback"
   );
@@ -46,7 +59,7 @@ function gotBotReply(userText) {
 
 }
 
-// POST /api/v1/chats/:id -- user og bot svar
+//NOTE POST /api/v1/chats/:id -- user og bot svar
 router.post("/", async (req, res) => {
   const activeUser = req.session?.user;
   if (!activeUser) return res.status(401).json({ error: "Not signed in" });

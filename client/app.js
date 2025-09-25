@@ -36,6 +36,7 @@ logoutBtn.addEventListener("click", handleLogout);
 const defaultGreeting = ""
 const defaultSignupTxt = "Create username";
 
+//NOTE: initiate()
 async function initiate() {
   const res = await fetch(`${signupUrl}/me`, { credentials: "same-origin" });
   if (res.ok) {
@@ -54,7 +55,7 @@ async function initiate() {
     lockUI(true);
   }
 }
-
+//NOTE: enterLoginMode()
 function enterLoginMode() {
   window.authMode = "login";
   if (signupInput) {
@@ -66,7 +67,7 @@ function enterLoginMode() {
   }
   if (authBtn) authBtn.innerHTML = `<i class="fa-solid fa-arrow-right-to-bracket"></i>`;
 }
-
+//NOTE: handleSignup(e)
 async function handleSignup(e) {
   e.preventDefault();
   const name = (signupInput?.value || "").trim();
@@ -129,7 +130,7 @@ async function handleSignup(e) {
     toast({ error: "Network error" })
   }
 }
-
+//NOTE: loggedOutUI()
 function loggedOutUI() {
   window.currentUser = null;
   currentChatId = null;
@@ -145,7 +146,7 @@ function loggedOutUI() {
     "<p>You must login to chat.</p>" +
     "</div>";
   loginTxt.innerHTML = "<div style='height:100%; width: 100%; align-items:center'>" +
-    "<p>..or <a class='link js-login-trigger'>log in</a> to chat.</p>" +
+    "<p>..or <a class='link js-login-trigger'>log in</a>.</p>" +
     "</div>";
 
   chatMessages.innerHTML = "";
@@ -161,8 +162,7 @@ function loggedOutUI() {
   });
 
 }
-
-// logout
+//NOTE: handleLogout(e)
 async function handleLogout(e) {
   e.preventDefault();
   const id = window.currentUser?.id;
@@ -196,7 +196,7 @@ async function handleLogout(e) {
 
   }
 }
-
+//NOTE: loadChatList()
 async function loadChatList() {
   try {
     const res = await fetch(chatsUrl, { credentials: "same-origin" });
@@ -217,7 +217,7 @@ async function loadChatList() {
     chatTotal && (chatTotal.textContent = "");
   }
 }
-
+//NOTE: renderChatList(chats)
 function renderChatList(chats) {
   chatsList.innerHTML = chats
     .map(
@@ -247,7 +247,7 @@ function renderChatList(chats) {
     btn.addEventListener("click", () => openChat(btn.dataset.chatId));
   });
 }
-
+//NOTE: createNewChat(e)
 async function createNewChat(e) {
   e.preventDefault();
 
@@ -274,7 +274,7 @@ async function createNewChat(e) {
     toast({ error: "Couldn't create chat" });
   }
 }
-
+//NOTE: openChat(chatId)
 async function openChat(chatId) {
   document
     .querySelectorAll("#chats-list .chat-list-item.is-active")
@@ -291,7 +291,7 @@ async function openChat(chatId) {
     if (t) titleEl.textContent = t;
   }
 }
-
+//NOTE: fetchMessages(chatId)
 async function fetchMessages(chatId) {
   try {
     const res = await fetch(`${chatsUrl}/${chatId}`, { credentials: "same-origin" });
@@ -304,7 +304,7 @@ async function fetchMessages(chatId) {
     chatMessages.innerHTML = `<div>Could not get messages.</div>`;
   }
 }
-
+//NOTE: renderMessages(messages)
 function renderMessages(messages) {
   if (!messages?.length) {
     chatMessages.innerHTML = "<div>No messages yet.</div>";
@@ -336,7 +336,7 @@ function renderMessages(messages) {
   }
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
-
+//NOTE: handleSubmitMessage(e)
 async function handleSubmitMessage(e) {
   e.preventDefault();
   let message = messageInput.value.trim();
@@ -352,6 +352,7 @@ async function handleSubmitMessage(e) {
     if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
 
     const data = await res.json();
+    console.log(data);
     renderMessages(data.chat.messages);
     messageInput.value = "";
     await loadChatList();
@@ -359,7 +360,7 @@ async function handleSubmitMessage(e) {
     toast({ error: "Could not send message." });
   }
 }
-
+//NOTE: handleResetChat() -- unused
 async function handleResetChat() {
   try {
     const res = await fetch(`${chatsUrl}/${currentChatId}`, {
@@ -374,7 +375,7 @@ async function handleResetChat() {
     toast({ error: "Could not reset chat." });
   }
 }
-
+//NOTE: handleDeleteChat(e)
 async function handleDeleteChat(e) {
   const delBtn = e.target.closest(".chat-del-btn");
   if (delBtn) {
@@ -384,9 +385,10 @@ async function handleDeleteChat(e) {
     try {
       const res = await fetch(`${chatsUrl}/${id}`, { method: "DELETE", credentials: "same-origin" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      if (res.status !== 204) {
-        await res.json();
-      }
+
+      const data = await res.json();
+      if (res.status !== 204) data;
+
       if (id === currentChatId) {
         currentChatId = null; //
         renderMessages([]); // clear messages
@@ -394,6 +396,7 @@ async function handleDeleteChat(e) {
       toast({ success: "Chat deleted succesfully" });
 
       await loadChatList(); // sync/load list
+      // open first chat when deletion complete
       const first = chatsList.querySelector("[data-chat-id]");
       if (first) {
         openChat(first.dataset.chatId);
@@ -403,6 +406,8 @@ async function handleDeleteChat(e) {
         document.querySelector(".title") && (document.querySelector(".title").textContent = "");
         chatMessages.innerHTML = `<div>No chats yet. Create a new chat to get started.</div>`;
       }
+
+      console.log(data)
       return;
     } catch (err) {
       console.error(err);

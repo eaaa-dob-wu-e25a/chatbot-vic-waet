@@ -1,9 +1,7 @@
 import express from "express";
 import { readChats, writeChats } from "../scripts/script.js";
 import chatMessagesRouter from "./messages.js";
-import signUpRouter from "./signup.js";
 import { randomUUID } from "crypto";
-
 
 const router = express.Router();
 let chats = [];
@@ -16,7 +14,7 @@ function requireAuth(req, res, next) {
 
 router.use(requireAuth);
 
-// GET /api/v1/chats
+//NOTE GET /api/v1/chats
 router.get("/", async (req, res) => {
   try {
     // show only active users chats
@@ -43,7 +41,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /api/v1/chats/:id | Display chat with messsages
+//NOTE GET /api/v1/chats/:id | Display chat with messsages
 router.get("/:id", async (req, res) => {
   try {
     const activeUser = req.session.user;
@@ -57,7 +55,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// POST /api/v1/chats
+//NOTE POST /api/v1/chats
 router.post("/", async (req, res) => {
   try {
     const activeUser = req.session.user;
@@ -80,8 +78,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-
-// delete chat by id -- /api/v1/chats/:id
+//NOTE DELETE chat by id -- /api/v1/chats/:id
 router.delete("/:id", async (req, res) => {
   try {
     const activeUser = req.session.user;
@@ -94,7 +91,7 @@ router.delete("/:id", async (req, res) => {
       await writeChats(chats);
       res
         .status(200)
-        .json({ message: "Chat deleted successfully", deletedId: req.params.id });
+        .json({ message: "Chat deleted successfully", deletedId: req.params.id});
     } else {
       res.status(404).json({ error: "Chat not found" });
     }
@@ -104,7 +101,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// Delete EVERYTHING
+//NOTE Delete EVERYTHING -- unused
 router.delete("/", async (req, res) => {
   try {
     const chats = await readChats();
@@ -118,8 +115,7 @@ router.delete("/", async (req, res) => {
   }
 });
 
-// use /api/v1/chats/:id -- show chats messages. user og bot svar
+//NOTE use /api/v1/chats/:id -- show chats messages. user og bot svar
 router.use("/:id", chatMessagesRouter);
-// router.use("/:id", signUpRouter);
 
 export default router;

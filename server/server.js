@@ -2,7 +2,7 @@
 import express from "express"; // Import express framework
 import cors from "cors"
 import chatRoutes from "./routes/chat.js";
-import signupRoutes from "./routes/signup.js";
+import profileRoute from "./routes/signup.js";
 import session from "express-session";
 import path from 'path';
 import { fileURLToPath } from "url";
@@ -30,15 +30,12 @@ server.use(
   })
 );
 
-
 // SECTION - Routes
 let api_v = "v1"; // api version
 const api_path = `api/${api_v}`;
 
-server.use(`/${api_path}/profile`, signupRoutes);
+server.use(`/${api_path}/profile`, profileRoute);
 server.use(`/${api_path}/chats`, chatRoutes);
-
-
 
 // Listen on port 3300
 const port = 3000;

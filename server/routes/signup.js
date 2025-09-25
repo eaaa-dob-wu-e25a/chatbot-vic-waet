@@ -27,14 +27,14 @@ async function saveUsers() {
 }
 await loadUsers();
 
-// GET existing user if logged in -- /api/v1/profile/me
+//NOTE GET existing user if logged in -- /api/v1/profile/me
 router.get("/me", (req, res) => {
   const user = req.session?.user;
   if (!user) return res.status(401).json({ error: "Not signed in" });
   res.json({user})
 })
 
-// /api/v1/profile/login
+//NOTE /api/v1/profile/login -- if name exists in json, log in ok
 router.post("/login", async (req, res) => {
 try {
     await loadUsers();
@@ -52,19 +52,18 @@ try {
 }
 })
 
-// logout
+//NOTE DELETE logout
 router.delete("/clear", (req, res) => {
   req.session?.destroy(() => res.status(204).end());
 });
 
-
-// GET all users
+//NOTE GET all users
 router.get("/", async (req, res) => {
   await loadUsers();
   res.json({ users });
 });
 
-// GET one user by id
+//NOTE GET one user by id
 router.get("/:id", async (req, res) => {
 
     await loadUsers();
@@ -73,7 +72,7 @@ router.get("/:id", async (req, res) => {
     return res.json({ user });
 });
 
-// POST /api/v1/signup -- create user
+//NOTE POST /api/v1/signup -- create user
 router.post("/", async (req, res) => {
   try {
     // read and sanitize
@@ -121,7 +120,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// delete one user -- (delete profile)
+//NOTE delete one user -- (delete profile)
 router.delete("/:id", async (req, res) => {
   try {
     await loadUsers();

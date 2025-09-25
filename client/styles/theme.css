@@ -10,7 +10,6 @@
 html {
   background-image: url("/public/bg-img.jpg");
   background-repeat: no-repeat;
- 
   padding: var(--space-md);
   width: var(--full-w);
   height: var(--full-h);
@@ -131,7 +130,6 @@ input {
 .chat-container input {
   width: var(--full-w);
   height: clamp(50px, 2vh, 62px);
-
   border-radius: var(--border-radius-sm);
   transition: ease-in-out 0.25s outline;
 }
@@ -149,6 +147,7 @@ input:focus {
 .chat-container {
   width: var(--full-w);
   height: var(--full-h);
+
 }
 
 .chat-container #input-message {

@@ -589,46 +589,6 @@
     ]
   },
   {
-    "id": "c1ba95fc-f3d1-4240-8be7-f58d639a9f64",
-    "ownerId": "c7f29437-a481-4b40-8b5d-6cd0da519c2a",
-    "title": "my chat",
-    "date": "2025-09-25T12:27:40.868Z",
-    "messages": [
-      {
-        "id": "f46faca6-932b-46db-a3a3-29f6e7ed6a6b",
-        "date": "2025-09-25T12:29:43.229Z",
-        "text": "hej",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "95dc4f7c-de1e-4ea4-85b8-e90b49e69fd0",
-        "date": "2025-09-25T12:29:43.939Z",
-        "text": "Hey hey, good to see you!",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "4a6ffa3f-29d3-4243-9caf-f8f351e316ff",
-        "date": "2025-09-25T12:46:45.033Z",
-        "text": "adf",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "3accdb5b-f9aa-46b4-ada5-52e6237d5c33",
-        "date": "2025-09-25T12:46:45.734Z",
-        "text": "🤖 ...",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      }
-    ]
-  },
-  {
     "id": "ba914529-4add-4dbf-83cf-8feb999e1808",
     "ownerId": "c7f29437-a481-4b40-8b5d-6cd0da519c2a",
     "title": "Untitled",
@@ -726,22 +686,6 @@
         "id": "b849614b-1a80-46a8-bcc2-45199b720866",
         "date": "2025-09-25T13:06:19.679Z",
         "text": "Hmm, that one’s new to me. Want to ask something simpler?",
-        "sender": "chatbot",
-        "name": "KamiBo",
-        "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"
-      },
-      {
-        "id": "e0720067-3d21-4d50-b8e2-f34628663d7d",
-        "date": "2025-09-25T13:06:20.525Z",
-        "text": "asd",
-        "sender": "user",
-        "name": "vic",
-        "avatar": "https://avatar.iran.liara.run/username?username=vic"
-      },
-      {
-        "id": "f097489f-e2dc-47e6-8d21-41ecba1fa0fe",
-        "date": "2025-09-25T13:06:21.236Z",
-        "text": "Unfortunately, I don't have an answer for that. Try rephrasing 🙂",
         "sender": "chatbot",
         "name": "KamiBo",
         "avatar": "https://avatar.iran.liara.run/username?username=KamiBo"

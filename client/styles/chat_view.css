@@ -61,7 +61,7 @@ body > div {
   .chat-list-item {
     width: var(--full-w);
     border: none;
-    border-bottom: 0.8px solid grey;
+    border-bottom: 0.8px solid rgba(var(--primary-rgb), .2);
     padding: var(--space-sm);
     text-align: left;
     color: var(--text);
@@ -121,8 +121,6 @@ body > div {
 #msg-bubble {
   width: calc(100% / 12 * 8);
   height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
   padding-block: var(--space-lg);
   align-content: flex-end;
   -webkit-mask-image: linear-gradient(transparent, black, transparent);
@@ -134,8 +132,17 @@ body > div {
     var(--primary),
     transparent
   );
+    overflow-y: auto;          /* scroll y-axis*/
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+  -webkit-overflow-scrolling: touch; 
+
 }
 
+#msg-bubble::-webkit-scrollbar {
+  width: 0;                  /* Chrome/Safari/Opera */
+  height: 0;
+}
 .msg-container {
   border-radius: var(--border-radius-sm);
 }
