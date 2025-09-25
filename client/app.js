@@ -222,7 +222,6 @@ function renderChatList(chats) {
   chatsList.innerHTML = chats
     .map(
       (c) => `
-
   <div class="chat-row">
       <button type="button"
         class="chat-list-item ${c.id === currentChatId ? "is-active" : ""}"

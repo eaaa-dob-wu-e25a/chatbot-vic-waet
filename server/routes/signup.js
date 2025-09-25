@@ -72,7 +72,7 @@ router.get("/:id", async (req, res) => {
     return res.json({ user });
 });
 
-//NOTE POST /api/v1/signup -- create user
+//NOTE POST /api/v1/profile -- create user
 router.post("/", async (req, res) => {
   try {
     // read and sanitize
@@ -94,7 +94,7 @@ router.post("/", async (req, res) => {
         .json({ error: "Username is limited to 40 characters." });
     if (users.some((u) => u.name.toLowerCase() === name.toLowerCase())) {
       // http status existing state
-      return res.status(409).json({ error: "Username is already taken." });
+      return res.status(409).json({ error: "Username is already taken." }); //409 = conflict
     }
 
     let avatar = `https://avatar.iran.liara.run/username?username=${encodeURIComponent(
