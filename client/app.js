@@ -253,7 +253,7 @@ async function createNewChat(e) {
   let chatTitle = (chatTitleInput?.value ?? "").trim();
   if (!chatTitle) chatTitle = "Untitled";
 
-  try {
+  try { // /api/v1/chats
     const res = await fetch(`${chatsUrl}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
